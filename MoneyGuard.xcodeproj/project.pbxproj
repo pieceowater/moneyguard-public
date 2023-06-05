@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */; };
+		C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */; };
+		C2D74D5C2A2E56E30085BBFA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D5B2A2E56E30085BBFA /* ContentView.swift */; };
+		C2D74D5E2A2E56E40085BBFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D74D5D2A2E56E40085BBFA /* Assets.xcassets */; };
+		C2D74D622A2E56E40085BBFA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D74D612A2E56E40085BBFA /* Preview Assets.xcassets */; };
+		C2D74D6C2A2E56E50085BBFA /* MoneyGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D6B2A2E56E50085BBFA /* MoneyGuardTests.swift */; };
+		C2D74D762A2E56E50085BBFA /* MoneyGuardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */; };
+		C2D74D782A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2D74D682A2E56E50085BBFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2D74D492A2E56E30085BBFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2D74D502A2E56E30085BBFA;
+			remoteInfo = MoneyGuard;
+		};
+		C2D74D722A2E56E50085BBFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2D74D492A2E56E30085BBFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2D74D502A2E56E30085BBFA;
+			remoteInfo = MoneyGuard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C2D74D512A2E56E30085BBFA /* MoneyGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardApp.swift; sourceTree = "<group>"; };
+		C2D74D592A2E56E30085BBFA /* MoneyGuard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoneyGuard.xcdatamodel; sourceTree = "<group>"; };
+		C2D74D5B2A2E56E30085BBFA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C2D74D5D2A2E56E40085BBFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2D74D5F2A2E56E40085BBFA /* MoneyGuard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoneyGuard.entitlements; sourceTree = "<group>"; };
+		C2D74D612A2E56E40085BBFA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C2D74D672A2E56E50085BBFA /* MoneyGuardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyGuardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D74D6B2A2E56E50085BBFA /* MoneyGuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardTests.swift; sourceTree = "<group>"; };
+		C2D74D712A2E56E50085BBFA /* MoneyGuardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyGuardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITests.swift; sourceTree = "<group>"; };
+		C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2D74D4E2A2E56E30085BBFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D74D642A2E56E50085BBFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D74D6E2A2E56E50085BBFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2D74D482A2E56E30085BBFA = {
+			isa = PBXGroup;
+			children = (
+				C2D74D532A2E56E30085BBFA /* MoneyGuard */,
+				C2D74D6A2A2E56E50085BBFA /* MoneyGuardTests */,
+				C2D74D742A2E56E50085BBFA /* MoneyGuardUITests */,
+				C2D74D522A2E56E30085BBFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C2D74D522A2E56E30085BBFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2D74D512A2E56E30085BBFA /* MoneyGuard.app */,
+				C2D74D672A2E56E50085BBFA /* MoneyGuardTests.xctest */,
+				C2D74D712A2E56E50085BBFA /* MoneyGuardUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2D74D532A2E56E30085BBFA /* MoneyGuard */ = {
+			isa = PBXGroup;
+			children = (
+				C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */,
+				C2D74D5B2A2E56E30085BBFA /* ContentView.swift */,
+				C2D74D5D2A2E56E40085BBFA /* Assets.xcassets */,
+				C2D74D5F2A2E56E40085BBFA /* MoneyGuard.entitlements */,
+				C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */,
+				C2D74D602A2E56E40085BBFA /* Preview Content */,
+			);
+			path = MoneyGuard;
+			sourceTree = "<group>";
+		};
+		C2D74D602A2E56E40085BBFA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C2D74D612A2E56E40085BBFA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C2D74D6A2A2E56E50085BBFA /* MoneyGuardTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2D74D6B2A2E56E50085BBFA /* MoneyGuardTests.swift */,
+			);
+			path = MoneyGuardTests;
+			sourceTree = "<group>";
+		};
+		C2D74D742A2E56E50085BBFA /* MoneyGuardUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */,
+				C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */,
+			);
+			path = MoneyGuardUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2D74D502A2E56E30085BBFA /* MoneyGuard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2D74D7B2A2E56E50085BBFA /* Build configuration list for PBXNativeTarget "MoneyGuard" */;
+			buildPhases = (
+				C2D74D4D2A2E56E30085BBFA /* Sources */,
+				C2D74D4E2A2E56E30085BBFA /* Frameworks */,
+				C2D74D4F2A2E56E30085BBFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoneyGuard;
+			productName = MoneyGuard;
+			productReference = C2D74D512A2E56E30085BBFA /* MoneyGuard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2D74D662A2E56E50085BBFA /* MoneyGuardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2D74D7E2A2E56E50085BBFA /* Build configuration list for PBXNativeTarget "MoneyGuardTests" */;
+			buildPhases = (
+				C2D74D632A2E56E50085BBFA /* Sources */,
+				C2D74D642A2E56E50085BBFA /* Frameworks */,
+				C2D74D652A2E56E50085BBFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2D74D692A2E56E50085BBFA /* PBXTargetDependency */,
+			);
+			name = MoneyGuardTests;
+			productName = MoneyGuardTests;
+			productReference = C2D74D672A2E56E50085BBFA /* MoneyGuardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2D74D702A2E56E50085BBFA /* MoneyGuardUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2D74D812A2E56E50085BBFA /* Build configuration list for PBXNativeTarget "MoneyGuardUITests" */;
+			buildPhases = (
+				C2D74D6D2A2E56E50085BBFA /* Sources */,
+				C2D74D6E2A2E56E50085BBFA /* Frameworks */,
+				C2D74D6F2A2E56E50085BBFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2D74D732A2E56E50085BBFA /* PBXTargetDependency */,
+			);
+			name = MoneyGuardUITests;
+			productName = MoneyGuardUITests;
+			productReference = C2D74D712A2E56E50085BBFA /* MoneyGuardUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2D74D492A2E56E30085BBFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					C2D74D502A2E56E30085BBFA = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					C2D74D662A2E56E50085BBFA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = C2D74D502A2E56E30085BBFA;
+					};
+					C2D74D702A2E56E50085BBFA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = C2D74D502A2E56E30085BBFA;
+					};
+				};
+			};
+			buildConfigurationList = C2D74D4C2A2E56E30085BBFA /* Build configuration list for PBXProject "MoneyGuard" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C2D74D482A2E56E30085BBFA;
+			productRefGroup = C2D74D522A2E56E30085BBFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2D74D502A2E56E30085BBFA /* MoneyGuard */,
+				C2D74D662A2E56E50085BBFA /* MoneyGuardTests */,
+				C2D74D702A2E56E50085BBFA /* MoneyGuardUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2D74D4F2A2E56E30085BBFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D74D622A2E56E40085BBFA /* Preview Assets.xcassets in Resources */,
+				C2D74D5E2A2E56E40085BBFA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D74D652A2E56E50085BBFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D74D6F2A2E56E50085BBFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2D74D4D2A2E56E30085BBFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */,
+				C2D74D5C2A2E56E30085BBFA /* ContentView.swift in Sources */,
+				C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D74D632A2E56E50085BBFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D74D6C2A2E56E50085BBFA /* MoneyGuardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2D74D6D2A2E56E50085BBFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D74D762A2E56E50085BBFA /* MoneyGuardUITests.swift in Sources */,
+				C2D74D782A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2D74D692A2E56E50085BBFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2D74D502A2E56E30085BBFA /* MoneyGuard */;
+			targetProxy = C2D74D682A2E56E50085BBFA /* PBXContainerItemProxy */;
+		};
+		C2D74D732A2E56E50085BBFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2D74D502A2E56E30085BBFA /* MoneyGuard */;
+			targetProxy = C2D74D722A2E56E50085BBFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C2D74D792A2E56E50085BBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C2D74D7A2A2E56E50085BBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C2D74D7C2A2E56E50085BBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MoneyGuard/MoneyGuard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyGuard/Preview Content\"";
+				DEVELOPMENT_TEAM = BKVX2LKXJH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyGuard;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pieceowater.MoneyGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2D74D7D2A2E56E50085BBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MoneyGuard/MoneyGuard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyGuard/Preview Content\"";
+				DEVELOPMENT_TEAM = BKVX2LKXJH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyGuard;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pieceowater.MoneyGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C2D74D7F2A2E56E50085BBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BKVX2LKXJH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pieceowater.MoneyGuardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyGuard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoneyGuard";
+			};
+			name = Debug;
+		};
+		C2D74D802A2E56E50085BBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BKVX2LKXJH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pieceowater.MoneyGuardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyGuard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoneyGuard";
+			};
+			name = Release;
+		};
+		C2D74D822A2E56E50085BBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BKVX2LKXJH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pieceowater.MoneyGuardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MoneyGuard;
+			};
+			name = Debug;
+		};
+		C2D74D832A2E56E50085BBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BKVX2LKXJH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pieceowater.MoneyGuardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MoneyGuard;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2D74D4C2A2E56E30085BBFA /* Build configuration list for PBXProject "MoneyGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D74D792A2E56E50085BBFA /* Debug */,
+				C2D74D7A2A2E56E50085BBFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2D74D7B2A2E56E50085BBFA /* Build configuration list for PBXNativeTarget "MoneyGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D74D7C2A2E56E50085BBFA /* Debug */,
+				C2D74D7D2A2E56E50085BBFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2D74D7E2A2E56E50085BBFA /* Build configuration list for PBXNativeTarget "MoneyGuardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D74D7F2A2E56E50085BBFA /* Debug */,
+				C2D74D802A2E56E50085BBFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2D74D812A2E56E50085BBFA /* Build configuration list for PBXNativeTarget "MoneyGuardUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D74D822A2E56E50085BBFA /* Debug */,
+				C2D74D832A2E56E50085BBFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C2D74D592A2E56E30085BBFA /* MoneyGuard.xcdatamodel */,
+			);
+			currentVersion = C2D74D592A2E56E30085BBFA /* MoneyGuard.xcdatamodel */;
+			path = MoneyGuard.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C2D74D492A2E56E30085BBFA /* Project object */;
+}
