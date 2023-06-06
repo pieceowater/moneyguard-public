@@ -110,6 +110,7 @@
 		C28082962A2ED1E800185A17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */,
 				C28082992A2ED28100185A17 /* Settings.swift */,
 				C29262832A2FACD100E7901A /* Icons.swift */,
 			);
@@ -179,7 +180,6 @@
 				C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */,
 				C2D74D5D2A2E56E40085BBFA /* Assets.xcassets */,
 				C2D74D5F2A2E56E40085BBFA /* MoneyGuard.entitlements */,
-				C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */,
 				C2D74D602A2E56E40085BBFA /* Preview Content */,
 			);
 			path = MoneyGuard;
