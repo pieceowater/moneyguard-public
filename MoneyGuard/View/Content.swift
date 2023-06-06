@@ -34,6 +34,7 @@ struct ContentView: View {
                 }
                 .tag(Tab.goals)
             HomeView()
+                .environmentObject(userSettings)
                 .tabItem {
                     Label("home_tab", systemImage: "house.fill")
                 }

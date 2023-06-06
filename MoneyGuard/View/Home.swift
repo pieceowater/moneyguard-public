@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var userSettings: UserSettingsManager
+    
+    //temp
     @State private var showGallery = false
 
     var body: some View {
         VStack {
+            //temp
             Button(action: {
                 showGallery = true
             }) {
@@ -24,7 +28,7 @@ struct HomeView: View {
             }
         }
         .sheet(isPresented: $showGallery) {
-            GalleryView()
+            GalleryView().accentColor(userSettings.accentColor.color)
         }
     }
 }
