@@ -13,6 +13,9 @@ struct MenuView: View {
         NavigationView {
            List {
                Section(header: Text("menu_heading_settings")) {
+                   NavigationLink(destination: CategoryView().environmentObject(userSettings)) {
+                       LinkCardView(icon: "bookmark", title: String(format: NSLocalizedString("menu_settings_category", comment: "")))
+                   }
                    NavigationLink(destination: AppearanceView().environmentObject(userSettings)) {
                        LinkCardView(icon: "paintbrush", title: String(format: NSLocalizedString("menu_settings_appearance", comment: "")))
                    }

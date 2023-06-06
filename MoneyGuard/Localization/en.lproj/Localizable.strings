@@ -30,6 +30,7 @@
 "menu_tab" = "Menu";
     "title_menu_screen" = "Menu";
     "menu_heading_settings" = "Settings";
+        "menu_settings_category" = "Categories";
         "menu_settings_appearance" = "Appearance";
             "appearance_theme" = "Theme";
                 "appearance_lightmode" = "Light Mode";
