@@ -11,24 +11,54 @@ import CoreData
 struct ContentView: View {
     @ObservedObject var userSettings: UserSettingsManager
     
-    @State private var selectedTab: Tab = .menu
+    @State private var selectedTab: Tab = .home
 
     enum Tab {
+        case home
+        case goals
+        case accounts
+        case stats
         case menu
     }
 
     var body: some View {
         TabView(selection: $selectedTab) {
+            StatsView()
+                .tabItem {
+                    Label("stats_tab", systemImage: "chart.bar.fill")
+                }
+                .tag(Tab.stats)
+            GoalsView()
+                .tabItem {
+                    Label("goals_tab", systemImage: "star.fill")
+                }
+                .tag(Tab.goals)
+            HomeView()
+                .tabItem {
+                    Label("home_tab", systemImage: "house.fill")
+                }
+                .tag(Tab.home)
+            AccountsView()
+                .tabItem {
+                    Label("accounts_tab", systemImage: "creditcard.fill")
+                }
+                .tag(Tab.accounts)
             MenuView()
                 .environmentObject(userSettings)
                 .tabItem {
-                    Label("menu_tab", systemImage: "list.dash")
+                    Label("menu_tab", systemImage: "list.bullet.circle.fill")
                 }
                 .tag(Tab.menu)
             
         }
     }
 
+}
+
+func giveHapticFeedback() {
+    let generator = UIImpactFeedbackGenerator(style: .light)
+    generator.prepare()
+    generator.impactOccurred()
 }
 
 struct ContentView_Previews: PreviewProvider {

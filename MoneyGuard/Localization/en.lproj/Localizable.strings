@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  MoneyGuard
+
+  Created by yury mid on 06.06.2023.
+  
+*/
+
+"btn_submit" = "Submit";
+
+"alert_confirm" = "Confirm";
+"alert_sure_msg" = "Are you sure?";
+"alert_end_btn" = "End";
+"alert_rm_btn" = "Remove";
+"alert_apprestart" = "App Restart";
+"alert_apprestart_msg" = "Please manually relaunch the app to see changes.";
+
+"gallery_heading" = "Select an Icon";
+
+
+"home_tab" = "Home";
+
+"goals_tab" = "Goals";
+
+"accounts_tab" = "Accounts";
+
+"stats_tab" = "Stats";
+
+"menu_tab" = "Menu";
+    "title_menu_screen" = "Menu";
+    "menu_heading_settings" = "Settings";
+        "menu_settings_appearance" = "Appearance";
+            "appearance_theme" = "Theme";
+                "appearance_lightmode" = "Light Mode";
+                "appearance_darkmode" = "Dark Mode";
+            "appearance_accentcolor" = "Accent Color";
+            "appearance_appicon" = "App Icon";
+        "menu_settings_language" = "Language";
+    "menu_heading_actions" = "Actions";
+        "menu_actions_pro_mode" = "Upgrade to Pro (Ad-free)";
+        "menu_actions_rate" = "Rate us!";
+        "menu_actions_about" = "About";
+            "about_appdescription" = "Empower your financial journey.\n\nTake charge of your money with ease. Effortlessly track expenses, set budgets, and stay on top of your financial goals. Unlock a clearer financial future with MoneyGuard, your trusted companion.";
+            "about_developed" = "Developed by";
+
+

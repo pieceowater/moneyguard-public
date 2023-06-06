@@ -18,10 +18,12 @@ struct AboutView: View {
 
     var body: some View {
         VStack {
-            Image("ClearLogo")
+            Image("MoneyGuard")
                 .resizable()
-                .frame(width: 55, height: 55)
-            Text("SpeedStory")
+                .frame(width: 65, height: 65)
+                .cornerRadius(13)
+                .shadow(color: .black.opacity(0.2), radius: 4)
+            Text("MoneyGuard")
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding(.bottom, 20)

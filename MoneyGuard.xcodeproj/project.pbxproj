@@ -12,6 +12,14 @@
 		C280829E2A2ED40D00185A17 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C280829D2A2ED40D00185A17 /* Menu.swift */; };
 		C28082A12A2ED48900185A17 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28082A02A2ED48900185A17 /* About.swift */; };
 		C28082A32A2ED4C400185A17 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28082A22A2ED4C400185A17 /* Appearance.swift */; };
+		C29262762A2F978000E7901A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C29262782A2F978000E7901A /* Localizable.strings */; };
+		C292627A2A2F994C00E7901A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262792A2F994C00E7901A /* Home.swift */; };
+		C292627C2A2F9A7E00E7901A /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C292627B2A2F9A7E00E7901A /* Goals.swift */; };
+		C292627E2A2F9A8F00E7901A /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C292627D2A2F9A8F00E7901A /* Accounts.swift */; };
+		C29262802A2F9A9F00E7901A /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = C292627F2A2F9A9F00E7901A /* Stats.swift */; };
+		C29262822A2F9FD100E7901A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262812A2F9FD100E7901A /* Language.swift */; };
+		C29262842A2FACD100E7901A /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262832A2FACD100E7901A /* Icons.swift */; };
+		C29262862A2FB11E00E7901A /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262852A2FB11E00E7901A /* Gallery.swift */; };
 		C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */; };
 		C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */; };
 		C2D74D5C2A2E56E30085BBFA /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D5B2A2E56E30085BBFA /* Content.swift */; };
@@ -44,6 +52,14 @@
 		C280829D2A2ED40D00185A17 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		C28082A02A2ED48900185A17 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		C28082A22A2ED4C400185A17 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		C29262772A2F978000E7901A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C29262792A2F994C00E7901A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		C292627B2A2F9A7E00E7901A /* Goals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goals.swift; sourceTree = "<group>"; };
+		C292627D2A2F9A8F00E7901A /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
+		C292627F2A2F9A9F00E7901A /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		C29262812A2F9FD100E7901A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		C29262832A2FACD100E7901A /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		C29262852A2FB11E00E7901A /* Gallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
 		C2D74D512A2E56E30085BBFA /* MoneyGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardApp.swift; sourceTree = "<group>"; };
 		C2D74D592A2E56E30085BBFA /* MoneyGuard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoneyGuard.xcdatamodel; sourceTree = "<group>"; };
@@ -95,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				C28082992A2ED28100185A17 /* Settings.swift */,
+				C29262832A2FACD100E7901A /* Icons.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +122,10 @@
 				C280829F2A2ED47C00185A17 /* Menu */,
 				C2D74D5B2A2E56E30085BBFA /* Content.swift */,
 				C280829D2A2ED40D00185A17 /* Menu.swift */,
+				C29262792A2F994C00E7901A /* Home.swift */,
+				C292627B2A2F9A7E00E7901A /* Goals.swift */,
+				C292627D2A2F9A8F00E7901A /* Accounts.swift */,
+				C292627F2A2F9A9F00E7901A /* Stats.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -112,6 +133,7 @@
 		C28082982A2ED24600185A17 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				C29262782A2F978000E7901A /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -121,6 +143,8 @@
 			children = (
 				C28082A02A2ED48900185A17 /* About.swift */,
 				C28082A22A2ED4C400185A17 /* Appearance.swift */,
+				C29262812A2F9FD100E7901A /* Language.swift */,
+				C29262852A2FB11E00E7901A /* Gallery.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -272,6 +296,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = C2D74D482A2E56E30085BBFA;
 			productRefGroup = C2D74D522A2E56E30085BBFA /* Products */;
@@ -291,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2D74D5E2A2E56E40085BBFA /* Assets.xcassets in Resources */,
+				C29262762A2F978000E7901A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,11 +341,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29262842A2FACD100E7901A /* Icons.swift in Sources */,
+				C292627A2A2F994C00E7901A /* Home.swift in Sources */,
+				C292627C2A2F9A7E00E7901A /* Goals.swift in Sources */,
+				C29262822A2F9FD100E7901A /* Language.swift in Sources */,
+				C29262862A2FB11E00E7901A /* Gallery.swift in Sources */,
 				C280829A2A2ED28100185A17 /* Settings.swift in Sources */,
 				C28082A12A2ED48900185A17 /* About.swift in Sources */,
 				C28082A32A2ED4C400185A17 /* Appearance.swift in Sources */,
 				C280829E2A2ED40D00185A17 /* Menu.swift in Sources */,
 				C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */,
+				C292627E2A2F9A8F00E7901A /* Accounts.swift in Sources */,
+				C29262802A2F9A9F00E7901A /* Stats.swift in Sources */,
 				C2D74D5C2A2E56E30085BBFA /* Content.swift in Sources */,
 				C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */,
 				C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */,
@@ -357,6 +390,17 @@
 			targetProxy = C2D74D722A2E56E50085BBFA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C29262782A2F978000E7901A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C29262772A2F978000E7901A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C2D74D792A2E56E50085BBFA /* Debug */ = {

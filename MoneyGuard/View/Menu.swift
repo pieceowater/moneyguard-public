@@ -16,6 +16,9 @@ struct MenuView: View {
                    NavigationLink(destination: AppearanceView().environmentObject(userSettings)) {
                        LinkCardView(icon: "paintbrush", title: String(format: NSLocalizedString("menu_settings_appearance", comment: "")))
                    }
+                   NavigationLink(destination: LanguageView()) {
+                       LinkCardView(icon: "globe", title: String(format: NSLocalizedString("menu_settings_language", comment: "")))
+                   }
                }
                
                Section(header: Text("menu_heading_actions")) {
