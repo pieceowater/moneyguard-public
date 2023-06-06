@@ -20,6 +20,8 @@
 		C29262822A2F9FD100E7901A /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262812A2F9FD100E7901A /* Language.swift */; };
 		C29262842A2FACD100E7901A /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262832A2FACD100E7901A /* Icons.swift */; };
 		C29262862A2FB11E00E7901A /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262852A2FB11E00E7901A /* Gallery.swift */; };
+		C29262882A2FCA6100E7901A /* ToolsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29262872A2FCA6100E7901A /* ToolsManager.swift */; };
+		C292628B2A2FD53700E7901A /* AccountDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C292628A2A2FD53700E7901A /* AccountDetail.swift */; };
 		C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */; };
 		C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */; };
 		C2D74D5C2A2E56E30085BBFA /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D5B2A2E56E30085BBFA /* Content.swift */; };
@@ -60,6 +62,8 @@
 		C29262812A2F9FD100E7901A /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		C29262832A2FACD100E7901A /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		C29262852A2FB11E00E7901A /* Gallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		C29262872A2FCA6100E7901A /* ToolsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsManager.swift; sourceTree = "<group>"; };
+		C292628A2A2FD53700E7901A /* AccountDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetail.swift; sourceTree = "<group>"; };
 		C2D74D512A2E56E30085BBFA /* MoneyGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D74D542A2E56E30085BBFA /* MoneyGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardApp.swift; sourceTree = "<group>"; };
 		C2D74D592A2E56E30085BBFA /* MoneyGuard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoneyGuard.xcdatamodel; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */,
+				C29262872A2FCA6100E7901A /* ToolsManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 		C28082972A2ED1F500185A17 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C29262892A2FD52500E7901A /* Accounts */,
 				C280829F2A2ED47C00185A17 /* Menu */,
 				C2D74D5B2A2E56E30085BBFA /* Content.swift */,
 				C280829D2A2ED40D00185A17 /* Menu.swift */,
@@ -148,6 +154,14 @@
 				C29262852A2FB11E00E7901A /* Gallery.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		C29262892A2FD52500E7901A /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				C292628A2A2FD53700E7901A /* AccountDetail.swift */,
+			);
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		C2D74D482A2E56E30085BBFA = {
@@ -350,11 +364,13 @@
 				C28082A12A2ED48900185A17 /* About.swift in Sources */,
 				C28082A32A2ED4C400185A17 /* Appearance.swift in Sources */,
 				C280829E2A2ED40D00185A17 /* Menu.swift in Sources */,
+				C29262882A2FCA6100E7901A /* ToolsManager.swift in Sources */,
 				C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */,
 				C292627E2A2F9A8F00E7901A /* Accounts.swift in Sources */,
 				C29262802A2F9A9F00E7901A /* Stats.swift in Sources */,
 				C2D74D5C2A2E56E30085BBFA /* Content.swift in Sources */,
 				C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */,
+				C292628B2A2FD53700E7901A /* AccountDetail.swift in Sources */,
 				C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

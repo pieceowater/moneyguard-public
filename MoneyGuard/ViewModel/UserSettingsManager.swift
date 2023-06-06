@@ -64,13 +64,13 @@ enum Colors: String, CaseIterable {
     case blue
     case red
     case orange
-    case yellow
-    case green
+//    case yellow
+//    case green
     case purple
     case pink
     case teal
-    case indigo
-    case gray
+//    case indigo
+//    case gray
     case `default`
     
     var color: Color {
@@ -81,20 +81,20 @@ enum Colors: String, CaseIterable {
             return .red
         case .orange:
             return .orange
-        case .yellow:
-            return .yellow
-        case .green:
-            return .green
+//        case .yellow:
+//            return .yellow
+//        case .green:
+//            return .green
         case .purple:
             return .purple
         case .pink:
             return .pink
         case .teal:
             return .teal
-        case .indigo:
-            return .indigo
-        case .gray:
-            return .gray
+//        case .indigo:
+//            return .indigo
+//        case .gray:
+//            return .gray
         case .default:
             return Color(hex: "61C554")
         }
