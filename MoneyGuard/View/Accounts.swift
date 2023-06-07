@@ -17,7 +17,7 @@ struct SampleAccountModel: Identifiable {
 }
 
 struct AccountsView: View {
-    
+    private let tool: ToolsManager = ToolsManager()
     let accounts: [SampleAccountModel] = [
         SampleAccountModel(name: "Kaspi Gold", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 1000.0),
         SampleAccountModel(name: "Jusan Bang", icon: "heal", createDate: Date(), lastActivity: Date(), balance: 2500.0),
@@ -28,6 +28,19 @@ struct AccountsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                VStack {
+                    HStack {
+                        Text(tool.formatCurrency(accounts.reduce(0, { $0 + $1.balance })) ?? "")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                            .foregroundColor(.accentColor)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
+
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
                     ForEach(accounts) { account in
                         NavigationLink(destination: AccountDetailView(account: account)) {
@@ -76,7 +89,7 @@ struct AccountCardView: View {
             HStack{
                 Text("\(tool.formatDate(account.lastActivity))")
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
                     .padding(5)
                 Spacer()
                 

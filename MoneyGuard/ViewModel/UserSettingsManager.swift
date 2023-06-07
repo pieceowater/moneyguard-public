@@ -64,13 +64,9 @@ enum Colors: String, CaseIterable {
     case blue
     case red
     case orange
-//    case yellow
-//    case green
     case purple
     case pink
     case teal
-//    case indigo
-//    case gray
     case `default`
     
     var color: Color {
@@ -81,25 +77,18 @@ enum Colors: String, CaseIterable {
             return .red
         case .orange:
             return .orange
-//        case .yellow:
-//            return .yellow
-//        case .green:
-//            return .green
         case .purple:
             return .purple
         case .pink:
             return .pink
         case .teal:
             return .teal
-//        case .indigo:
-//            return .indigo
-//        case .gray:
-//            return .gray
         case .default:
             return Color(hex: "61C554")
         }
     }
 }
+
 
 
 
@@ -124,5 +113,46 @@ extension Color {
         let blue = Double(rgbValue & 0x0000FF) / 255.0
         
         self.init(red: red, green: green, blue: blue)
+    }
+    
+    static var customBlue: Color { Color("Blue") }
+    static var customGreen: Color { Color("Green") }
+    static var customRed: Color { Color("Red") }
+    static var customPurple: Color { Color("Purple") }
+    static var customOrange: Color { Color("Orange") }
+    static var customYellow: Color { Color("Yellow") }
+    static var customPink: Color { Color("Pink") }
+    static var customTeal: Color { Color("Teal") }
+    static var customIndigo: Color { Color("Indigo") }
+    static var customBrown: Color { Color("Brown") }
+    static var customGray: Color { Color("Gray") }
+    static var customCyan: Color { Color("Cyan") }
+    static var customLavender: Color { Color("Lavender") }
+    static var customAmber: Color { Color("Amber") }
+    static var customMaroon: Color { Color("Maroon") }
+}
+
+enum CategoryColor: String, CaseIterable {
+    case blue
+    case green
+    case red
+    case purple
+    case orange
+    case yellow
+    case pink
+    case teal
+    case indigo
+    case brown
+    case gray
+    case cyan
+    case lavender
+    case amber
+    case maroon
+    
+    var color: Color {
+        guard let colorName = self.rawValue as String? else {
+            return Color.clear
+        }
+        return Color(colorName)
     }
 }

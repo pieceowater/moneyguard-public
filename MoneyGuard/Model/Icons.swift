@@ -65,6 +65,9 @@ enum Icons: String, CaseIterable {
     
     // Default Icon
     case `default`
+    case default2
+    case default3
+    case default4
     
     var icon: String {
         switch self {
@@ -106,6 +109,12 @@ enum Icons: String, CaseIterable {
             return "width"
         case .default:
             return "default"
+        case .default2:
+            return "default2"
+        case .default3:
+            return "default3"
+        case .default4:
+            return "default4"
         case .bad:
             return "bad"
         case .bigdebt:
