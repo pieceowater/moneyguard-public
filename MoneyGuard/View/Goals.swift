@@ -96,6 +96,9 @@ struct GoalView: View {
                 }
 
                 HStack{
+                    Image(systemName: "flag.checkered")
+                        .foregroundColor(.secondary)
+                        .font(.footnote)
                     Text(tool.formatDate(goal.deadline))
                         .foregroundColor(.secondary)
                         .font(.footnote)
@@ -107,7 +110,8 @@ struct GoalView: View {
                 .padding(.top, 10)
 
             }
-            .padding()
+            .padding(.vertical)
+            .padding(.horizontal, 5)
             .background(.ultraThinMaterial)
             .shadow(color: .black.opacity(0.1), radius: 7, x: 0, y: -2)
             

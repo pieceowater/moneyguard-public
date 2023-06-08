@@ -50,7 +50,6 @@ struct AccountsView: View {
                 }
                 .padding(16)
             }
-            .refreshable {}
             .navigationTitle("accounts_tab")
         }
     }
