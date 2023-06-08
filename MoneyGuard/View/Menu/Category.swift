@@ -14,16 +14,16 @@ struct SampleCategoryModel: Identifiable {
     let createDate: Date
     let lastActivity: Date
     let icon: String
-    let type: String
+    let type: String // expenses or replenishments
     let essentialDegree: Int16
 }
 
 struct CategoryView: View {
     let replenishmentCategory: [SampleCategoryModel] = [
-        SampleCategoryModel(name: "Salary", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "debt", type: "replenishment", essentialDegree: 1),
-        SampleCategoryModel(name: "1xbet", color: "Green", createDate: Date(), lastActivity: Date(), icon: "carebeauty", type: "replenishment", essentialDegree: 2),
-        SampleCategoryModel(name: "Investments", color: "Purple", createDate: Date(), lastActivity: Date(), icon: "drugs", type: "replenishment", essentialDegree: 3),
-        SampleCategoryModel(name: "Freelance", color: "Teal", createDate: Date(), lastActivity: Date(), icon: "donate", type: "replenishment", essentialDegree: 1)
+        SampleCategoryModel(name: "Salary", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "debt", type: "replenishments", essentialDegree: 1),
+        SampleCategoryModel(name: "1xbet", color: "Green", createDate: Date(), lastActivity: Date(), icon: "carebeauty", type: "replenishments", essentialDegree: 2),
+        SampleCategoryModel(name: "Investments", color: "Purple", createDate: Date(), lastActivity: Date(), icon: "drugs", type: "replenishments", essentialDegree: 3),
+        SampleCategoryModel(name: "Freelance", color: "Teal", createDate: Date(), lastActivity: Date(), icon: "donate", type: "replenishments", essentialDegree: 1)
     ]
 
     let expensesCategory: [SampleCategoryModel] = [
@@ -43,7 +43,7 @@ struct CategoryView: View {
     var body: some View {
             ScrollView {
                 VStack(spacing: 16) {
-                    CategoryList(title: "Replenishment", categories: replenishmentCategory)
+                    CategoryList(title: "Replenishments", categories: replenishmentCategory)
                     CategoryList(title: "Expenses", categories: expensesCategory)
                 }
                 .padding(16)

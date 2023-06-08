@@ -7,6 +7,27 @@
 
 import SwiftUI
 
+struct SampleTransaction: Hashable, Equatable {
+    let id = UUID()
+    let date: Date
+    let value: Double
+    let account: SampleAccountModel
+    let category: SampleCategoryModel
+    let comment: String = ""
+    
+    static func ==(lhs: SampleTransaction, rhs: SampleTransaction) -> Bool {
+        return lhs.id == rhs.id && lhs.date == rhs.date && lhs.value == rhs.value
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(date)
+        hasher.combine(value)
+    }
+}
+
+
+
 struct HomeView: View {
     @EnvironmentObject var userSettings: UserSettingsManager
     @State private var showGallery = false
@@ -19,6 +40,22 @@ struct HomeView: View {
     ]
     @State private var selectedAccount = -1
     @State private var selectedReportPeriod = 1
+    
+    @State private var transactions: [SampleTransaction] = [
+        SampleTransaction(date: Date(), value: 1000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 2000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Red", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 3000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 4000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 5000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Red", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 6000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 7000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 8000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 9000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 10000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 11000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 12000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
+        SampleTransaction(date: Date(), value: 13000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3))
+    ]
     
     
     var body: some View {
@@ -77,8 +114,26 @@ struct HomeView: View {
                     }
                     .padding()
                     
-                    Spacer()
+                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
+                        ForEach(transactions.sorted(by: { $0.date > $1.date }).prefix(10), id: \.self) { transaction in
+                            NavigationLink(destination: Text("Hello")) {
+                                TransactionCardView(transaction: transaction)
+                            }
+                        }
+                        if transactions.count > 10 {
+                            NavigationLink(destination: Text("more")) {
+                                HStack{
+                                    Text("Show more")
+                                    Image(systemName: "arrow.right")
+                                }.padding()
+                            }
+                        }
+
+                        Spacer(minLength: 70)
+                    }
+                    
                 }
+                
                 
             }
             .navigationTitle("MoneyGuard")
@@ -95,6 +150,7 @@ struct HomeView: View {
                         .padding()
                         .background(.ultraThinMaterial)
                         .cornerRadius(100)
+                        .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 2)
                 }
                 .padding(.trailing, 30)
                 .padding(.bottom, 20)
@@ -170,6 +226,47 @@ struct SummaryCardView: View {
         .background(.ultraThinMaterial)
         .cornerRadius(15)
         .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+}
+
+struct TransactionCardView: View {
+    private let tool: ToolsManager = ToolsManager()
+    @State var transaction: SampleTransaction
+    var body: some View {
+        HStack{
+            Image(transaction.category.icon)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 35, height: 35)
+                .padding(5)
+            
+            VStack(alignment: .leading){
+                Text(transaction.category.name)
+                    .font(.title3)
+                    .foregroundColor(Color(transaction.category.color))
+                Text(transaction.account.name)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .bold()
+                Text(tool.formatDate(transaction.date))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            VStack(alignment: .trailing){
+                Text("\(transaction.category.type == "expenses" ? "-" : "+") \(tool.formatCurrency(transaction.value) ?? "")")
+                    .foregroundColor(Color(transaction.category.type == "expenses" ? "Red" : "Green"))
+                    .bold()
+                    .font(.title3)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+            }
+        }
+        .padding(.vertical, 15)
+        .padding(.horizontal, 20)
+        .background(.ultraThinMaterial)
+        .cornerRadius(20)
+        .padding(.horizontal)
     }
 }
 

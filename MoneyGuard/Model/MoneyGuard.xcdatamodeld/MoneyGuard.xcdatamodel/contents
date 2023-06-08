@@ -22,13 +22,16 @@
         <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction"/>
     </entity>
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String"/>
         <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="sum" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="goal" inverseEntity="Category"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
