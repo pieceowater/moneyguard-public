@@ -17,6 +17,10 @@
 		C240DA472A38F716005B7CC0 /* ReccomendationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA462A38F716005B7CC0 /* ReccomendationsCard.swift */; };
 		C240DA492A38F740005B7CC0 /* SavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA482A38F740005B7CC0 /* SavingsCard.swift */; };
 		C240DA4B2A38F769005B7CC0 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA4A2A38F769005B7CC0 /* HistoryItem.swift */; };
+		C240DA4D2A38F843005B7CC0 /* SampleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA4C2A38F843005B7CC0 /* SampleCategory.swift */; };
+		C240DA4F2A38F883005B7CC0 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA4E2A38F883005B7CC0 /* SampleTransaction.swift */; };
+		C240DA512A38F8B2005B7CC0 /* SampleGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA502A38F8B2005B7CC0 /* SampleGoal.swift */; };
+		C240DA532A38F8D0005B7CC0 /* SampleAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA522A38F8D0005B7CC0 /* SampleAccountModel.swift */; };
 		C280829A2A2ED28100185A17 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28082992A2ED28100185A17 /* Settings.swift */; };
 		C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */; };
 		C280829E2A2ED40D00185A17 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C280829D2A2ED40D00185A17 /* Menu.swift */; };
@@ -70,6 +74,10 @@
 		C240DA462A38F716005B7CC0 /* ReccomendationsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendationsCard.swift; sourceTree = "<group>"; };
 		C240DA482A38F740005B7CC0 /* SavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsCard.swift; sourceTree = "<group>"; };
 		C240DA4A2A38F769005B7CC0 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		C240DA4C2A38F843005B7CC0 /* SampleCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCategory.swift; sourceTree = "<group>"; };
+		C240DA4E2A38F883005B7CC0 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
+		C240DA502A38F8B2005B7CC0 /* SampleGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGoal.swift; sourceTree = "<group>"; };
+		C240DA522A38F8D0005B7CC0 /* SampleAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAccountModel.swift; sourceTree = "<group>"; };
 		C28082992A2ED28100185A17 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsManager.swift; sourceTree = "<group>"; };
 		C280829D2A2ED40D00185A17 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -128,6 +136,7 @@
 		C240DA342A38F3EA005B7CC0 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
+				C29262852A2FB11E00E7901A /* Gallery.swift */,
 				C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */,
 				C240DA372A38F45F005B7CC0 /* SummaryCard.swift */,
 				C240DA392A38F485005B7CC0 /* TransactionCard.swift */,
@@ -177,6 +186,10 @@
 				C2D74D582A2E56E30085BBFA /* MoneyGuard.xcdatamodeld */,
 				C28082992A2ED28100185A17 /* Settings.swift */,
 				C29262832A2FACD100E7901A /* Icons.swift */,
+				C240DA4C2A38F843005B7CC0 /* SampleCategory.swift */,
+				C240DA4E2A38F883005B7CC0 /* SampleTransaction.swift */,
+				C240DA502A38F8B2005B7CC0 /* SampleGoal.swift */,
+				C240DA522A38F8D0005B7CC0 /* SampleAccountModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,7 +227,6 @@
 				C28082A02A2ED48900185A17 /* About.swift */,
 				C28082A22A2ED4C400185A17 /* Appearance.swift */,
 				C29262812A2F9FD100E7901A /* Language.swift */,
-				C29262852A2FB11E00E7901A /* Gallery.swift */,
 				C292628C2A2FD5FD00E7901A /* Category.swift */,
 			);
 			path = Menu;
@@ -422,6 +434,7 @@
 			files = (
 				C240DA382A38F45F005B7CC0 /* SummaryCard.swift in Sources */,
 				C29262842A2FACD100E7901A /* Icons.swift in Sources */,
+				C240DA4F2A38F883005B7CC0 /* SampleTransaction.swift in Sources */,
 				C240DA472A38F716005B7CC0 /* ReccomendationsCard.swift in Sources */,
 				C292627A2A2F994C00E7901A /* Home.swift in Sources */,
 				C292627C2A2F9A7E00E7901A /* Goals.swift in Sources */,
@@ -437,9 +450,12 @@
 				C280829E2A2ED40D00185A17 /* Menu.swift in Sources */,
 				C29262882A2FCA6100E7901A /* ToolsManager.swift in Sources */,
 				C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */,
+				C240DA512A38F8B2005B7CC0 /* SampleGoal.swift in Sources */,
+				C240DA532A38F8D0005B7CC0 /* SampleAccountModel.swift in Sources */,
 				C240DA492A38F740005B7CC0 /* SavingsCard.swift in Sources */,
 				C292627E2A2F9A8F00E7901A /* Accounts.swift in Sources */,
 				C29262802A2F9A9F00E7901A /* Stats.swift in Sources */,
+				C240DA4D2A38F843005B7CC0 /* SampleCategory.swift in Sources */,
 				C2D74D5C2A2E56E30085BBFA /* Content.swift in Sources */,
 				C240DA3A2A38F485005B7CC0 /* TransactionCard.swift in Sources */,
 				C240DA422A38F66A005B7CC0 /* AccountCard.swift in Sources */,

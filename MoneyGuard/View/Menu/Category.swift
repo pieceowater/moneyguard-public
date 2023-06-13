@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-struct SampleCategoryModel: Identifiable {
-    let id = UUID()
-    let name: String
-    let color: String
-    let createDate: Date
-    let lastActivity: Date
-    let icon: String
-    let type: String // expenses or replenishments
-    let essentialDegree: Int16
-}
 
 struct CategoryView: View {
     let replenishmentCategory: [SampleCategoryModel] = [

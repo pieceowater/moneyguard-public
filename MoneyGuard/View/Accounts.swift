@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-struct SampleAccountModel: Identifiable {
-    let id: UUID = UUID()
-    let name: String
-    let icon: String
-    let createDate: Date
-    let lastActivity: Date
-    let balance: Double
-}
-
 struct AccountsView: View {
     private let tool: ToolsManager = ToolsManager()
     let accounts: [SampleAccountModel] = [
