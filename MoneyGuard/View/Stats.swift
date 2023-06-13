@@ -28,6 +28,8 @@
 import SwiftUI
 
 struct StatsView: View {
+    private let filters: [String] = ["Today", "This month", "All time"]
+    
     var body: some View {
         NavigationView{
             ScrollView{
@@ -39,9 +41,31 @@ struct StatsView: View {
                 
                 ReccomendationsView()
                 
-                Text("Some Content...")
-                    .padding()
+                HStack{
+                    Text("You could save")
+                        .font(.title2)
+                    Spacer()
+                }.padding()
+                
+                NavigationLink(destination: Text("look behind")) {
+                    SavingsCardView(spentAmount: 147450, potentialSavings: 20500)
+                }
+                
+                HStack{
+                    Text("History")
+                        .font(.title2)
+                    Spacer()
+                }.padding()
+                
+                ForEach(filters.indices, id: \.self) { index in
+                    NavigationLink(destination: Text(String(index))) {
+                        HistoryItemView(caption: filters[index])
+                    }
+                }
                 Spacer()
+            }
+            .refreshable {
+                
             }
             .navigationTitle("stats_tab")
         }
@@ -102,17 +126,85 @@ struct ReccomendationsCardView: View {
                         .lineLimit(2)
                         .minimumScaleFactor(0.5)
                         .padding(.bottom, 5)
-                    Text(recommendation.category.name)
-                        .font(.subheadline)
-                        .foregroundColor(Color(recommendation.category.color))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
+                    HStack{
+                        Text(recommendation.category.name)
+                            .font(.subheadline)
+                            .foregroundColor(Color(recommendation.category.color))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                        Spacer()
+                        Button {
+                         print("no")
+                        } label: {
+                            Text("Hide")
+                                .foregroundColor(.secondary)
+                                .font(.caption)
+                        }
+                    }
                 }
                 .padding()
                 Spacer()
             }
         }
         .padding()
+    }
+}
+
+struct SavingsCardView: View {
+    private let tool: ToolsManager = ToolsManager()
+    let spentAmount: Double
+    let potentialSavings: Double
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(String(tool.formatCurrency(potentialSavings) ?? ""))
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.green)
+                .padding(.bottom, 1)
+            
+            Text("out of \(tool.formatCurrency(spentAmount) ?? "") spent this month")
+                .font(.caption)
+                .foregroundColor(.gray)
+
+            
+            
+            HStack{
+                Spacer()
+                HStack{
+                    Text("btn_open")
+                    Image(systemName: "arrow.right")
+                }
+                .foregroundColor(.secondary)
+                .font(.caption)
+            }
+        }
+        .padding(20)
+        .background(.ultraThinMaterial)
+        .cornerRadius(20)
+        .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 3)
+        .padding(.horizontal)
+    }
+}
+
+struct HistoryItemView: View {
+    let caption: String
+    
+    var body: some View {
+        HStack{
+            Text(caption)
+                .font(.headline)
+            
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.headline)
+        }
+        .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(15)
+        .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 3)
+        .padding(.horizontal)
+        .padding(.bottom, 10)
     }
 }
 
