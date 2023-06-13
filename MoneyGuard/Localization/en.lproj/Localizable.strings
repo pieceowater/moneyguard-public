@@ -5,9 +5,13 @@
   Created by yury mid on 06.06.2023.
   
 */
+"app_name" = "MoneyGuard";
 
 "btn_submit" = "Submit";
 "btn_open" = "Open";
+"btn_add_new" = "Add new";
+"btn_show_more" = "Show more";
+"btn_hide" = "Hide";
 
 "alert_confirm" = "Confirm";
 "alert_sure_msg" = "Are you sure?";
@@ -18,19 +22,40 @@
 
 "gallery_heading" = "Select an Icon";
 
+"period_filter_today" = "Today";
+"period_filter_this_month" = "This month";
+"period_filter_all_time" = "All time";
+
+"period_filter_daily" = "Daily";
+"period_filter_weekly" = "Weekly";
+"period_filter_monthly" = "Monthly";
+
 
 "home_tab" = "Home";
+    "home_tab_overview" = "Overview";
+        "home_tab_income" = "Income";
+        "home_tab_expense" = "Expense";
 
 "goals_tab" = "Goals";
+    "goals_tab_caprion" = "Get your goals to make your life better!";
 
 "accounts_tab" = "Accounts";
+    "accounts_tab_account" = "Account";
+    "accounts_tab_all_accounts" = "All account";
 
-"stats_tab" = "Stats";
+"stats_tab" = "Statistics";
+    "title_stats_tab_recomendation" = "Recommendations";
+    "title_stats_tab_wasted_stonks" = "You could save";
+    "title_stats_tab_history" = "History";
+    "stats_tab_out_of_caption" = "Out of";
+    "stats_tab_spent_this_month" = "spent this month";
 
 "menu_tab" = "Menu";
     "title_menu_screen" = "Menu";
     "menu_heading_settings" = "Settings";
         "menu_settings_category" = "Categories";
+            "menu_settings_category_replenishments" = "Replenishments";
+            "menu_settings_category_expenses" = "Expenses";
         "menu_settings_appearance" = "Appearance";
             "appearance_theme" = "Theme";
                 "appearance_lightmode" = "Light Mode";

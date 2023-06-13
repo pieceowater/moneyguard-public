@@ -12,21 +12,21 @@ struct HomeOverviewSectionView: View {
     @Binding var transactions: [SampleTransaction]
     var body: some View {
         VStack (alignment: .leading){
-            Text("Overview")
+            Text("home_tab_overview")
                 .font(.title2)
                 .padding()
             
             HStack {
-                PeriodBtnView(selectedReportPeriod: $selectedReportPeriod, value: 1, label: "Daily")
-                PeriodBtnView(selectedReportPeriod: $selectedReportPeriod, value: 2, label: "Weekly")
-                PeriodBtnView(selectedReportPeriod: $selectedReportPeriod, value: 3, label: "Monthly")
+                PeriodBtnView(selectedReportPeriod: $selectedReportPeriod, value: 1, label: NSLocalizedString("period_filter_daily", comment: ""))
+                PeriodBtnView(selectedReportPeriod: $selectedReportPeriod, value: 2, label: NSLocalizedString("period_filter_weekly", comment: ""))
+                PeriodBtnView(selectedReportPeriod: $selectedReportPeriod, value: 3, label: NSLocalizedString("period_filter_monthly", comment: ""))
             }
             .padding(.horizontal)
             
             HStack{
-                SummaryCardView(label: "Income", balance: 15500.0, color: .green)
+                SummaryCardView(label: NSLocalizedString("home_tab_income", comment: ""), balance: 15500.0, color: .green)
                 Spacer()
-                SummaryCardView(label: "Expense", balance: 210005.0, color: .red)
+                SummaryCardView(label: NSLocalizedString("home_tab_expense", comment: ""), balance: 210005.0, color: .red)
             }
             .padding()
             
@@ -39,7 +39,7 @@ struct HomeOverviewSectionView: View {
                 if transactions.count > 10 {
                     NavigationLink(destination: Text("more")) {
                         HStack{
-                            Text("Show more")
+                            Text("btn_show_more")
                             Image(systemName: "arrow.right")
                         }.padding()
                     }

@@ -28,13 +28,13 @@
 import SwiftUI
 
 struct StatsView: View {
-    private let filters: [String] = ["Today", "This month", "All time"]
+    private let filters: [String] = [NSLocalizedString("period_filter_today", comment: ""), NSLocalizedString("period_filter_this_month", comment: ""), NSLocalizedString("period_filter_all_time", comment: "")]
     
     var body: some View {
         NavigationView{
             ScrollView{
                 HStack{
-                    Text("Recommendations")
+                    Text("title_stats_tab_recomendation")
                         .font(.title2)
                     Spacer()
                 }.padding()
@@ -42,7 +42,7 @@ struct StatsView: View {
                 ReccomendationsListView()
                 
                 HStack{
-                    Text("You could save")
+                    Text("title_stats_tab_wasted_stonks")
                         .font(.title2)
                     Spacer()
                 }.padding()
@@ -52,7 +52,7 @@ struct StatsView: View {
                 }
                 
                 HStack{
-                    Text("History")
+                    Text("title_stats_tab_history")
                         .font(.title2)
                     Spacer()
                 }.padding()

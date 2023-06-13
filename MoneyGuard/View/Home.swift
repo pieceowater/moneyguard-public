@@ -51,8 +51,8 @@ struct HomeView: View {
                         Spacer()
                         
                         VStack (alignment: .trailing){
-                            Picker(selection: $selectedAccount, label: Text("Account")) {
-                                Text("All accounts").tag(-1)
+                            Picker(selection: $selectedAccount, label: Text("accounts_tab_account")) {
+                                Text("accounts_tab_all_accounts").tag(-1)
                                 ForEach(0..<accounts.count) { index in
                                     Text(accounts[index].name).tag(index)
                                 }
@@ -78,7 +78,7 @@ struct HomeView: View {
                 
                 
             }
-            .navigationTitle("MoneyGuard")
+            .navigationTitle("app_name")
         }
         .overlay(alignment: .trailing) {
             VStack {

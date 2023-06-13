@@ -48,7 +48,7 @@ struct ReccomendationsCardView: View {
                         Button {
                          print("no")
                         } label: {
-                            Text("Hide")
+                            Text("btn_hide")
                                 .foregroundColor(.secondary)
                                 .font(.caption)
                         }

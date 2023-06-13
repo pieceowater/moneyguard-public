@@ -13,9 +13,10 @@ struct AccountDetailView: View {
     
     var body: some View {
         VStack {
-            Text(String(format: "Balance: $%.2f", account.balance))
+//            Text(String(format: "Balance: $%.2f", account.balance))
+            Text("\(tool.formatCurrency(account.balance) ?? "")")
                 .font(.subheadline)
-            Text("Last activity: \(tool.formatDate(account.lastActivity))")
+            Text("\(tool.formatDate(account.lastActivity))")
                 .font(.subheadline)
             
             Text("WORK IN PROGRESS")

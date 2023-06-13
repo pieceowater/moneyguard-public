@@ -33,12 +33,12 @@ struct CategoryView: View {
     var body: some View {
             ScrollView {
                 VStack(spacing: 16) {
-                    CategoryList(title: "Replenishments", categories: replenishmentCategory)
-                    CategoryList(title: "Expenses", categories: expensesCategory)
+                    CategoryList(title: NSLocalizedString("menu_settings_category_replenishments", comment: ""), categories: replenishmentCategory)
+                    CategoryList(title: NSLocalizedString("menu_settings_category_expenses", comment: ""), categories: expensesCategory)
                 }
                 .padding(16)
             }
-        .navigationTitle("Categories")
+        .navigationTitle("menu_settings_category")
     }
 }
 

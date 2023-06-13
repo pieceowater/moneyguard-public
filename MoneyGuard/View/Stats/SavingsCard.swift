@@ -20,7 +20,7 @@ struct SavingsCardView: View {
                 .foregroundColor(.green)
                 .padding(.bottom, 1)
             
-            Text("out of \(tool.formatCurrency(spentAmount) ?? "") spent this month")
+            Text("\(NSLocalizedString("stats_tab_out_of_caption", comment: "")) \(tool.formatCurrency(spentAmount) ?? "") \(NSLocalizedString("stats_tab_spent_this_month", comment: ""))")
                 .font(.caption)
                 .foregroundColor(.gray)
 

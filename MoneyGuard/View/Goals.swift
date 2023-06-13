@@ -19,7 +19,7 @@ struct GoalsView: View {
             VStack() {
                 ScrollView {
                     HStack{
-                        Text("Get your goals to make your life better!")
+                        Text("goals_tab_caprion")
                             .font(.headline)
                         Spacer()
                     }.padding(.horizontal)
@@ -38,7 +38,7 @@ struct GoalsView: View {
                     HStack{
                         Image(systemName: "plus")
                             .font(.subheadline)
-                        Text("Add new")
+                        Text("btn_add_new")
                             .font(.headline)
                     }
                 }

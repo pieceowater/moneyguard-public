@@ -23,7 +23,7 @@ struct AboutView: View {
                 .frame(width: 65, height: 65)
                 .cornerRadius(13)
                 .shadow(color: .black.opacity(0.2), radius: 4)
-            Text("MoneyGuard")
+            Text("app_name")
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding(.bottom, 20)
