@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C240DA362A38F43C005B7CC0 /* PeriodBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */; };
+		C240DA382A38F45F005B7CC0 /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA372A38F45F005B7CC0 /* SummaryCard.swift */; };
+		C240DA3A2A38F485005B7CC0 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA392A38F485005B7CC0 /* TransactionCard.swift */; };
+		C240DA3D2A38F5B2005B7CC0 /* HomeOverviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA3C2A38F5B2005B7CC0 /* HomeOverviewSection.swift */; };
+		C240DA402A38F63D005B7CC0 /* GoalListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA3F2A38F63D005B7CC0 /* GoalListItem.swift */; };
+		C240DA422A38F66A005B7CC0 /* AccountCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA412A38F66A005B7CC0 /* AccountCard.swift */; };
+		C240DA452A38F6EB005B7CC0 /* ReccomendationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA442A38F6EB005B7CC0 /* ReccomendationsList.swift */; };
+		C240DA472A38F716005B7CC0 /* ReccomendationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA462A38F716005B7CC0 /* ReccomendationsCard.swift */; };
+		C240DA492A38F740005B7CC0 /* SavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA482A38F740005B7CC0 /* SavingsCard.swift */; };
+		C240DA4B2A38F769005B7CC0 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA4A2A38F769005B7CC0 /* HistoryItem.swift */; };
 		C280829A2A2ED28100185A17 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28082992A2ED28100185A17 /* Settings.swift */; };
 		C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */; };
 		C280829E2A2ED40D00185A17 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C280829D2A2ED40D00185A17 /* Menu.swift */; };
@@ -50,6 +60,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBtn.swift; sourceTree = "<group>"; };
+		C240DA372A38F45F005B7CC0 /* SummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
+		C240DA392A38F485005B7CC0 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
+		C240DA3C2A38F5B2005B7CC0 /* HomeOverviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOverviewSection.swift; sourceTree = "<group>"; };
+		C240DA3F2A38F63D005B7CC0 /* GoalListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListItem.swift; sourceTree = "<group>"; };
+		C240DA412A38F66A005B7CC0 /* AccountCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCard.swift; sourceTree = "<group>"; };
+		C240DA442A38F6EB005B7CC0 /* ReccomendationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendationsList.swift; sourceTree = "<group>"; };
+		C240DA462A38F716005B7CC0 /* ReccomendationsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendationsCard.swift; sourceTree = "<group>"; };
+		C240DA482A38F740005B7CC0 /* SavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsCard.swift; sourceTree = "<group>"; };
+		C240DA4A2A38F769005B7CC0 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		C28082992A2ED28100185A17 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsManager.swift; sourceTree = "<group>"; };
 		C280829D2A2ED40D00185A17 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -105,6 +125,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C240DA342A38F3EA005B7CC0 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */,
+				C240DA372A38F45F005B7CC0 /* SummaryCard.swift */,
+				C240DA392A38F485005B7CC0 /* TransactionCard.swift */,
+				C240DA4A2A38F769005B7CC0 /* HistoryItem.swift */,
+			);
+			path = Globals;
+			sourceTree = "<group>";
+		};
+		C240DA3B2A38F5A7005B7CC0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C240DA3C2A38F5B2005B7CC0 /* HomeOverviewSection.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C240DA3E2A38F62C005B7CC0 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				C240DA3F2A38F63D005B7CC0 /* GoalListItem.swift */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		C240DA432A38F6A2005B7CC0 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				C240DA442A38F6EB005B7CC0 /* ReccomendationsList.swift */,
+				C240DA462A38F716005B7CC0 /* ReccomendationsCard.swift */,
+				C240DA482A38F740005B7CC0 /* SavingsCard.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		C28082952A2ED1DC00185A17 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +184,10 @@
 		C28082972A2ED1F500185A17 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C240DA342A38F3EA005B7CC0 /* Globals */,
+				C240DA432A38F6A2005B7CC0 /* Stats */,
+				C240DA3E2A38F62C005B7CC0 /* Goals */,
+				C240DA3B2A38F5A7005B7CC0 /* Home */,
 				C29262892A2FD52500E7901A /* Accounts */,
 				C280829F2A2ED47C00185A17 /* Menu */,
 				C2D74D5B2A2E56E30085BBFA /* Content.swift */,
@@ -163,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				C292628A2A2FD53700E7901A /* AccountDetail.swift */,
+				C240DA412A38F66A005B7CC0 /* AccountCard.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -358,24 +420,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C240DA382A38F45F005B7CC0 /* SummaryCard.swift in Sources */,
 				C29262842A2FACD100E7901A /* Icons.swift in Sources */,
+				C240DA472A38F716005B7CC0 /* ReccomendationsCard.swift in Sources */,
 				C292627A2A2F994C00E7901A /* Home.swift in Sources */,
 				C292627C2A2F9A7E00E7901A /* Goals.swift in Sources */,
 				C29262822A2F9FD100E7901A /* Language.swift in Sources */,
+				C240DA362A38F43C005B7CC0 /* PeriodBtn.swift in Sources */,
 				C29262862A2FB11E00E7901A /* Gallery.swift in Sources */,
 				C280829A2A2ED28100185A17 /* Settings.swift in Sources */,
+				C240DA4B2A38F769005B7CC0 /* HistoryItem.swift in Sources */,
 				C28082A12A2ED48900185A17 /* About.swift in Sources */,
+				C240DA402A38F63D005B7CC0 /* GoalListItem.swift in Sources */,
 				C28082A32A2ED4C400185A17 /* Appearance.swift in Sources */,
 				C292628D2A2FD5FD00E7901A /* Category.swift in Sources */,
 				C280829E2A2ED40D00185A17 /* Menu.swift in Sources */,
 				C29262882A2FCA6100E7901A /* ToolsManager.swift in Sources */,
 				C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */,
+				C240DA492A38F740005B7CC0 /* SavingsCard.swift in Sources */,
 				C292627E2A2F9A8F00E7901A /* Accounts.swift in Sources */,
 				C29262802A2F9A9F00E7901A /* Stats.swift in Sources */,
 				C2D74D5C2A2E56E30085BBFA /* Content.swift in Sources */,
+				C240DA3A2A38F485005B7CC0 /* TransactionCard.swift in Sources */,
+				C240DA422A38F66A005B7CC0 /* AccountCard.swift in Sources */,
+				C240DA452A38F6EB005B7CC0 /* ReccomendationsList.swift in Sources */,
 				C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */,
 				C292628B2A2FD53700E7901A /* AccountDetail.swift in Sources */,
 				C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */,
+				C240DA3D2A38F5B2005B7CC0 /* HomeOverviewSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
