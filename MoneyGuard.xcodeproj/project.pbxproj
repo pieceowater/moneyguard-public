@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C229699E2A397EEF00C88DCD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C22969A02A397EEF00C88DCD /* Localizable.strings */; };
 		C240DA362A38F43C005B7CC0 /* PeriodBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */; };
 		C240DA382A38F45F005B7CC0 /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA372A38F45F005B7CC0 /* SummaryCard.swift */; };
 		C240DA3A2A38F485005B7CC0 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA392A38F485005B7CC0 /* TransactionCard.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C229699F2A397EEF00C88DCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBtn.swift; sourceTree = "<group>"; };
 		C240DA372A38F45F005B7CC0 /* SummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
 		C240DA392A38F485005B7CC0 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				C29262782A2F978000E7901A /* Localizable.strings */,
+				C22969A02A397EEF00C88DCD /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2D74D5E2A2E56E40085BBFA /* Assets.xcassets in Resources */,
+				C229699E2A397EEF00C88DCD /* Localizable.strings in Resources */,
 				C29262762A2F978000E7901A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +504,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C22969A02A397EEF00C88DCD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C229699F2A397EEF00C88DCD /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		C29262782A2F978000E7901A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

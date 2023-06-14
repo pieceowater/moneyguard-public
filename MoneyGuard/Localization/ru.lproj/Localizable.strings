@@ -1,0 +1,73 @@
+/* 
+  Localizable.strings
+  MoneyGuard
+
+  Created by yury mid on 14.06.2023.
+  
+*/
+"app_name" = "MoneyGuard";
+
+"btn_submit" = "Подтвердить";
+"btn_open" = "Открыть";
+"btn_add_new" = "Добавить";
+"btn_show_more" = "Подробнее";
+"btn_hide" = "Скрыть";
+
+"alert_confirm" = "Подтвердите";
+"alert_sure_msg" = "Вы уверены?";
+"alert_end_btn" = "Завершить";
+"alert_rm_btn" = "Удалить";
+"alert_apprestart" = "Перезагрузка приложения";
+"alert_apprestart_msg" = "Чтобы изменения вступили в силу, необходимо перезагрузить приложение!";
+
+"gallery_heading" = "Выберите Иконку";
+
+"period_filter_today" = "Сегодня";
+"period_filter_this_month" = "Этот месяц";
+"period_filter_all_time" = "За все время";
+
+"period_filter_daily" = "День";
+"period_filter_weekly" = "Неделя";
+"period_filter_monthly" = "Месяц";
+
+
+"home_tab" = "Главная";
+    "home_tab_overview" = "Обзор";
+        "home_tab_income" = "Пополнения";
+        "home_tab_expense" = "Траты";
+
+"goals_tab" = "Цели";
+    "goals_tab_caprion" = "Достигайте ваших целей, чтобы сделать жизнь лучше!";
+
+"accounts_tab" = "Счета";
+    "accounts_tab_account" = "Счёт";
+    "accounts_tab_all_accounts" = "Все счета";
+
+"stats_tab" = "Статистика";
+    "title_stats_tab_recomendation" = "Мы рекомендуем";
+    "title_stats_tab_wasted_stonks" = "Вы могли сэкономить";
+    "title_stats_tab_history" = "История";
+    "stats_tab_out_of_caption" = "Из";
+    "stats_tab_spent_this_month" = "потрачено за месяц";
+
+"menu_tab" = "Меню";
+    "title_menu_screen" = "Меню";
+    "menu_heading_settings" = "Настройки";
+        "menu_settings_category" = "Категории";
+            "menu_settings_category_replenishments" = "Доходы";
+            "menu_settings_category_expenses" = "Расходы";
+        "menu_settings_appearance" = "Внешний вид";
+            "appearance_theme" = "Тема";
+                "appearance_lightmode" = "Светлая тема";
+                "appearance_darkmode" = "Темная тема";
+            "appearance_accentcolor" = "Акцентный цвет";
+            "appearance_appicon" = "Значок приложения";
+        "menu_settings_language" = "Язык";
+    "menu_heading_actions" = "Действия";
+        "menu_actions_pro_mode" = "Активировать PRO (без рекламы)";
+        "menu_actions_rate" = "Оцените нас!";
+        "menu_actions_about" = "О приложении";
+            "about_appdescription" = "Расширьте ваши финансовые возможности.\n\nС легкостью распоряжайтесь своими деньгами. Отслеживайте расходы, устанавливайте бюджеты и следите за достижением своих финансовых целей. Откройте для себя более ясное финансовое будущее с MoneyGuard.";
+            "about_developed" = "Разработано";
+
+
