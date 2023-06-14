@@ -34,10 +34,16 @@ struct AccountsView: View {
 
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
                     ForEach(accounts) { account in
-                        NavigationLink(destination: AccountDetailView(account: account)) {
+                        NavigationLink(destination: AccountDetailView(accounts: $accounts, account: account)) {
                             AccountCardView(account: account)
                         }
                     }
+//                    ForEach(Array(accounts.enumerated()), id: \.element) { index, account in
+//                        NavigationLink(destination: AccountDetailView(accounts: $accounts, accountIndex: index)) {
+//                            AccountCardView(account: account)
+//                        }
+//                    }
+
                     Button {
                         createAccountSheetShowing = true
                     } label: {
@@ -56,6 +62,12 @@ struct AccountsView: View {
             })
             .navigationTitle("accounts_tab")
             .onAppear{
+                accounts = accountsManager.accountList
+            }
+            .refreshable {
+                accounts = accountsManager.accountList
+            }
+            .onChange(of: accounts) { newValue in
                 accounts = accountsManager.accountList
             }
         }

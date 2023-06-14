@@ -10,7 +10,7 @@ import SwiftUI
 struct CreateAccountView: View {
     @Binding var accounts: [Account]
     @EnvironmentObject var userSettings: UserSettingsManager
-    @EnvironmentObject var accountsManager: AccountsManager
+    @EnvironmentObject var accountsManager: AccountsManager 
     @Environment(\.presentationMode) var presentationMode
     @State private var showGallery = false
     

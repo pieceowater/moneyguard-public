@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct AccountDetailView: View {
+    @EnvironmentObject var userSettings: UserSettingsManager
     private let tool: ToolsManager = ToolsManager()
+    @EnvironmentObject var accountsManager: AccountsManager
+    @Binding var accounts: [Account]
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showGallery = false
+    @State private var selectedIcon: Icons? = .default
 //    let account: SampleAccountModel = SampleAccountModel(name: "Test", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 1234)
-    let account: Account
+    @State var account: Account
     @State var editMode = false
-    
+    @State private var showAlert = false
     @State var accountNewName: String = ""
     
     var body: some View {
@@ -26,6 +32,11 @@ struct AccountDetailView: View {
                     .background(.ultraThinMaterial.opacity(editMode ? 1 : 0))
                     .cornerRadius(18)
                     .padding()
+                    .onTapGesture {
+                        if editMode {
+                            showGallery = true
+                        }
+                    }
                 
                 if editMode {
                     HStack{
@@ -44,7 +55,12 @@ struct AccountDetailView: View {
                     
                     
                     Button {
-                        
+                        account.name = accountNewName
+                        account.icon = selectedIcon?.icon
+                        accountsManager.updateAccount()
+                        accountsManager.getAccountsList()
+                        accounts = accountsManager.accountList
+                        editMode = false
                     } label: {
                         HStack{
                             Spacer()
@@ -61,7 +77,7 @@ struct AccountDetailView: View {
                     }
                     
                     Button {
-                        
+                        editMode = false
                     } label: {
                         HStack{
                             Spacer()
@@ -78,7 +94,7 @@ struct AccountDetailView: View {
                     }
                     
                     Button {
-                        
+                        showAlert = true
                     } label: {
                         HStack{
                             Image(systemName: "trash")
@@ -119,11 +135,26 @@ struct AccountDetailView: View {
                 editMode.toggle()
             } label: {
                 if editMode {
-                    Text("btn_save")
+                    Text("btn_cancel")
                 } else {
                     Text("btn_edit")
                 }
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("alert_confirm"),
+                message: Text("alert_sure_msg"),
+                primaryButton: .destructive(Text("alert_rm_btn"), action: {
+                    accountsManager.deleteAccount(account: account)
+                    accountsManager.getAccountsList()
+                    presentationMode.wrappedValue.dismiss()
+                }),
+                secondaryButton: .cancel()
+            )
+        }
+        .sheet(isPresented: $showGallery) {
+            GalleryView(selectedIcon: $selectedIcon).accentColor(userSettings.accentColor.color)
         }
         .navigationTitle(account.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
