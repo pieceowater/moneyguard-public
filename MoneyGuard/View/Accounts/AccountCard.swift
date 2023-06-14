@@ -25,6 +25,7 @@ struct AccountCardView: View {
 
                 VStack(alignment: .leading){
                     Text(account.name ?? "")
+                        .foregroundColor(.secondary)
                         .font(.title3)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)

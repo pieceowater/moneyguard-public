@@ -38,11 +38,6 @@ struct AccountsView: View {
                             AccountCardView(account: account)
                         }
                     }
-//                    ForEach(Array(accounts.enumerated()), id: \.element) { index, account in
-//                        NavigationLink(destination: AccountDetailView(accounts: $accounts, accountIndex: index)) {
-//                            AccountCardView(account: account)
-//                        }
-//                    }
 
                     Button {
                         createAccountSheetShowing = true
@@ -62,9 +57,6 @@ struct AccountsView: View {
             })
             .navigationTitle("accounts_tab")
             .onAppear{
-                accounts = accountsManager.accountList
-            }
-            .refreshable {
                 accounts = accountsManager.accountList
             }
             .onChange(of: accounts) { newValue in
