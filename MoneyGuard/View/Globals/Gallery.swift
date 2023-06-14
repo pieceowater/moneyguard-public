@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GalleryView: View {
-    @State private var selectedIcon: Icons? = .default
+    @Binding var selectedIcon: Icons?
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -54,20 +54,18 @@ struct GalleryView: View {
     }
     
     func submitSelectedIcon() {
-        // Do something with the selectedIcon
         if let selectedIcon = selectedIcon {
         } else {
             // No icon selected
             selectedIcon = .default
         }
-        print("Selected Icon: \(selectedIcon)")
         // Dismiss the view
         presentationMode.wrappedValue.dismiss()
     }
 }
 
-struct GalleryView_Previews: PreviewProvider {
-    static var previews: some View {
-        GalleryView()
-    }
-}
+//struct GalleryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GalleryView()
+//    }
+//}

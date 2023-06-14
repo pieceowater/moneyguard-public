@@ -12,6 +12,10 @@
 "btn_add_new" = "Добавить";
 "btn_show_more" = "Подробнее";
 "btn_hide" = "Скрыть";
+"btn_edit" = "Изменить";
+"btn_save" = "Сохранить";
+"btn_cancel" = "Отменить";
+"btn_delete" = "Удалить";
 
 "alert_confirm" = "Подтвердите";
 "alert_sure_msg" = "Вы уверены?";
@@ -30,6 +34,8 @@
 "period_filter_weekly" = "Неделя";
 "period_filter_monthly" = "Месяц";
 
+"word_name" = "Наименование";
+"word_balance" = "Баланс";
 
 "home_tab" = "Главная";
     "home_tab_overview" = "Обзор";

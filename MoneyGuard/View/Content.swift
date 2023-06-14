@@ -11,6 +11,8 @@ import CoreData
 struct ContentView: View {
     @ObservedObject var userSettings: UserSettingsManager
     
+    @EnvironmentObject var accountsManager: AccountsManager
+    
     @State private var selectedTab: Tab = .home
 
     enum Tab {
@@ -40,6 +42,8 @@ struct ContentView: View {
                 }
                 .tag(Tab.home)
             AccountsView()
+                .environmentObject(userSettings)
+                .environmentObject(accountsManager)
                 .tabItem {
                     Label("accounts_tab", systemImage: "creditcard.fill")
                 }
@@ -65,5 +69,6 @@ func giveHapticFeedback() {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(userSettings: UserSettingsManager.shared)
+            .environmentObject(AccountsManager())
     }
 }

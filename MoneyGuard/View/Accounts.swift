@@ -9,12 +9,12 @@ import SwiftUI
 
 struct AccountsView: View {
     private let tool: ToolsManager = ToolsManager()
-    let accounts: [SampleAccountModel] = [
-        SampleAccountModel(name: "Kaspi Gold", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 1000.0),
-        SampleAccountModel(name: "Jusan Bang", icon: "heal", createDate: Date(), lastActivity: Date(), balance: 2500.0),
-        SampleAccountModel(name: "Binance", icon: "award", createDate: Date(), lastActivity: Date(), balance: 500.0),
-        SampleAccountModel(name: "MetaMask", icon: "love", createDate: Date(), lastActivity: Date(), balance: 1234567891.0)
-    ]
+    @EnvironmentObject var userSettings: UserSettingsManager
+    @EnvironmentObject var accountsManager: AccountsManager
+    
+    @State private var createAccountSheetShowing = false
+    
+    @State private var accounts: [Account] = []
     
     var body: some View {
         NavigationView {
@@ -38,10 +38,26 @@ struct AccountsView: View {
                             AccountCardView(account: account)
                         }
                     }
+                    Button {
+                        createAccountSheetShowing = true
+                    } label: {
+                        HStack{
+                            Image(systemName: "plus.rectangle.on.rectangle")
+                            Text("btn_add_new")
+                        }.padding()
+                    }
                 }
                 .padding(16)
             }
+            .sheet(isPresented: $createAccountSheetShowing, content: {
+                CreateAccountView(accounts: $accounts)
+                    .environmentObject(accountsManager)
+                    .accentColor(userSettings.accentColor.color)
+            })
             .navigationTitle("accounts_tab")
+            .onAppear{
+                accounts = accountsManager.accountList
+            }
         }
     }
 }

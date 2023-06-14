@@ -9,12 +9,12 @@ import SwiftUI
 
 struct AccountCardView: View {
     private let tool: ToolsManager = ToolsManager()
-    let account: SampleAccountModel
+    let account: Account
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Image(account.icon)
+                Image(account.icon ?? "default")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50)
@@ -24,7 +24,7 @@ struct AccountCardView: View {
                     .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
 
                 VStack(alignment: .leading){
-                    Text(account.name)
+                    Text(account.name ?? "")
                         .font(.title3)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
@@ -38,7 +38,7 @@ struct AccountCardView: View {
                 Spacer()
             }
             HStack{
-                Text("\(tool.formatDate(account.lastActivity))")
+                Text("\(tool.formatDate(account.lastActivity ?? Date()))")
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .padding(5)

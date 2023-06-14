@@ -98,7 +98,7 @@ struct HomeView: View {
             }
         }
         .sheet(isPresented: $showGallery) {
-            GalleryView().accentColor(userSettings.accentColor.color)
+//            GalleryView().accentColor(userSettings.accentColor.color)
         }
     }
 }

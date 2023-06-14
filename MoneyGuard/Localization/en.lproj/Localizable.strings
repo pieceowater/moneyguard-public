@@ -12,6 +12,10 @@
 "btn_add_new" = "Add new";
 "btn_show_more" = "Show more";
 "btn_hide" = "Hide";
+"btn_edit" = "Edit";
+"btn_save" = "Save";
+"btn_cancel" = "Cancel";
+"btn_delete" = "Delete";
 
 "alert_confirm" = "Confirm";
 "alert_sure_msg" = "Are you sure?";
@@ -30,6 +34,8 @@
 "period_filter_weekly" = "Weekly";
 "period_filter_monthly" = "Monthly";
 
+"word_name" = "Name";
+"word_balance" = "Balance";
 
 "home_tab" = "Home";
     "home_tab_overview" = "Overview";
