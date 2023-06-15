@@ -14,7 +14,7 @@ struct AccountsView: View {
     
     @State private var createAccountSheetShowing = false
     
-    @State private var accounts: [Account] = []
+    @State var accounts: [Account] = []
     
     var body: some View {
         NavigationView {
@@ -33,9 +33,9 @@ struct AccountsView: View {
                 }
 
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
-                    ForEach(accounts) { account in
-                        NavigationLink(destination: AccountDetailView(accounts: $accounts, account: account)) {
-                            AccountCardView(account: account)
+                    ForEach(Array(accounts.enumerated()), id: \.1) { index, account in
+                        NavigationLink(destination: AccountDetailView(accounts: accounts, account: index)) {
+                            AccountCardView(account: $accounts[index])
                         }
                     }
 
@@ -58,6 +58,7 @@ struct AccountsView: View {
             .navigationTitle("accounts_tab")
             .onAppear{
                 accounts = accountsManager.accountList
+                print("Appear")
             }
             .onChange(of: accounts) { newValue in
                 accounts = accountsManager.accountList
