@@ -117,6 +117,24 @@ struct AccountDetailView: View {
                             .bold()
                             .padding(.bottom)
                     }
+                    NavigationLink {
+                        Text("asd")
+                    } label: {
+                        HStack{
+                            Text("btn_transfer")
+                                .font(.headline)
+                            
+                            Spacer()
+                            Image(systemName: "arrowshape.zigzag.right")
+                                .font(.headline)
+                        }
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(15)
+                        .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 3)
+                        .padding(.horizontal)
+                        .padding(.bottom, 10)
+                    }
                 }
                 HStack{
                     Spacer()

@@ -16,6 +16,7 @@
 "btn_save" = "Сохранить";
 "btn_cancel" = "Отменить";
 "btn_delete" = "Удалить";
+"btn_transfer" = "Перевести средства";
 
 "alert_confirm" = "Подтвердите";
 "alert_sure_msg" = "Вы уверены?";
