@@ -120,7 +120,8 @@ struct AccountDetailView: View {
                             .padding(.bottom)
                     }
                     NavigationLink {
-                        Text("asd")
+                        TransferView(defaultAccount: account)
+                            .environmentObject(accountsManager)
                     } label: {
                         HStack{
                             Text("btn_transfer")

@@ -24,6 +24,7 @@
 "alert_rm_btn" = "Remove";
 "alert_apprestart" = "App Restart";
 "alert_apprestart_msg" = "Please manually relaunch the app to see changes.";
+"alert_not_enough_money" = "Oops! Not enogth money!";
 
 "gallery_heading" = "Select an Icon";
 
@@ -37,6 +38,7 @@
 
 "word_name" = "Name";
 "word_balance" = "Balance";
+"word_amount" = "Amount";
 
 "home_tab" = "Home";
     "home_tab_overview" = "Overview";

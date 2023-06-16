@@ -16,7 +16,7 @@
 "btn_save" = "Сохранить";
 "btn_cancel" = "Отменить";
 "btn_delete" = "Удалить";
-"btn_transfer" = "Перевести средства";
+"btn_transfer" = "Перевод средств";
 
 "alert_confirm" = "Подтвердите";
 "alert_sure_msg" = "Вы уверены?";
@@ -24,6 +24,7 @@
 "alert_rm_btn" = "Удалить";
 "alert_apprestart" = "Перезагрузка приложения";
 "alert_apprestart_msg" = "Чтобы изменения вступили в силу, необходимо перезагрузить приложение!";
+"alert_not_enough_money" = "Недостаточно средств на счету!";
 
 "gallery_heading" = "Выберите Иконку";
 
@@ -37,6 +38,7 @@
 
 "word_name" = "Наименование";
 "word_balance" = "Баланс";
+"word_amount" = "Сумма";
 
 "home_tab" = "Главная";
     "home_tab_overview" = "Обзор";

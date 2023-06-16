@@ -77,26 +77,26 @@ struct HomeView: View {
                 HomeOverviewSectionView(selectedReportPeriod: $selectedReportPeriod, transactions: $transactions)
                 
                 
+            }.overlay(alignment: .trailing) {
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        showGallery = true
+                    }) {
+                        Image(systemName: "plus").foregroundColor(.accentColor)
+                            .font(.title)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(100)
+                            .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 2)
+                    }
+                    .padding(.trailing, 30)
+                    .padding(.bottom, 20)
+                }
             }
             .navigationTitle("app_name")
         }
-        .overlay(alignment: .trailing) {
-            VStack {
-                Spacer()
-                Button(action: {
-                    showGallery = true
-                }) {
-                    Image(systemName: "plus").foregroundColor(.accentColor)
-                        .font(.title)
-                        .padding()
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(100)
-                        .shadow(color: .black.opacity(0.2), radius: 2, x: 2, y: 2)
-                }
-                .padding(.trailing, 30)
-                .padding(.bottom, 20)
-            }
-        }
+        
         .sheet(isPresented: $showGallery) {
 //            GalleryView().accentColor(userSettings.accentColor.color)
         }
