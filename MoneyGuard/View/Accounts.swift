@@ -14,14 +14,12 @@ struct AccountsView: View {
     
     @State private var createAccountSheetShowing = false
     
-    @State var accounts: [Account] = []
-    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     HStack {
-                        Text(tool.formatCurrency(accounts.reduce(0, { $0 + $1.balance })) ?? "")
+                        Text(tool.formatCurrency(accountsManager.accountList.reduce(0, { $0 + $1.balance })) ?? "")
                             .font(.title2)
                             .fontWeight(.bold)
                             .lineLimit(1)
@@ -33,9 +31,9 @@ struct AccountsView: View {
                 }
 
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
-                    ForEach(Array(accounts.enumerated()), id: \.1) { index, account in
-                        NavigationLink(destination: AccountDetailView(accounts: accounts, account: index)) {
-                            AccountCardView(account: $accounts[index])
+                    ForEach(Array(accountsManager.accountList.enumerated()), id: \.1) { index, account in
+                        NavigationLink(destination: AccountDetailView(accounts: accountsManager.accountList, account: index)) {
+                            AccountCardView(account: account)
                         }
                     }
 
@@ -51,17 +49,13 @@ struct AccountsView: View {
                 .padding(16)
             }
             .sheet(isPresented: $createAccountSheetShowing, content: {
-                CreateAccountView(accounts: $accounts)
+                CreateAccountView(accounts: $accountsManager.accountList)
                     .environmentObject(accountsManager)
                     .accentColor(userSettings.accentColor.color)
             })
             .navigationTitle("accounts_tab")
             .onAppear{
-                accounts = accountsManager.accountList
                 print("Appear")
-            }
-            .onChange(of: accounts) { newValue in
-                accounts = accountsManager.accountList
             }
         }
     }

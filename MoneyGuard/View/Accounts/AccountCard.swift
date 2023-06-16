@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountCardView: View {
     private let tool: ToolsManager = ToolsManager()
-    @Binding var account: Account
+    let account: Account
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -29,6 +29,9 @@ struct AccountCardView: View {
                         .font(.title3)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
+                        .onAppear{
+                            print("IN \(account.name)")
+                        }
                     Text(tool.formatCurrency(account.balance) ?? "")
                         .font(.title)
                         .fontWeight(.bold)
@@ -57,9 +60,6 @@ struct AccountCardView: View {
         .background(.ultraThinMaterial)
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
-        .onAppear{
-            print("IN \(account.name)")
-        }
     }
     
 }
