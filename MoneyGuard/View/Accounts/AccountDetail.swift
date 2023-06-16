@@ -11,12 +11,12 @@ struct AccountDetailView: View {
     @EnvironmentObject var userSettings: UserSettingsManager
     private let tool: ToolsManager = ToolsManager()
     @EnvironmentObject var accountsManager: AccountsManager
-    @State var accounts: [Account]
+//    @State var accounts: [Account]
     @Environment(\.presentationMode) var presentationMode
     @State private var showGallery = false
     @State private var selectedIcon: Icons? = .default
-//    @State var account: Account
-    @State var account: Int
+    @State var account: Account
+//    @State var account: Int
     @State var editMode = false
     @State private var showAlert = false
     @State var accountNewName: String = ""
@@ -55,11 +55,11 @@ struct AccountDetailView: View {
                     
                     
                     Button {
-                        accounts[account].name = accountNewName
-                        accounts[account].icon = selectedIcon?.icon
+                        account.name = accountNewName
+                        account.icon = selectedIcon?.icon
                         accountsManager.updateAccount()
                         accountsManager.getAccountsList()
-                        accounts = accountsManager.accountList
+//                        accounts = accountsManager.accountList
                         editMode = false
                     } label: {
                         HStack{
@@ -78,8 +78,8 @@ struct AccountDetailView: View {
                     
                     Button {
                         editMode = false
-                        accountNewName = accounts[account].name ?? ""
-                        selectedIcon = Icons(rawValue: accounts[account].icon ?? "default")
+                        accountNewName = account.name ?? ""
+                        selectedIcon = Icons(rawValue: account.icon ?? "default")
                     } label: {
                         HStack{
                             Spacer()
@@ -108,12 +108,12 @@ struct AccountDetailView: View {
 
                 } else {
                     VStack(spacing: 10){
-                        Text(accounts[account].name ?? "")
+                        Text(account.name ?? "")
                             .font(.title)
-                        Text("\(tool.formatDate(accounts[account].lastActivity ?? Date() ))")
+                        Text("\(tool.formatDate(account.lastActivity ?? Date() ))")
                             .font(.caption)
                         
-                        Text("\(tool.formatCurrency(accounts[account].balance) ?? "")")
+                        Text("\(tool.formatCurrency(account.balance) ?? "")")
                             .font(.title3)
                             .foregroundColor(.green)
                             .bold()
@@ -147,14 +147,14 @@ struct AccountDetailView: View {
             Spacer()
         }
         .onAppear{
-            accountNewName = accounts[account].name ?? ""
-            selectedIcon = Icons(rawValue: accounts[account].icon ?? "default")
+            accountNewName = account.name ?? ""
+            selectedIcon = Icons(rawValue: account.icon ?? "default")
         }
         .toolbar {
             Button {
                 editMode.toggle()
-                accountNewName = accounts[account].name ?? ""
-                selectedIcon = Icons(rawValue: accounts[account].icon ?? "default")
+                accountNewName = account.name ?? ""
+                selectedIcon = Icons(rawValue: account.icon ?? "default")
             } label: {
                 if editMode {
                     Text("btn_cancel")
@@ -168,7 +168,7 @@ struct AccountDetailView: View {
                 title: Text("alert_confirm"),
                 message: Text("alert_sure_msg"),
                 primaryButton: .destructive(Text("alert_rm_btn"), action: {
-                    accountsManager.deleteAccount(account: accounts[account])
+                    accountsManager.deleteAccount(account: account)
                     accountsManager.getAccountsList()
                     presentationMode.wrappedValue.dismiss()
                 }),
@@ -178,7 +178,7 @@ struct AccountDetailView: View {
         .sheet(isPresented: $showGallery) {
             GalleryView(selectedIcon: $selectedIcon).accentColor(userSettings.accentColor.color)
         }
-        .navigationTitle(accounts[account].name ?? "")
+        .navigationTitle(account.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

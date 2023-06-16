@@ -12,6 +12,8 @@ struct AccountsView: View {
     @EnvironmentObject var userSettings: UserSettingsManager
     @EnvironmentObject var accountsManager: AccountsManager
     
+    @State var accounts: [Account] = []
+    
     @State private var createAccountSheetShowing = false
     
     var body: some View {
@@ -19,7 +21,7 @@ struct AccountsView: View {
             ScrollView {
                 VStack {
                     HStack {
-                        Text(tool.formatCurrency(accountsManager.accountList.reduce(0, { $0 + $1.balance })) ?? "")
+                        Text(tool.formatCurrency(accounts.reduce(0, { $0 + $1.balance })) ?? "")
                             .font(.title2)
                             .fontWeight(.bold)
                             .lineLimit(1)
@@ -31,8 +33,13 @@ struct AccountsView: View {
                 }
 
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
-                    ForEach(Array(accountsManager.accountList.enumerated()), id: \.1) { index, account in
-                        NavigationLink(destination: AccountDetailView(accounts: accountsManager.accountList, account: index)) {
+//                    ForEach(Array(accountsManager.accountList.enumerated()), id: \.1) { index, account in
+//                        NavigationLink(destination: AccountDetailView(account: account)) {
+//                            AccountCardView(account: account)
+//                        }
+//                    }
+                    ForEach(accounts) { account in
+                        NavigationLink(destination: AccountDetailView(account: account)) {
                             AccountCardView(account: account)
                         }
                     }
@@ -49,21 +56,24 @@ struct AccountsView: View {
                 .padding(16)
             }
             .sheet(isPresented: $createAccountSheetShowing, content: {
-                CreateAccountView(accounts: $accountsManager.accountList)
+                CreateAccountView(accounts: $accounts)
                     .environmentObject(accountsManager)
                     .accentColor(userSettings.accentColor.color)
             })
             .navigationTitle("accounts_tab")
             .onAppear{
                 print("Appear")
+                accountsManager.getAccountsList()
+                accounts = accountsManager.accountList
+                print(accountsManager.accountList)
             }
         }
     }
 }
 
 
-struct AccountsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountsView()
-    }
-}
+//struct AccountsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountsView()
+//    }
+//}
