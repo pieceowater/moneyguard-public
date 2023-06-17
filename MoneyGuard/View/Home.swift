@@ -27,9 +27,7 @@ struct HomeView: View {
         SampleTransaction(date: Date(), value: 8000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
         SampleTransaction(date: Date(), value: 9000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
         SampleTransaction(date: Date(), value: 10000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-        SampleTransaction(date: Date(), value: 11000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-        SampleTransaction(date: Date(), value: 12000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-        SampleTransaction(date: Date(), value: 13000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3))
+        SampleTransaction(date: Date(), value: 11000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3))
     ]
     
     
@@ -87,7 +85,8 @@ struct HomeView: View {
                                         .foregroundColor(.accentColor)
                                         .padding(.horizontal)
                                 } else {
-                                    Text("\(tool.formatCurrency(0) ?? "")")
+                                    let totalBalance = accounts.reduce(0) { $0 + ($1.balance ?? 0) }
+                                    Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
                                         .font(.title2)
                                         .fontWeight(.bold)
                                         .lineLimit(1)
