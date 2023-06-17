@@ -14,8 +14,6 @@ struct HomeView: View {
     private let tool: ToolsManager = ToolsManager()
     @State var accounts: [Account] = []
     
-    @State private var selectedAccountID: UUID?
-    
     @State private var selectedReportPeriod = 1
     
     @State private var transactions: [SampleTransaction] = [
@@ -40,8 +38,7 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .trailing) {
                     HStack{
-
-                        if let selectedUUID = selectedAccountID {
+                        if let selectedUUID = userSettings.selectedAccountID {
                             if let account = accounts.first(where: { $0.id == selectedUUID }) {
                                 Image(account.icon ?? "default")
                                     .resizable()
@@ -68,15 +65,19 @@ struct HomeView: View {
                         
                         VStack (alignment: .trailing){
                             
-                            Picker(selection: $selectedAccountID, label: Text("accounts_tab_account")) {
+                            Picker(selection: $userSettings.selectedAccountID, label: Text("accounts_tab_account")) {
                                 Text("accounts_tab_all_accounts").tag(nil as UUID?)
                                 ForEach(accounts.sorted(by: { $0.lastActivity ?? Date() > $1.lastActivity ?? Date() }), id: \.id) { account in
                                     Text(account.name ?? "")
                                         .tag(account.id)
                                 }
                             }
+                            .onChange(of: userSettings.selectedAccountID) { newSelectedAccountID in
+                                userSettings.saveSelectedAccount()
+                            }
                             
-                            if let selectedUUID = selectedAccountID {
+                            
+                            if let selectedUUID = userSettings.selectedAccountID {
                                 if let account = accounts.first(where: { $0.id == selectedUUID }) {
                                     Text("\(tool.formatCurrency(Double(account.balance)) ?? "")")
                                         .font(.title2)

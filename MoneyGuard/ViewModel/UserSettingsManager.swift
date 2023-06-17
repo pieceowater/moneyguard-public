@@ -12,6 +12,7 @@ class UserSettingsManager: ObservableObject {
     static let shared = UserSettingsManager()
     
     @Published var accentColor: Colors = .default
+    @Published var selectedAccountID: UUID?
     @Published var theme: Theme = .dark
     @Published var selectedLanguage: Language?
     
@@ -19,6 +20,20 @@ class UserSettingsManager: ObservableObject {
     private let themeKey = "theme"
     
     private init() {
+        loadSettings()
+    }
+    
+    func saveSelectedAccount() {
+        if let selectedAccountID = selectedAccountID {
+            let selectedAccountIDValue = selectedAccountID.uuidString
+            UserDefaults.standard.set(selectedAccountIDValue, forKey: "SelectedAccountID")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "SelectedAccountID")
+        }
+    }
+    
+    func resetSelectedAccount() {
+        UserDefaults.standard.removeObject(forKey: "SelectedAccountID")
         loadSettings()
     }
     
@@ -36,6 +51,12 @@ class UserSettingsManager: ObservableObject {
     }
     
     private func loadSettings() {
+        
+        if let selectedAccountIDValue = UserDefaults.standard.string(forKey: "SelectedAccountID") {
+            if let selectedAccountID = UUID(uuidString: selectedAccountIDValue) {
+                self.selectedAccountID = selectedAccountID
+            }
+        }
         
         if let accentColorValue = UserDefaults.standard.string(forKey: accentColorKey),
            let accentColor = Colors(rawValue: accentColorValue) {
