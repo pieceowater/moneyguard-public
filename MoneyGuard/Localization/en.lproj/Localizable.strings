@@ -63,8 +63,13 @@
     "title_menu_screen" = "Menu";
     "menu_heading_settings" = "Settings";
         "menu_settings_category" = "Categories";
+            "menu_settings_category_single" = "Category";
+            "menu_settings_category_add_new" = "Add Category";
+            "menu_settings_category_color" = "Category color";
             "menu_settings_category_replenishments" = "Replenishments";
             "menu_settings_category_expenses" = "Expenses";
+            "menu_settings_category_essential_degree_title" = "Degree of necessity";
+            "menu_settings_category_essential_degree_caption" = "Evaluate how necessary this category is in your life";
         "menu_settings_appearance" = "Appearance";
             "appearance_theme" = "Theme";
                 "appearance_lightmode" = "Light Mode";

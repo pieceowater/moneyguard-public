@@ -53,6 +53,7 @@
 		C2D74D6C2A2E56E50085BBFA /* MoneyGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D6B2A2E56E50085BBFA /* MoneyGuardTests.swift */; };
 		C2D74D762A2E56E50085BBFA /* MoneyGuardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */; };
 		C2D74D782A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */; };
+		C2FE24BC2A3D65E000A9EC8B /* CreateCatedory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		C2D74D712A2E56E50085BBFA /* MoneyGuardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyGuardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITests.swift; sourceTree = "<group>"; };
 		C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCatedory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				C28082A22A2ED4C400185A17 /* Appearance.swift */,
 				C29262812A2F9FD100E7901A /* Language.swift */,
 				C292628C2A2FD5FD00E7901A /* Category.swift */,
+				C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				C240DA4B2A38F769005B7CC0 /* HistoryItem.swift in Sources */,
 				C28082A12A2ED48900185A17 /* About.swift in Sources */,
 				C240DA402A38F63D005B7CC0 /* GoalListItem.swift in Sources */,
+				C2FE24BC2A3D65E000A9EC8B /* CreateCatedory.swift in Sources */,
 				C28082A32A2ED4C400185A17 /* Appearance.swift in Sources */,
 				C27AC1E52A39CD6100C6A6C8 /* CategoryManager.swift in Sources */,
 				C292628D2A2FD5FD00E7901A /* Category.swift in Sources */,

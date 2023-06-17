@@ -149,7 +149,6 @@ struct AppearanceView: View {
                     .cornerRadius(25)
                     .onTapGesture {
                         selectedAppIcon = appIcons[appIconsName] ?? nil
-                        print(selectedAppIcon)
                         changeAppIcon()
                     }
                 }

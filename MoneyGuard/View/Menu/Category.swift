@@ -30,6 +30,9 @@ struct CategoryView: View {
         SampleCategoryModel(name: "Hobbies", color: "Orange", createDate: Date(), lastActivity: Date(), icon: "guitar", type: "expenses", essentialDegree: 2)
     ]
     
+    @EnvironmentObject var userSettings: UserSettingsManager
+    @State var showCreateCategroySheet: Bool = false
+    
     var body: some View {
             ScrollView {
                 VStack(spacing: 16) {
@@ -38,7 +41,18 @@ struct CategoryView: View {
                 }
                 .padding(16)
             }
-        .navigationTitle("menu_settings_category")
+            .toolbar(content: {
+                Button {
+                    showCreateCategroySheet = true
+                } label: {
+                    Text("btn_add_new")
+                }
+            })
+            .sheet(isPresented: $showCreateCategroySheet, content: {
+                CreateCatedoryView()
+                    .environmentObject(userSettings)
+            })
+            .navigationTitle("menu_settings_category")
     }
 }
 

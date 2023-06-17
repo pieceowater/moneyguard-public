@@ -63,8 +63,13 @@
     "title_menu_screen" = "Меню";
     "menu_heading_settings" = "Настройки";
         "menu_settings_category" = "Категории";
+            "menu_settings_category_single" = "Категория";
+            "menu_settings_category_add_new" = "Добавить Категорию";
+            "menu_settings_category_color" = "Цвет категории";
             "menu_settings_category_replenishments" = "Доходы";
             "menu_settings_category_expenses" = "Расходы";
+            "menu_settings_category_essential_degree_title" = "Необходимость";
+            "menu_settings_category_essential_degree_caption" = "Оцените насколько эта категория необходима для вас";
         "menu_settings_appearance" = "Внешний вид";
             "appearance_theme" = "Тема";
                 "appearance_lightmode" = "Светлая тема";
