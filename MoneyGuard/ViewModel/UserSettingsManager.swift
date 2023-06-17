@@ -133,21 +133,21 @@ extension Color {
 }
 
 enum CategoryColor: String, CaseIterable {
-    case blue
-    case green
-    case red
-    case purple
-    case orange
-    case yellow
-    case pink
-    case teal
-    case indigo
-    case brown
-    case gray
-    case cyan
-    case lavender
-    case amber
-    case maroon
+    case Blue
+    case Green
+    case Red
+    case Purple
+    case Orange
+    case Yellow
+    case Pink
+    case Teal
+    case Indigo
+    case Brown
+    case Gray
+    case Cyan
+    case Lavender
+    case Amber
+    case Maroon
     
     var color: Color {
         guard let colorName = self.rawValue as String? else {

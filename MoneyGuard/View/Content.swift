@@ -12,6 +12,7 @@ struct ContentView: View {
     @ObservedObject var userSettings: UserSettingsManager
     
     @EnvironmentObject var accountsManager: AccountsManager
+    @EnvironmentObject var categoriesManager: CategoryManager
     
     @State private var selectedTab: Tab = .home
 
@@ -50,6 +51,7 @@ struct ContentView: View {
                 .tag(Tab.accounts)
             MenuView()
                 .environmentObject(userSettings)
+                .environmentObject(categoriesManager)
                 .tabItem {
                     Label("menu_tab", systemImage: "list.bullet.circle.fill")
                 }

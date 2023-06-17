@@ -7,37 +7,23 @@
 
 import SwiftUI
 
+struct CategoriesWrapper {
+    var replenishments: [Category]
+    var expenses: [Category]
+}
 
 struct CategoryView: View {
-    let replenishmentCategory: [SampleCategoryModel] = [
-        SampleCategoryModel(name: "Salary", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "debt", type: "replenishments", essentialDegree: 1),
-        SampleCategoryModel(name: "1xbet", color: "Green", createDate: Date(), lastActivity: Date(), icon: "carebeauty", type: "replenishments", essentialDegree: 2),
-        SampleCategoryModel(name: "Investments", color: "Purple", createDate: Date(), lastActivity: Date(), icon: "drugs", type: "replenishments", essentialDegree: 3),
-        SampleCategoryModel(name: "Freelance", color: "Teal", createDate: Date(), lastActivity: Date(), icon: "donate", type: "replenishments", essentialDegree: 1)
-    ]
-
-    let expensesCategory: [SampleCategoryModel] = [
-        SampleCategoryModel(name: "Shopping", color: "Red", createDate: Date(), lastActivity: Date(), icon: "fuel", type: "expenses", essentialDegree: 3),
-        SampleCategoryModel(name: "Entertainment", color: "Orange", createDate: Date(), lastActivity: Date(), icon: "gym", type: "expenses", essentialDegree: 2),
-        SampleCategoryModel(name: "Dining Out", color: "Yellow", createDate: Date(), lastActivity: Date(), icon: "map", type: "expenses", essentialDegree: 1),
-        SampleCategoryModel(name: "Travel", color: "Pink", createDate: Date(), lastActivity: Date(), icon: "help", type: "expenses", essentialDegree: 2),
-        SampleCategoryModel(name: "Simping lil asian girls", color: "Red", createDate: Date(), lastActivity: Date(), icon: "fire", type: "expenses", essentialDegree: 3),
-        SampleCategoryModel(name: "Gambling", color: "Orange", createDate: Date(), lastActivity: Date(), icon: "dice", type: "expenses", essentialDegree: 1),
-        SampleCategoryModel(name: "Utilities", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "funeral", type: "expenses", essentialDegree: 1),
-        SampleCategoryModel(name: "Transportation", color: "Green", createDate: Date(), lastActivity: Date(), icon: "gaming", type: "expenses", essentialDegree: 2),
-        SampleCategoryModel(name: "Healthcare", color: "Red", createDate: Date(), lastActivity: Date(), icon: "nofood", type: "expenses", essentialDegree: 3),
-        SampleCategoryModel(name: "Education", color: "Purple", createDate: Date(), lastActivity: Date(), icon: "education", type: "expenses", essentialDegree: 1),
-        SampleCategoryModel(name: "Hobbies", color: "Orange", createDate: Date(), lastActivity: Date(), icon: "guitar", type: "expenses", essentialDegree: 2)
-    ]
+    @State var categories: CategoriesWrapper = CategoriesWrapper(replenishments: [], expenses: [])
     
+    @EnvironmentObject var categoriesManager: CategoryManager
     @EnvironmentObject var userSettings: UserSettingsManager
     @State var showCreateCategroySheet: Bool = false
     
     var body: some View {
             ScrollView {
                 VStack(spacing: 16) {
-                    CategoryList(title: NSLocalizedString("menu_settings_category_replenishments", comment: ""), categories: replenishmentCategory)
-                    CategoryList(title: NSLocalizedString("menu_settings_category_expenses", comment: ""), categories: expensesCategory)
+                    CategoryList(title: NSLocalizedString("menu_settings_category_replenishments", comment: ""), categories: categories.replenishments)
+                    CategoryList(title: NSLocalizedString("menu_settings_category_expenses", comment: ""), categories: categories.expenses)
                 }
                 .padding(16)
             }
@@ -49,16 +35,21 @@ struct CategoryView: View {
                 }
             })
             .sheet(isPresented: $showCreateCategroySheet, content: {
-                CreateCatedoryView()
+                CreateCatedoryView(categories: $categories)
                     .environmentObject(userSettings)
+                    .environmentObject(categoriesManager)
             })
+            .onAppear {
+                categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }
+                categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }
+            }
             .navigationTitle("menu_settings_category")
     }
 }
 
 struct CategoryList: View {
     let title: String
-    let categories: [SampleCategoryModel]
+    let categories: [Category]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -85,27 +76,29 @@ struct CategoryList: View {
 
 struct CategoryCardView: View {
     private let tool: ToolsManager = ToolsManager()
-    let category: SampleCategoryModel
+    let category: Category
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Image(category.icon)
+                Image(category.icon ?? "default")
                     .resizable()
                     .frame(width: 30, height: 30)
                     .aspectRatio(contentMode: .fit)
                 
-                Text(category.name)
-                    .foregroundColor(Color(category.color))
+                Text(category.name ?? "")
+                    .foregroundColor(Color(category.color ?? "blue"))
                     .font(.headline)
                     .fontWeight(.bold)
                     .minimumScaleFactor(0.5)
                 Spacer()
-                StarRatingView(rating: Int(category.essentialDegree))
+                if category.type == "expenses" {
+                    StarRatingView(rating: Int(category.essentialDegree))
+                }
             }
             
             HStack{
-                Text("\(tool.formatDate(category.lastActivity))")
+                Text("\(tool.formatDate(category.lastActivity ?? Date()))")
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .padding(5)

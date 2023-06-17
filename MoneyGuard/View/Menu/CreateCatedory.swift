@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CreateCatedoryView: View {
+    @Binding var categories: CategoriesWrapper
+    
+    @EnvironmentObject var categoriesManager: CategoryManager
     @EnvironmentObject var userSettings: UserSettingsManager
     @Environment(\.presentationMode) var presentationMode
     
@@ -16,7 +19,7 @@ struct CreateCatedoryView: View {
     @State private var showGallery = false
     @State private var selectedIcon: Icons? = .default
     
-    @State private var selectedColor: Colors = .blue
+    @State private var selectedColor: CategoryColor = .Blue
     
     @State private var selectedType = 1
     private let types = [String(format: NSLocalizedString("menu_settings_category_replenishments", comment: "")), String(format: NSLocalizedString("menu_settings_category_expenses", comment: ""))]
@@ -70,12 +73,12 @@ struct CreateCatedoryView: View {
                 .padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
-                        ForEach(Colors.allCases, id: \.self) { color in
+                        ForEach(CategoryColor.allCases, id: \.self) { color in
                             Button(action: {
                                 selectedColor = color
                             }) {
                                 Circle()
-                                    .fill(color.color)
+                                    .fill(Color(color.rawValue))
                                     .frame(width: 40, height: 40)
                                     .padding()
                                     .background(.ultraThinMaterial)
@@ -113,6 +116,13 @@ struct CreateCatedoryView: View {
                 }
                 
                 Button {
+                    
+                    let newCategoryType = selectedType == 0 ? "replenishments" : "expenses"
+                    categoriesManager.createCategory(categoryName: newCategoryName, categoryIcon: selectedIcon?.icon ?? "default", categoryColor: selectedColor.rawValue, categoryEssentialDegree: Int16(selectedDegree), categoryType: newCategoryType)
+                    categoriesManager.getCategoriessList()
+                    categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }
+                    categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }
+                    
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     HStack{
@@ -152,6 +162,7 @@ struct EssentialDegreePicker: View {
                 }) {
                     Image(systemName: degree <= selectedDegree ? "star.fill" : "star")
                         .foregroundColor(degree <= selectedDegree ? .yellow : .gray)
+                        .shadow(color: .black.opacity(0.1), radius: 1, x: 1, y: 2)
                 }
             }
         }
@@ -159,8 +170,8 @@ struct EssentialDegreePicker: View {
 }
 
 
-struct CreateCatedoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateCatedoryView()
-    }
-}
+//struct CreateCatedoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateCatedoryView()
+//    }
+//}
