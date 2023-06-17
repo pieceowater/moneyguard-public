@@ -15,6 +15,7 @@ struct PeriodBtnView: View {
     var body: some View {
         Button(action: {
             selectedReportPeriod = value
+            giveHapticFeedback()
         }) {
             if selectedReportPeriod == value {
                 HStack{

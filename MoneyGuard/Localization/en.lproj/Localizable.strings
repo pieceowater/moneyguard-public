@@ -70,6 +70,7 @@
             "menu_settings_category_expenses" = "Expenses";
             "menu_settings_category_essential_degree_title" = "Degree of necessity";
             "menu_settings_category_essential_degree_caption" = "Evaluate how necessary this category is in your life";
+            "menu_settings_category_new_transction" = "New transaction";
         "menu_settings_appearance" = "Appearance";
             "appearance_theme" = "Theme";
                 "appearance_lightmode" = "Light Mode";

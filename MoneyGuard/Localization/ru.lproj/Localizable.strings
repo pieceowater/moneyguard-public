@@ -70,6 +70,7 @@
             "menu_settings_category_expenses" = "Расходы";
             "menu_settings_category_essential_degree_title" = "Необходимость";
             "menu_settings_category_essential_degree_caption" = "Оцените насколько эта категория необходима для вас";
+            "menu_settings_category_new_transction" = "Новая транзакция";
         "menu_settings_appearance" = "Внешний вид";
             "appearance_theme" = "Тема";
                 "appearance_lightmode" = "Светлая тема";

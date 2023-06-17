@@ -49,6 +49,7 @@ struct CreateCatedoryView: View {
                 .padding(.horizontal)
                 
                 Button {
+                    giveHapticFeedback()
                     showGallery = true
                 } label: {
                     HStack(spacing: 20){
@@ -75,6 +76,7 @@ struct CreateCatedoryView: View {
                     HStack(spacing: 10) {
                         ForEach(CategoryColor.allCases, id: \.self) { color in
                             Button(action: {
+                                giveHapticFeedback()
                                 selectedColor = color
                             }) {
                                 Circle()
@@ -116,7 +118,7 @@ struct CreateCatedoryView: View {
                 }
                 
                 Button {
-                    
+                    giveHapticFeedback()
                     let newCategoryType = selectedType == 0 ? "replenishments" : "expenses"
                     categoriesManager.createCategory(categoryName: newCategoryName, categoryIcon: selectedIcon?.icon ?? "default", categoryColor: selectedColor.rawValue, categoryEssentialDegree: Int16(selectedDegree), categoryType: newCategoryType)
                     categoriesManager.getCategoriessList()
@@ -138,6 +140,7 @@ struct CreateCatedoryView: View {
                         .padding(.horizontal)
                 }
                 Button {
+                    giveHapticFeedback()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("btn_hide")
@@ -158,6 +161,7 @@ struct EssentialDegreePicker: View {
         HStack(spacing: 8) {
             ForEach(1...3, id: \.self) { degree in
                 Button(action: {
+                    giveHapticFeedback()
                     selectedDegree = degree
                 }) {
                     Image(systemName: degree <= selectedDegree ? "star.fill" : "star")

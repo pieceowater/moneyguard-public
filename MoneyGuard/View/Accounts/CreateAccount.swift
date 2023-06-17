@@ -34,6 +34,7 @@ struct CreateAccountView: View {
                     .padding()
                 
                 Button {
+                    giveHapticFeedback()
                     showGallery = true
                 } label: {
                     HStack(spacing: 20){
@@ -61,6 +62,7 @@ struct CreateAccountView: View {
             
             Spacer()
             Button {
+                giveHapticFeedback()
                 accountsManager.createAccount(accountName: newAccountName, accountIcon: selectedIcon?.icon ?? "default", accountBalance: Double(newAccountBalance) ?? 0.0)
                 accountsManager.getAccountsList()
                 accounts = accountsManager.accountList
@@ -79,6 +81,7 @@ struct CreateAccountView: View {
                     .padding(.horizontal)
             }
             Button {
+                giveHapticFeedback()
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("btn_hide")

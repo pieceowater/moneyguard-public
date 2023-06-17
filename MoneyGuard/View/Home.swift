@@ -81,6 +81,7 @@ struct HomeView: View {
                 VStack {
                     Spacer()
                     Button(action: {
+                        giveHapticFeedback()
                         showGallery = true
                     }) {
                         Image(systemName: "plus").foregroundColor(.accentColor)

@@ -54,6 +54,7 @@ struct TransferView: View {
             
             Button {
                 makeTransfer()
+                giveHapticFeedback()
             } label: {
                 HStack{
                     Spacer()

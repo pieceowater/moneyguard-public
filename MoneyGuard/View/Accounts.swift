@@ -45,6 +45,7 @@ struct AccountsView: View {
                     }
 
                     Button {
+                        giveHapticFeedback()
                         createAccountSheetShowing = true
                     } label: {
                         HStack{

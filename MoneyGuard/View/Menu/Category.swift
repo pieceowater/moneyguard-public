@@ -29,6 +29,7 @@ struct CategoryView: View {
             }
             .toolbar(content: {
                 Button {
+                    giveHapticFeedback()
                     showCreateCategroySheet = true
                 } label: {
                     Text("btn_add_new")
@@ -61,7 +62,7 @@ struct CategoryList: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
                     ForEach(categories.sorted(by: { $0.essentialDegree > $1.essentialDegree }), id: \.name) { category in
-                        NavigationLink(destination: Text("Hello")) {
+                        NavigationLink(destination: CategoryDetailView(category: category)) {
                             CategoryCardView(category: category)
                         }
                     }

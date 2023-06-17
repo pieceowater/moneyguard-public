@@ -19,6 +19,7 @@ struct LanguageView: View {
     var body: some View {
         List(languages, id: \.name) { language in
             Button(action: {
+                giveHapticFeedback()
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 userSettings.setLanguage(language)
                 showAlert = true

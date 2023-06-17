@@ -104,6 +104,7 @@ struct AppearanceView: View {
                             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                             selectedColor = color
                             UIApplication.shared.windows.first?.tintColor = UIColor(color.color)
+                            giveHapticFeedback()
                             userSettings.accentColor = color
                             userSettings.saveSettings()
                         }) {

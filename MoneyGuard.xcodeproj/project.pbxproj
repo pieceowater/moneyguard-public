@@ -28,7 +28,6 @@
 		C27AC1E72A39DF7100C6A6C8 /* GoalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AC1E62A39DF7100C6A6C8 /* GoalsManager.swift */; };
 		C27AC1E92A39E22E00C6A6C8 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AC1E82A39E22E00C6A6C8 /* TransactionManager.swift */; };
 		C27AC1EB2A3A02F200C6A6C8 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AC1EA2A3A02F200C6A6C8 /* CreateAccount.swift */; };
-		C27AC1ED2A3A115A00C6A6C8 /* UpdateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AC1EC2A3A115A00C6A6C8 /* UpdateAccount.swift */; };
 		C280829A2A2ED28100185A17 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28082992A2ED28100185A17 /* Settings.swift */; };
 		C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */; };
 		C280829E2A2ED40D00185A17 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C280829D2A2ED40D00185A17 /* Menu.swift */; };
@@ -54,6 +53,7 @@
 		C2D74D762A2E56E50085BBFA /* MoneyGuardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */; };
 		C2D74D782A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */; };
 		C2FE24BC2A3D65E000A9EC8B /* CreateCatedory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */; };
+		C2FE24BE2A3DADA000A9EC8B /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +95,6 @@
 		C27AC1E62A39DF7100C6A6C8 /* GoalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsManager.swift; sourceTree = "<group>"; };
 		C27AC1E82A39E22E00C6A6C8 /* TransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
 		C27AC1EA2A3A02F200C6A6C8 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
-		C27AC1EC2A3A115A00C6A6C8 /* UpdateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccount.swift; sourceTree = "<group>"; };
 		C28082992A2ED28100185A17 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsManager.swift; sourceTree = "<group>"; };
 		C280829D2A2ED40D00185A17 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 		C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITests.swift; sourceTree = "<group>"; };
 		C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCatedory.swift; sourceTree = "<group>"; };
+		C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +255,7 @@
 				C29262812A2F9FD100E7901A /* Language.swift */,
 				C292628C2A2FD5FD00E7901A /* Category.swift */,
 				C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */,
+				C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -265,7 +266,6 @@
 				C292628A2A2FD53700E7901A /* AccountDetail.swift */,
 				C240DA412A38F66A005B7CC0 /* AccountCard.swift */,
 				C27AC1EA2A3A02F200C6A6C8 /* CreateAccount.swift */,
-				C27AC1EC2A3A115A00C6A6C8 /* UpdateAccount.swift */,
 				C2A625202A3C71D90080409D /* Transfer.swift */,
 			);
 			path = Accounts;
@@ -463,13 +463,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C27AC1ED2A3A115A00C6A6C8 /* UpdateAccount.swift in Sources */,
 				C240DA382A38F45F005B7CC0 /* SummaryCard.swift in Sources */,
 				C29262842A2FACD100E7901A /* Icons.swift in Sources */,
 				C240DA4F2A38F883005B7CC0 /* SampleTransaction.swift in Sources */,
 				C240DA472A38F716005B7CC0 /* ReccomendationsCard.swift in Sources */,
 				C292627A2A2F994C00E7901A /* Home.swift in Sources */,
 				C2A625212A3C71D90080409D /* Transfer.swift in Sources */,
+				C2FE24BE2A3DADA000A9EC8B /* CategoryDetail.swift in Sources */,
 				C292627C2A2F9A7E00E7901A /* Goals.swift in Sources */,
 				C29262822A2F9FD100E7901A /* Language.swift in Sources */,
 				C240DA362A38F43C005B7CC0 /* PeriodBtn.swift in Sources */,

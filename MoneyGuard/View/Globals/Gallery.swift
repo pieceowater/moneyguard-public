@@ -40,6 +40,7 @@ struct GalleryView: View {
             
             Button(action: {
                 submitSelectedIcon()
+                giveHapticFeedback()
             }) {
                 Text("btn_submit")
                     .font(.headline)

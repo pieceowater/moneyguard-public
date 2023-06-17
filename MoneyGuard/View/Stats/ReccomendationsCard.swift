@@ -46,7 +46,8 @@ struct ReccomendationsCardView: View {
                             .minimumScaleFactor(0.5)
                         Spacer()
                         Button {
-                         print("no")
+                         
+                            giveHapticFeedback()
                         } label: {
                             Text("btn_hide")
                                 .foregroundColor(.secondary)
