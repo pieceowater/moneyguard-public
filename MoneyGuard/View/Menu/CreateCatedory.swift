@@ -16,7 +16,7 @@ struct CreateCatedoryView: View {
     @State private var showGallery = false
     @State private var selectedIcon: Icons? = .default
     
-    @State private var selectedColor: Colors = .default
+    @State private var selectedColor: Colors = .blue
     
     @State private var selectedType = 1
     private let types = [String(format: NSLocalizedString("menu_settings_category_replenishments", comment: "")), String(format: NSLocalizedString("menu_settings_category_expenses", comment: ""))]
@@ -90,6 +90,7 @@ struct CreateCatedoryView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.bottom)
                 }
                 
                 if selectedType == 1 {
@@ -107,7 +108,8 @@ struct CreateCatedoryView: View {
                     .padding()
                     .background(.ultraThinMaterial)
                     .cornerRadius(20)
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.bottom)
                 }
                 
                 Button {
