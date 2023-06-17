@@ -9,15 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var userSettings: UserSettingsManager
-    @State private var showGallery = false
+    @EnvironmentObject var accountManager: AccountsManager
+    
     private let tool: ToolsManager = ToolsManager()
-    let accounts: [SampleAccountModel] = [
-        SampleAccountModel(name: "Kaspi Gold", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 1000.0),
-        SampleAccountModel(name: "Jusan Bang", icon: "heal", createDate: Date(), lastActivity: Date(), balance: 2500.0),
-        SampleAccountModel(name: "Binance", icon: "award", createDate: Date(), lastActivity: Date(), balance: 500.0),
-        SampleAccountModel(name: "MetaMask", icon: "love", createDate: Date(), lastActivity: Date(), balance: 1234567891.0)
-    ]
-    @State private var selectedAccount = -1
+    @State var accounts: [Account] = []
+    
+    @State private var selectedAccountID: UUID?
+    
     @State private var selectedReportPeriod = 1
     
     @State private var transactions: [SampleTransaction] = [
@@ -42,28 +40,73 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .trailing) {
                     HStack{
-                        Image(selectedAccount == -1 ? "default" : accounts[selectedAccount].icon)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 40, height: 40)
-                            .padding(10)
+
+                        if let selectedUUID = selectedAccountID {
+                            if let account = accounts.first(where: { $0.id == selectedUUID }) {
+                                Image(account.icon ?? "default")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 40, height: 40)
+                                    .padding(10)
+                                    
+                            } else {
+                                Image("default")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 40, height: 40)
+                                    .padding(10)
+                            }
+                        } else {
+                            Image("default")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 40, height: 40)
+                                .padding(10)
+                        }
                         
                         Spacer()
                         
                         VStack (alignment: .trailing){
-                            Picker(selection: $selectedAccount, label: Text("accounts_tab_account")) {
-                                Text("accounts_tab_all_accounts").tag(-1)
-                                ForEach(0..<accounts.count) { index in
-                                    Text(accounts[index].name).tag(index)
+                            
+                            Picker(selection: $selectedAccountID, label: Text("accounts_tab_account")) {
+                                Text("accounts_tab_all_accounts").tag(nil as UUID?)
+                                ForEach(accounts.sorted(by: { $0.lastActivity ?? Date() > $1.lastActivity ?? Date() }), id: \.id) { account in
+                                    Text(account.name ?? "")
+                                        .tag(account.id)
                                 }
                             }
-                            Text("\(selectedAccount == -1 ? tool.formatCurrency(accounts.reduce(0, { $0 + $1.balance })) ?? "" : tool.formatCurrency(accounts[selectedAccount].balance) ?? "")")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                                .foregroundColor(.accentColor)
-                                .padding(.horizontal)
+                            
+                            if let selectedUUID = selectedAccountID {
+                                if let account = accounts.first(where: { $0.id == selectedUUID }) {
+                                    Text("\(tool.formatCurrency(Double(account.balance)) ?? "")")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.5)
+                                        .foregroundColor(.accentColor)
+                                        .padding(.horizontal)
+                                } else {
+                                    Text("\(tool.formatCurrency(0) ?? "")")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.5)
+                                        .foregroundColor(.accentColor)
+                                        .padding(.horizontal)
+                                }
+                            } else {
+                                let totalBalance = accounts.reduce(0) { $0 + ($1.balance ?? 0) }
+                                Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
+                                    .foregroundColor(.accentColor)
+                                    .padding(.horizontal)
+                            }
+
+
+                               
                         }
                     }
                 }
@@ -82,7 +125,6 @@ struct HomeView: View {
                     Spacer()
                     Button(action: {
                         giveHapticFeedback()
-                        showGallery = true
                     }) {
                         Image(systemName: "plus").foregroundColor(.accentColor)
                             .font(.title)
@@ -95,11 +137,10 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                 }
             }
+            .onAppear{
+                accounts = accountManager.accountList
+            }
             .navigationTitle("app_name")
-        }
-        
-        .sheet(isPresented: $showGallery) {
-//            GalleryView().accentColor(userSettings.accentColor.color)
         }
     }
 }
