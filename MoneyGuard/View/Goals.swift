@@ -36,8 +36,6 @@ struct GoalsView: View {
             .toolbar {
                 NavigationLink(destination: Text("Hello")) {
                     HStack{
-                        Image(systemName: "plus")
-                            .font(.subheadline)
                         Text("btn_add_new")
                             .font(.headline)
                     }

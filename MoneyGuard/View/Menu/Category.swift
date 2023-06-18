@@ -36,7 +36,7 @@ struct CategoryView: View {
                 }
             })
             .sheet(isPresented: $showCreateCategroySheet, content: {
-                CreateCatedoryView(categories: $categories)
+                CreateCatedoryView(categories: $categories).accentColor(userSettings.accentColor.color)
                     .environmentObject(userSettings)
                     .environmentObject(categoriesManager)
             })

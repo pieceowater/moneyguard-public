@@ -20,6 +20,7 @@ struct CategoryDetailView: View {
     @State var category: Category
     @State private var selectedDegree: Int = 2
     @State private var selectedColor: CategoryColor = .Blue
+    @State private var showNewTransactionSheet = false
     
     var body: some View {
         ScrollView{
@@ -177,8 +178,9 @@ struct CategoryDetailView: View {
                                 .padding(.bottom)
                         }
                     }
-                    NavigationLink {
-                        Text("HW")
+                    Button {
+                        showNewTransactionSheet = true
+                        giveHapticFeedback()
                     } label: {
                         HStack{
                             Text("menu_settings_category_new_transction")
@@ -195,6 +197,8 @@ struct CategoryDetailView: View {
                         .padding(.horizontal)
                         .padding(.bottom, 10)
                     }
+
+                    
                 }
                 HStack{
                     Spacer()
@@ -240,6 +244,9 @@ struct CategoryDetailView: View {
         .sheet(isPresented: $showGallery) {
             GalleryView(selectedIcon: $selectedIcon).accentColor(userSettings.accentColor.color)
         }
+        .sheet(isPresented: $showNewTransactionSheet, content: {
+            NewTransactionView().accentColor(userSettings.accentColor.color)
+        })
         .navigationTitle(category.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
     }
