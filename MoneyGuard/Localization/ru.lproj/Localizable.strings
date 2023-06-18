@@ -28,9 +28,19 @@
 
 "gallery_heading" = "Выберите Иконку";
 
+"placeholder_message_no_accounts" = "У нас нет ни одного счета!\nСоздайте новый на вкладке \"Счета\".";
+"placeholder_message_create_account" = "Создайте ваш первый счет!";
+"placeholder_message_no_transactions" = "Никаких транзакций еще нет!\nНажмите на кнопку с \"+\", чтобы создать!";
+"placeholder_message_no_category" = "Категорий нет!\nНажмит на кнопку \"Добавить\", чтобы создать новую категорию!";
+"placeholder_message_no_replenishments" = "О, нет!\nУ вас нет категорий для Доходов.";
+"placeholder_message_no_expenses" = "Нет категорий для расходов!";
+"placeholder_message_no_categories_alt" = "Для начала вам необходимо создать категории!\nДля этого пеерейдите в \"Меню\"->\"Категории\"";
+
 "period_filter_today" = "Сегодня";
+"period_filter_yesterday" = "Вчера";
 "period_filter_this_month" = "Этот месяц";
 "period_filter_all_time" = "За все время";
+"period_filter_custom_time" = "Выбрать";
 
 "period_filter_daily" = "День";
 "period_filter_weekly" = "Неделя";
@@ -39,11 +49,14 @@
 "word_name" = "Наименование";
 "word_balance" = "Баланс";
 "word_amount" = "Сумма";
+"word_date" = "Дата";
 
 "home_tab" = "Главная";
     "home_tab_overview" = "Обзор";
         "home_tab_income" = "Пополнения";
         "home_tab_expense" = "Траты";
+        "home_new_transaction_heading" = "Новая Транзакция";
+        "home_new_transaction_comment" = "Комментарий";
 
 "goals_tab" = "Цели";
     "goals_tab_caprion" = "Достигайте ваших целей, чтобы сделать жизнь лучше!";

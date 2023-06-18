@@ -28,9 +28,19 @@
 
 "gallery_heading" = "Select an Icon";
 
+"placeholder_message_no_accounts" = "Hey! You have accounts!\nCreate new one in \"Accounts\" tab.";
+"placeholder_message_create_account" = "Add your first account!";
+"placeholder_message_no_transactions" = "There is no any transactions!\nHit the Plus-Button on \"Home\" tab.";
+"placeholder_message_no_category" = "There is no categories!\nHit \"Add new\" button to create some!";
+"placeholder_message_no_replenishments" = "Oh, no!\nYou have no Replenishments categories.";
+"placeholder_message_no_expenses" = "Well, there is no catogories to spend money!";
+"placeholder_message_no_categories_alt" = "You need to create categories first!\nGo to \"Menu\"->\"Category\"";
+
 "period_filter_today" = "Today";
+"period_filter_yesterday" = "Yesterday";
 "period_filter_this_month" = "This month";
 "period_filter_all_time" = "All time";
+"period_filter_custom_time" = "Custom";
 
 "period_filter_daily" = "Daily";
 "period_filter_weekly" = "Weekly";
@@ -39,11 +49,14 @@
 "word_name" = "Name";
 "word_balance" = "Balance";
 "word_amount" = "Amount";
+"word_date" = "Date";
 
 "home_tab" = "Home";
     "home_tab_overview" = "Overview";
         "home_tab_income" = "Income";
         "home_tab_expense" = "Expense";
+        "home_new_transaction_heading" = "New Transaction";
+        "home_new_transaction_comment" = "Transaction comment";
 
 "goals_tab" = "Goals";
     "goals_tab_caprion" = "Get your goals to make your life better!";

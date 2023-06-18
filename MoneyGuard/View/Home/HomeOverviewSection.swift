@@ -30,24 +30,41 @@ struct HomeOverviewSectionView: View {
             }
             .padding()
             
-            LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
-                ForEach(transactions.sorted(by: { $0.date > $1.date }).prefix(10), id: \.self) { transaction in
-                    NavigationLink(destination: Text("Hello")) {
-                        TransactionCardView(transaction: transaction)
-                    }
-                }
-                if transactions.count > 10 {
-                    NavigationLink(destination: Text("more")) {
-                        HStack{
-                            Text("btn_show_more")
-                            Image(systemName: "arrow.right")
+            if transactions.count == 0 {
+                HStack{
+                    Spacer()
+                    VStack{
+                        VStack(spacing: 25){
+                            Image("help")
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                            Text("placeholder_message_no_transactions")
+                                .multilineTextAlignment(.center)
+                                
                         }.padding()
                     }
+                    Spacer()
                 }
-
-                Spacer(minLength: 70)
+                .padding()
+            } else {
+                LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
+                    ForEach(transactions.sorted(by: { $0.date > $1.date }).prefix(10), id: \.self) { transaction in
+                        NavigationLink(destination: Text("Hello")) {
+                            TransactionCardView(transaction: transaction)
+                        }
+                    }
+                    if transactions.count > 10 {
+                        NavigationLink(destination: Text("more")) {
+                            HStack{
+                                Text("btn_show_more")
+                                Image(systemName: "arrow.right")
+                            }.padding()
+                        }
+                    }
+                    
+                    Spacer(minLength: 70)
+                }
             }
-            
         }
     }
 }

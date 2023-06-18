@@ -22,8 +22,46 @@ struct CategoryView: View {
     var body: some View {
             ScrollView {
                 VStack(spacing: 16) {
-                    CategoryList(title: NSLocalizedString("menu_settings_category_replenishments", comment: ""), categories: categories.replenishments)
-                    CategoryList(title: NSLocalizedString("menu_settings_category_expenses", comment: ""), categories: categories.expenses)
+                    if categories.expenses.count == 0 {
+                        VStack(spacing: 25){
+                            Image("grass")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                            Text("placeholder_message_no_category")
+                                .multilineTextAlignment(.center)
+                                .font(.headline)
+                            
+                        }.padding(.vertical, 100)
+                    } else {
+                        if categories.replenishments.count == 0 {
+                            VStack(spacing: 25){
+                                Image("debt")
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                Text("placeholder_message_no_replenishments")
+                                    .multilineTextAlignment(.center)
+                                    .font(.headline)
+                                
+                            }.padding(.vertical, 50)
+                        } else {
+                            CategoryList(title: NSLocalizedString("menu_settings_category_replenishments", comment: ""), categories: categories.replenishments)
+                        }
+                        
+                        if categories.expenses.count == 0 {
+                            VStack(spacing: 25){
+                                Image("donate")
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                Text("placeholder_message_no_expenses")
+                                    .multilineTextAlignment(.center)
+                                    .font(.headline)
+                                
+                            }.padding(.vertical, 50)
+                        } else {
+                            CategoryList(title: NSLocalizedString("menu_settings_category_expenses", comment: ""), categories: categories.expenses)
+                        }
+                    }
+                    
                 }
                 .padding(16)
             }

@@ -29,6 +29,9 @@ class AccountsManager: ObservableObject {
             newAccount.id = UUID()
             
             CoreDataManager.shared.saveContext()
+            
+            UserSettingsManager.shared.selectedAccountID = newAccount.id
+            UserSettingsManager.shared.saveSelectedAccount()
         }
     }
     

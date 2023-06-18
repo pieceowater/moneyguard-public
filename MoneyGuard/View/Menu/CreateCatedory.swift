@@ -151,7 +151,7 @@ struct CreateCatedoryView: View {
         .sheet(isPresented: $showGallery) {
             GalleryView(selectedIcon: $selectedIcon).accentColor(userSettings.accentColor.color)
         }
-        .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $newCategoryName))])
+//        .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $newCategoryName))])
     }
 }
 

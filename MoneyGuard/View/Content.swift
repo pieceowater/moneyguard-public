@@ -13,6 +13,7 @@ struct ContentView: View {
     
     @EnvironmentObject var accountsManager: AccountsManager
     @EnvironmentObject var categoriesManager: CategoryManager
+    @EnvironmentObject var transactionManager: TransactionManager
     
     @State private var selectedTab: Tab = .home
 
@@ -26,20 +27,21 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            StatsView()
-                .tabItem {
-                    Label("stats_tab", systemImage: "chart.bar.fill")
-                }
-                .tag(Tab.stats)
-            GoalsView()
-                .tabItem {
-                    Label("goals_tab", systemImage: "star.fill")
-                }
-                .tag(Tab.goals)
+//            StatsView()
+//                .tabItem {
+//                    Label("stats_tab", systemImage: "chart.bar.fill")
+//                }
+//                .tag(Tab.stats)
+//            GoalsView()
+//                .tabItem {
+//                    Label("goals_tab", systemImage: "star.fill")
+//                }
+//                .tag(Tab.goals)
             HomeView()
                 .environmentObject(userSettings)
                 .environmentObject(accountsManager)
                 .environmentObject(categoriesManager)
+                .environmentObject(transactionManager)
                 .tabItem {
                     Label("home_tab", systemImage: "house.fill")
                 }

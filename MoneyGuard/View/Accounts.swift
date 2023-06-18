@@ -32,29 +32,52 @@ struct AccountsView: View {
                     .padding(.horizontal)
                 }
 
-                LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
-//                    ForEach(Array(accountsManager.accountList.enumerated()), id: \.1) { index, account in
-//                        NavigationLink(destination: AccountDetailView(account: account)) {
-//                            AccountCardView(account: account)
-//                        }
-//                    }
-                    ForEach(accounts) { account in
-                        NavigationLink(destination: AccountDetailView(account: account)) {
-                            AccountCardView(account: account)
+                if accounts.count == 0 {
+                    VStack(spacing: 25){
+                        Image("plant")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                            .cornerRadius(35)
+                        Text("placeholder_message_create_account")
+                            .multilineTextAlignment(.center)
+                            .font(.headline)
+                        
+                        Button {
+                            giveHapticFeedback()
+                            createAccountSheetShowing = true
+                        } label: {
+                            HStack{
+                                Image(systemName: "plus.rectangle.on.rectangle")
+                                Text("btn_add_new")
+                            }.padding()
+                        }
+                            
+                    }.padding(.vertical, 100)
+                }else{
+                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
+                        //                    ForEach(Array(accountsManager.accountList.enumerated()), id: \.1) { index, account in
+                        //                        NavigationLink(destination: AccountDetailView(account: account)) {
+                        //                            AccountCardView(account: account)
+                        //                        }
+                        //                    }
+                        ForEach(accounts) { account in
+                            NavigationLink(destination: AccountDetailView(account: account)) {
+                                AccountCardView(account: account)
+                            }
+                        }
+                        
+                        Button {
+                            giveHapticFeedback()
+                            createAccountSheetShowing = true
+                        } label: {
+                            HStack{
+                                Image(systemName: "plus.rectangle.on.rectangle")
+                                Text("btn_add_new")
+                            }.padding()
                         }
                     }
-
-                    Button {
-                        giveHapticFeedback()
-                        createAccountSheetShowing = true
-                    } label: {
-                        HStack{
-                            Image(systemName: "plus.rectangle.on.rectangle")
-                            Text("btn_add_new")
-                        }.padding()
-                    }
+                    .padding(16)
                 }
-                .padding(16)
             }
             .sheet(isPresented: $createAccountSheetShowing, content: {
                 CreateAccountView(accounts: $accounts)

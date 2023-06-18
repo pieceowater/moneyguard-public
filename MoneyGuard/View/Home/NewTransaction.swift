@@ -11,6 +11,7 @@ struct NewTransactionView: View {
     @EnvironmentObject var userSettings: UserSettingsManager
     @EnvironmentObject var accountManager: AccountsManager
     @EnvironmentObject var categoriesManager: CategoryManager
+    @EnvironmentObject var transactionManager: TransactionManager
     
     private let tool: ToolsManager = ToolsManager()
     @Environment(\.presentationMode) var presentationMode
@@ -43,12 +44,12 @@ struct NewTransactionView: View {
             ScrollView {
                 
                 HStack{
-                    Text("New Transaction")
+                    Text("home_new_transaction_heading")
                         .font(.title2)
                     Spacer()
                 }.padding(.horizontal)
                 
-                TextField("Amount", text: $amount)
+                TextField("word_amount", text: $amount)
                     .keyboardType(.decimalPad)
                     .padding()
                     .background(.ultraThinMaterial)
@@ -81,62 +82,79 @@ struct NewTransactionView: View {
                 Divider().padding()
                 
                 VStack(alignment: .leading){
-                    Text("Category")
+                    Text("menu_settings_category_single")
                         .font(.subheadline)
                         .padding(.horizontal)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            ForEach(categories.expenses, id: \.self) { category in
-                                Button(action: {
-                                    selectedCategory = category.id ?? UUID()
-                                    giveHapticFeedback()
-                                }) {
-                                    VStack {
-                                        Image(category.icon ?? "default")
-                                            .resizable()
-                                            .frame(width: 50, height: 50)
-                                            .padding(.horizontal)
-                                            .padding(.top)
-                                        Text(category.name ?? "")
-                                            .minimumScaleFactor(0.7)
-                                            .lineLimit(1)
-                                            .padding()
+                   
+                            
+                            if categories.expenses.count == 0 && categories.replenishments.count == 0 {
+                                VStack(alignment: .center, spacing: 25){
+                                    Image("grass")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                    Text("placeholder_message_no_categories_alt")
+                                        .multilineTextAlignment(.center)
+                                        .font(.caption)
+                                    HStack{
+                                        Spacer()
                                     }
-                                    .frame(width: 130, height: 130)
-                                    .background(.ultraThinMaterial)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 15)
-                                            .stroke(selectedCategory == category.id ? Color.accentColor : Color.clear, lineWidth: 2)
-                                    )
-                                    .cornerRadius(15)
+                                }.padding(.vertical, 20)
+                                
+                            } else {
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 10) {
+                                ForEach(categories.expenses, id: \.self) { category in
+                                    Button(action: {
+                                        selectedCategory = category.id ?? UUID()
+                                        giveHapticFeedback()
+                                    }) {
+                                        VStack {
+                                            Image(category.icon ?? "default")
+                                                .resizable()
+                                                .frame(width: 50, height: 50)
+                                                .padding(.horizontal)
+                                                .padding(.top)
+                                            Text(category.name ?? "")
+                                                .minimumScaleFactor(0.7)
+                                                .lineLimit(1)
+                                                .padding()
+                                        }
+                                        .frame(width: 130, height: 130)
+                                        .background(.ultraThinMaterial)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(selectedCategory == category.id ? Color.accentColor : Color.clear, lineWidth: 2)
+                                        )
+                                        .cornerRadius(15)
+                                    }
                                 }
-                            }
-                            
-                            Divider().padding(.vertical)
-                            
-                            ForEach(categories.replenishments, id: \.self) { category in
-                                Button(action: {
-                                    selectedCategory = category.id ?? UUID()
-                                    giveHapticFeedback()
-                                }) {
-                                    VStack {
-                                        Image(category.icon ?? "default")
-                                            .resizable()
-                                            .frame(width: 50, height: 50)
-                                            .padding(.horizontal)
-                                            .padding(.top)
-                                        Text(category.name ?? "")
-                                            .minimumScaleFactor(0.7)
-                                            .lineLimit(1)
-                                            .padding()
+                                
+                                Divider().padding(.vertical)
+                                
+                                ForEach(categories.replenishments, id: \.self) { category in
+                                    Button(action: {
+                                        selectedCategory = category.id ?? UUID()
+                                        giveHapticFeedback()
+                                    }) {
+                                        VStack {
+                                            Image(category.icon ?? "default")
+                                                .resizable()
+                                                .frame(width: 50, height: 50)
+                                                .padding(.horizontal)
+                                                .padding(.top)
+                                            Text(category.name ?? "")
+                                                .minimumScaleFactor(0.7)
+                                                .lineLimit(1)
+                                                .padding()
+                                        }
+                                        .frame(width: 130, height: 130)
+                                        .background(.ultraThinMaterial)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .stroke(selectedCategory == category.id ? Color.accentColor : Color.clear, lineWidth: 2)
+                                        )
+                                        .cornerRadius(15)
                                     }
-                                    .frame(width: 130, height: 130)
-                                    .background(.ultraThinMaterial)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 15)
-                                            .stroke(selectedCategory == category.id ? Color.accentColor : Color.clear, lineWidth: 2)
-                                    )
-                                    .cornerRadius(15)
                                 }
                             }
                         }
@@ -147,13 +165,13 @@ struct NewTransactionView: View {
             
                 
                 VStack(alignment: .leading){ // date picker
-                    Text("Date")
+                    Text("word_date")
                         .font(.subheadline)
                         .padding(.horizontal)
                     HStack {
-                        DatePresetBtnView(dateCode: $selectedDateCode, value: 0, label: NSLocalizedString("Today", comment: ""))
-                        DatePresetBtnView(dateCode: $selectedDateCode, value: -1, label: NSLocalizedString("Yesterday", comment: ""))
-                        DatePresetBtnView(dateCode: $selectedDateCode, value: 2, label: NSLocalizedString("Custom", comment: ""))
+                        DatePresetBtnView(dateCode: $selectedDateCode, value: 0, label: NSLocalizedString("period_filter_today", comment: ""))
+                        DatePresetBtnView(dateCode: $selectedDateCode, value: -1, label: NSLocalizedString("period_filter_yesterday", comment: ""))
+                        DatePresetBtnView(dateCode: $selectedDateCode, value: 2, label: NSLocalizedString("period_filter_custom_time", comment: ""))
                     }
                     .padding(.horizontal)
                     .onChange(of: selectedDateCode) { newValue in
@@ -164,19 +182,19 @@ struct NewTransactionView: View {
                         showDatepicker = selectedDateCode == 2 ? true : false
                     }
                     if showDatepicker {
-                        DatePicker("Custom date", selection: $selectedDate, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
-                            .datePickerStyle(.graphical)
+                        DatePicker("word_date", selection: $selectedDate, in: ...Date())
+//                            .datePickerStyle(.graphical)
                             .labelsHidden()
-                            .padding()
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
+//                            .padding()
+//                            .background(.ultraThinMaterial)
+//                            .cornerRadius(15)
                             .padding(.horizontal)
                             .padding(.bottom, 5)
                     }
                 }.padding(.top)
                 
                 VStack(alignment: .leading){
-                    Text("Account")
+                    Text("accounts_tab_account")
                         .font(.subheadline)
                         .padding(.horizontal)
                     VStack(alignment: .trailing) {
@@ -209,7 +227,6 @@ struct NewTransactionView: View {
                             VStack (alignment: .trailing){
                                 
                                 Picker(selection: $userSettings.selectedAccountID, label: Text("accounts_tab_account")) {
-                                    Text("accounts_tab_all_accounts").tag(nil as UUID?)
                                     ForEach(accounts.sorted(by: { $0.lastActivity ?? Date() > $1.lastActivity ?? Date() }), id: \.id) { account in
                                         Text(account.name ?? "")
                                             .tag(account.id)
@@ -229,25 +246,7 @@ struct NewTransactionView: View {
                                             .minimumScaleFactor(0.5)
                                             .foregroundColor(.accentColor)
                                             .padding(.horizontal)
-                                    } else {
-                                        let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
-                                        Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
-                                            .font(.title2)
-                                            .fontWeight(.bold)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.5)
-                                            .foregroundColor(.accentColor)
-                                            .padding(.horizontal)
                                     }
-                                } else {
-                                    let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
-                                    Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.5)
-                                        .foregroundColor(.accentColor)
-                                        .padding(.horizontal)
                                 }
                                 
                                 
@@ -266,7 +265,7 @@ struct NewTransactionView: View {
                 Divider().padding()
                 
                 VStack(alignment: .leading){ //  note text editor
-                    Text("Transaction comment")
+                    Text("home_new_transaction_comment")
                         .font(.subheadline)
                     TextEditor(text: $comment)
                         .padding(.vertical, 10)
@@ -283,22 +282,36 @@ struct NewTransactionView: View {
                 
             }
             
-            Button {
-                giveHapticFeedback()
+            Button(action: {
+                if let selectedAccountID = userSettings.selectedAccountID,
+                   let selectedAccount = accounts.first(where: { $0.id == selectedAccountID }),
+                   let selectedCategory = categoriesManager.categoryList.first(where: { $0.id == selectedCategory }) {
+                    if selectedCategory.type == "expenses" && Double(amount) ?? 0 > selectedAccount.balance {
+                        return
+                    }
+                    transactionManager.createTransaction(transactionComment: comment, transactionValue: Double(amount) ?? 0, transactionCategory: selectedCategory, transactionAccount: selectedAccount)
+                    transactionManager.getTransactionList()
+                    accountManager.getAccountsList()
+                    giveHapticFeedback()
+                }
                 presentationMode.wrappedValue.dismiss()
-            } label: {
-                HStack{
+                print(transactionManager.transactionsList)
+            }) {
+                HStack {
                     Spacer()
                     Text("btn_add_new")
                     Spacer()
-                }.padding()
-                    .background(Color.accentColor)
-                    .foregroundColor(.white)
-                    .font(.headline)
-                    .cornerRadius(15)
-                    .padding(.horizontal)
-                    .padding(.bottom, 5)
+                }
+                .padding()
+                .background(Color.accentColor)
+                .foregroundColor(.white)
+                .font(.headline)
+                .cornerRadius(15)
+                .padding(.horizontal)
+                .padding(.bottom, 5)
             }
+            .disabled(categories.expenses.count == 0 && categories.replenishments.count == 0)
+
             
         }
         .onAppear{
@@ -308,7 +321,7 @@ struct NewTransactionView: View {
             selectedCategory = categories.expenses.first?.id ?? UUID()
             isTextFieldFocused = true
         }
-        .hideKeyboardOnTap(excluding: [AnyView(TextField("Amount", text: $amount))])
+        .hideKeyboardOnTap(excluding: [AnyView(TextField("word_amount", text: $amount))])
     }
     
     

@@ -29,6 +29,10 @@ class TransactionManager: ObservableObject {
             newTransaction.category = transactionCategory
             newTransaction.account = transactionAccount
             
+            transactionAccount.balance = transactionCategory.type == "expenses" ? transactionAccount.balance - transactionValue : transactionAccount.balance + transactionValue
+            transactionAccount.lastActivity = Date()
+            transactionCategory.lastActivity = Date()
+            
             CoreDataManager.shared.saveContext()
         }
     }
