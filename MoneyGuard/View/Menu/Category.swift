@@ -22,7 +22,7 @@ struct CategoryView: View {
     var body: some View {
             ScrollView {
                 VStack(spacing: 16) {
-                    if categories.expenses.count == 0 {
+                    if categories.expenses.count == 0 && categories.replenishments.count == 0 {
                         VStack(spacing: 25){
                             Image("grass")
                                 .resizable()

@@ -11,6 +11,7 @@ struct AccountsView: View {
     private let tool: ToolsManager = ToolsManager()
     @EnvironmentObject var userSettings: UserSettingsManager
     @EnvironmentObject var accountsManager: AccountsManager
+    @EnvironmentObject var transactionManager: TransactionManager
     
     @State var accounts: [Account] = []
     
@@ -61,7 +62,7 @@ struct AccountsView: View {
                         //                        }
                         //                    }
                         ForEach(accounts) { account in
-                            NavigationLink(destination: AccountDetailView(account: account)) {
+                            NavigationLink(destination: AccountDetailView(account: account).environmentObject(transactionManager)) {
                                 AccountCardView(account: account)
                             }
                         }

@@ -199,11 +199,11 @@
 			children = (
 				C27AC1E22A39C36100C6A6C8 /* AccountsManager.swift */,
 				C280829B2A2ED2AB00185A17 /* UserSettingsManager.swift */,
+				C27AC1E82A39E22E00C6A6C8 /* TransactionManager.swift */,
 				C29262872A2FCA6100E7901A /* ToolsManager.swift */,
 				C27AC1E02A39C25C00C6A6C8 /* CoreDataManager.swift */,
 				C27AC1E42A39CD6100C6A6C8 /* CategoryManager.swift */,
 				C27AC1E62A39DF7100C6A6C8 /* GoalsManager.swift */,
-				C27AC1E82A39E22E00C6A6C8 /* TransactionManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

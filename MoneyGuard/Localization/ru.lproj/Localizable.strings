@@ -71,6 +71,7 @@
     "title_stats_tab_history" = "История";
     "stats_tab_out_of_caption" = "Из";
     "stats_tab_spent_this_month" = "потрачено за месяц";
+    "stats_tab_transactions" = "Транзакции";
 
 "menu_tab" = "Меню";
     "title_menu_screen" = "Меню";

@@ -11,7 +11,7 @@ struct AccountDetailView: View {
     @EnvironmentObject var userSettings: UserSettingsManager
     private let tool: ToolsManager = ToolsManager()
     @EnvironmentObject var accountsManager: AccountsManager
-//    @State var accounts: [Account]
+    @EnvironmentObject var transactionManager: TransactionManager
     @Environment(\.presentationMode) var presentationMode
     @State private var showGallery = false
     @State private var selectedIcon: Icons? = .default
@@ -20,6 +20,9 @@ struct AccountDetailView: View {
     @State var editMode = false
     @State private var showAlert = false
     @State var accountNewName: String = ""
+    
+    @State var transactions: [Transaction] = []
+    @State var showLatestFirst: Bool = true
     
     var body: some View {
         ScrollView {
@@ -147,12 +150,56 @@ struct AccountDetailView: View {
             }
             .background(.ultraThinMaterial.opacity(0.5))
             
-            Spacer()
+            if !editMode && transactions.count > 0 {
+                VStack(alignment: .center){
+                    HStack{
+                        Text("stats_tab_transactions")
+                            .font(.headline)
+                            .padding(.horizontal)
+                            .padding(.top)
+                        Spacer()
+                        Button {
+                            showLatestFirst.toggle()
+                            transactions = transactionManager.transactionsList
+                                .filter { $0.account == account }
+                                .sorted(by: { showLatestFirst ? $0.date ?? Date() > $1.date ?? Date() : $0.date ?? Date() < $1.date ?? Date() })
+                        } label: {
+                            HStack{
+                                Image(systemName: showLatestFirst ? "arrow.down" : "arrow.up")
+                                    .padding(.horizontal)
+                            }
+                        }
+                        
+                    }
+                    
+                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
+                        ForEach(transactions, id: \.self) { transaction in
+                            NavigationLink(destination: Text("Hello")) {
+                                TransactionCardView(transaction: transaction)
+                            }
+                        }
+                        if transactions.count > 40 {
+                            NavigationLink(destination: Text("more")) {
+                                HStack{
+                                    Text("btn_show_more")
+                                    Image(systemName: "arrow.right")
+                                }.padding()
+                            }
+                        }
+                        
+                        Spacer(minLength: 70)
+                    }
+                }
+            }
         }
         .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $accountNewName))])
         .onAppear{
             accountNewName = account.name ?? ""
             selectedIcon = Icons(rawValue: account.icon ?? "default")
+            transactions = transactionManager.transactionsList
+                .filter { $0.account == account }
+                .sorted(by: { showLatestFirst ? $0.date ?? Date() > $1.date ?? Date() : $0.date ?? Date() < $1.date ?? Date() })
+
         }
         .toolbar {
             Button {

@@ -19,19 +19,7 @@ struct HomeView: View {
     
     @State private var showNewTransactionSheet = false
     
-    @State private var transactions: [SampleTransaction] = [
-//        SampleTransaction(date: Date(), value: 1000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 2000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Red", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 3000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 4000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 5000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Red", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 6000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 7000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 8000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 9000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 10000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
-//        SampleTransaction(date: Date(), value: 11000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Green", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3))
-    ]
+    @State private var transactions: [Transaction] = []
     
     
     var body: some View {
@@ -79,7 +67,6 @@ struct HomeView: View {
                             VStack (alignment: .trailing){
                                 
                                 Picker(selection: $userSettings.selectedAccountID, label: Text("accounts_tab_account")) {
-                                    //                                Text("accounts_tab_all_accounts").tag(nil as UUID?)
                                     ForEach(accounts.sorted(by: { $0.lastActivity ?? Date() > $1.lastActivity ?? Date() }), id: \.id) { account in
                                         Text(account.name ?? "")
                                             .tag(account.id)
@@ -87,6 +74,7 @@ struct HomeView: View {
                                 }
                                 .onChange(of: userSettings.selectedAccountID) { newSelectedAccountID in
                                     userSettings.saveSelectedAccount()
+                                    transactions = transactionManager.transactionsList.filter { $0.account?.id == UserSettingsManager.shared.selectedAccountID }.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
                                 }
                                 
                                 
@@ -100,28 +88,25 @@ struct HomeView: View {
                                             .foregroundColor(.accentColor)
                                             .padding(.horizontal)
                                     } else {
-                                        //                                    let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
-                                        //                                    Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
-                                        //                                        .font(.title2)
-                                        //                                        .fontWeight(.bold)
-                                        //                                        .lineLimit(1)
-                                        //                                        .minimumScaleFactor(0.5)
-                                        //                                        .foregroundColor(.accentColor)
-                                        //                                        .padding(.horizontal)
+//                                    let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
+//                                    Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
+//                                        .font(.title2)
+//                                        .fontWeight(.bold)
+//                                        .lineLimit(1)
+//                                        .minimumScaleFactor(0.5)
+//                                        .foregroundColor(.accentColor)
+//                                        .padding(.horizontal)
                                     }
                                 } else {
-                                    //                                let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
-                                    //                                Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
-                                    //                                    .font(.title2)
-                                    //                                    .fontWeight(.bold)
-                                    //                                    .lineLimit(1)
-                                    //                                    .minimumScaleFactor(0.5)
-                                    //                                    .foregroundColor(.accentColor)
-                                    //                                    .padding(.horizontal)
+//                                let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
+//                                Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
+//                                    .font(.title2)
+//                                    .fontWeight(.bold)
+//                                    .lineLimit(1)
+//                                    .minimumScaleFactor(0.5)
+//                                    .foregroundColor(.accentColor)
+//                                    .padding(.horizontal)
                                 }
-                                
-                                
-                                
                             }
                         }
                     }
@@ -162,6 +147,7 @@ struct HomeView: View {
                 NewTransactionView().accentColor(userSettings.accentColor.color)
             })
             .onAppear{
+                transactions = transactionManager.transactionsList.filter { $0.account?.id == UserSettingsManager.shared.selectedAccountID }.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
                 accounts = accountManager.accountList
             }
             .navigationTitle("app_name")

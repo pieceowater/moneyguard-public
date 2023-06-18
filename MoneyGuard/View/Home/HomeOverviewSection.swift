@@ -9,7 +9,10 @@ import SwiftUI
 
 struct HomeOverviewSectionView: View {
     @Binding var selectedReportPeriod: Int
-    @Binding var transactions: [SampleTransaction]
+    @Binding var transactions: [Transaction]
+    
+    @State var incomeTotal: Double = 0
+    @State var expenseTotal: Double = 0
     var body: some View {
         VStack (alignment: .leading){
             Text("home_tab_overview")
@@ -22,13 +25,22 @@ struct HomeOverviewSectionView: View {
                 PeriodBtnView(selectedReportPeriod: $selectedReportPeriod, value: 3, label: NSLocalizedString("period_filter_monthly", comment: ""))
             }
             .padding(.horizontal)
+            .onChange(of: selectedReportPeriod) { newValue in
+                calculateTotals()
+            }
             
             HStack{
-                SummaryCardView(label: NSLocalizedString("home_tab_income", comment: ""), balance: 15500.0, color: .green)
+                SummaryCardView(label: NSLocalizedString("home_tab_income", comment: ""), balance: incomeTotal, color: .green)
                 Spacer()
-                SummaryCardView(label: NSLocalizedString("home_tab_expense", comment: ""), balance: 210005.0, color: .red)
+                SummaryCardView(label: NSLocalizedString("home_tab_expense", comment: ""), balance: expenseTotal, color: .red)
             }
             .padding()
+            .onAppear{
+                calculateTotals()
+            }
+            .onChange(of: filteredTransactions) { newValue in
+                calculateTotals()
+            }
             
             if transactions.count == 0 {
                 HStack{
@@ -48,12 +60,12 @@ struct HomeOverviewSectionView: View {
                 .padding()
             } else {
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
-                    ForEach(transactions.sorted(by: { $0.date > $1.date }).prefix(10), id: \.self) { transaction in
+                    ForEach(filteredTransactions, id: \.self) { transaction in
                         NavigationLink(destination: Text("Hello")) {
                             TransactionCardView(transaction: transaction)
                         }
                     }
-                    if transactions.count > 10 {
+                    if transactions.count > 40 {
                         NavigationLink(destination: Text("more")) {
                             HStack{
                                 Text("btn_show_more")
@@ -65,6 +77,43 @@ struct HomeOverviewSectionView: View {
                     Spacer(minLength: 70)
                 }
             }
+            
+            
+            
         }
+        
+        
     }
+    
+    private var filteredTransactions: [Transaction] {
+            let currentDate = Date()
+            
+            switch selectedReportPeriod {
+            case 1: // Daily
+                return transactions.filter {
+                    Calendar.current.isDateInToday($0.date ?? Date())
+                }
+            case 2: // Weekly
+                return transactions.filter {
+                    Calendar.current.isDate($0.date ?? Date(), equalTo: currentDate, toGranularity: .weekOfYear)
+                }
+            case 3: // Monthly
+                return transactions.filter {
+                    Calendar.current.isDate($0.date ?? Date(), equalTo: currentDate, toGranularity: .month)
+                }
+            default:
+                return transactions
+            }
+        }
+    
+    private func calculateTotals() {
+        incomeTotal = filteredTransactions
+            .filter { $0.category?.type == "replenishments" }
+            .reduce(0) { $0 + $1.value }
+        
+        expenseTotal = filteredTransactions
+            .filter { $0.category?.type == "expenses" }
+            .reduce(0) { $0 + $1.value }
+    }
+    
 }

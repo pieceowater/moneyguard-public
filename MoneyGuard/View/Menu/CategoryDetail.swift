@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoryDetailView: View {
     @EnvironmentObject var userSettings: UserSettingsManager
     @EnvironmentObject var categoriesManager: CategoryManager
+    @EnvironmentObject var transactionManager: TransactionManager
     private let tool: ToolsManager = ToolsManager()
     @Environment(\.presentationMode) var presentationMode
     @State private var showGallery = false
@@ -21,6 +22,9 @@ struct CategoryDetailView: View {
     @State private var selectedDegree: Int = 2
     @State private var selectedColor: CategoryColor = .Blue
     @State private var showNewTransactionSheet = false
+    
+    @State var transactions: [Transaction] = []
+    @State var showLatestFirst: Bool = true
     
     var body: some View {
         ScrollView{
@@ -175,9 +179,10 @@ struct CategoryDetailView: View {
                         
                         if category.type == "expenses" {
                             StarRatingView(rating: Int(category.essentialDegree))
-                                .padding(.bottom)
                         }
                     }
+                    .padding(.bottom)
+                    /*
                     Button {
                         showNewTransactionSheet = true
                         giveHapticFeedback()
@@ -197,7 +202,7 @@ struct CategoryDetailView: View {
                         .padding(.horizontal)
                         .padding(.bottom, 10)
                     }
-
+                    */
                     
                 }
                 HStack{
@@ -206,7 +211,47 @@ struct CategoryDetailView: View {
             }
             .background(.ultraThinMaterial.opacity(0.5))
             
-            Spacer()
+            if !editMode && transactions.count > 0 {
+                VStack(alignment: .center){
+                    HStack{
+                        Text("stats_tab_transactions")
+                            .font(.headline)
+                            .padding(.horizontal)
+                            .padding(.top)
+                        Spacer()
+                        Button {
+                            showLatestFirst.toggle()
+                            transactions = transactionManager.transactionsList
+                                .filter { $0.category == category }
+                                .sorted(by: { showLatestFirst ? $0.date ?? Date() > $1.date ?? Date() : $0.date ?? Date() < $1.date ?? Date() })
+                        } label: {
+                            HStack{
+                                Image(systemName: showLatestFirst ? "arrow.down" : "arrow.up")
+                                    .padding(.horizontal)
+                            }
+                        }
+                        
+                    }
+                    
+                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
+                        ForEach(transactions, id: \.self) { transaction in
+                            NavigationLink(destination: Text("Hello")) {
+                                TransactionCardView(transaction: transaction)
+                            }
+                        }
+                        if transactions.count > 40 {
+                            NavigationLink(destination: Text("more")) {
+                                HStack{
+                                    Text("btn_show_more")
+                                    Image(systemName: "arrow.right")
+                                }.padding()
+                            }
+                        }
+                        
+                        Spacer(minLength: 70)
+                    }
+                }
+            }
         }
         .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $categoryNewName))])
         .onAppear{
@@ -214,6 +259,9 @@ struct CategoryDetailView: View {
             selectedDegree = Int(category.essentialDegree)
             selectedColor = CategoryColor(rawValue: category.color ?? "Blue") ?? .Blue
             selectedIcon = Icons(rawValue: category.icon ?? "default")
+            transactions = transactionManager.transactionsList
+                .filter { $0.category == category }
+                .sorted(by: { showLatestFirst ? $0.date ?? Date() > $1.date ?? Date() : $0.date ?? Date() < $1.date ?? Date() })
         }
         .toolbar {
             Button {

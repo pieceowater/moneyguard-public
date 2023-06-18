@@ -19,10 +19,10 @@ class TransactionManager: ObservableObject {
         transactionsList = coreData.fetchEntities()
     }
     
-    func createTransaction(transactionComment: String, transactionValue: Double, transactionCategory: Category, transactionAccount: Account){
+    func createTransaction(transactionDate: Date, transactionComment: String, transactionValue: Double, transactionCategory: Category, transactionAccount: Account){
         if let newTransaction: Transaction = CoreDataManager.shared.createEntity() {
             newTransaction.id = UUID()
-            newTransaction.date = Date()
+            newTransaction.date = transactionDate
             newTransaction.comment = transactionComment
             newTransaction.value = transactionValue
             

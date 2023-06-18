@@ -289,7 +289,7 @@ struct NewTransactionView: View {
                     if selectedCategory.type == "expenses" && Double(amount) ?? 0 > selectedAccount.balance {
                         return
                     }
-                    transactionManager.createTransaction(transactionComment: comment, transactionValue: Double(amount) ?? 0, transactionCategory: selectedCategory, transactionAccount: selectedAccount)
+                    transactionManager.createTransaction(transactionDate: selectedDate, transactionComment: comment, transactionValue: Double(amount) ?? 0, transactionCategory: selectedCategory, transactionAccount: selectedAccount)
                     transactionManager.getTransactionList()
                     accountManager.getAccountsList()
                     giveHapticFeedback()
