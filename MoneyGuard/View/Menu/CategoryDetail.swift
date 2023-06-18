@@ -204,6 +204,7 @@ struct CategoryDetailView: View {
             
             Spacer()
         }
+        .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $categoryNewName))])
         .onAppear{
             categoryNewName = category.name ?? ""
             selectedDegree = Int(category.essentialDegree)

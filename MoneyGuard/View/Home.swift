@@ -16,6 +16,8 @@ struct HomeView: View {
     
     @State private var selectedReportPeriod = 1
     
+    @State private var showNewTransactionSheet = false
+    
     @State private var transactions: [SampleTransaction] = [
         SampleTransaction(date: Date(), value: 1000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Blue", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
         SampleTransaction(date: Date(), value: 2000.0, account: SampleAccountModel(name: "Kaspi", icon: "ball", createDate: Date(), lastActivity: Date(), balance: 100000.0), category: SampleCategoryModel(name: "Food", color: "Red", createDate: Date(), lastActivity: Date(), icon: "pizza", type: "expenses", essentialDegree: 3)),
@@ -85,7 +87,7 @@ struct HomeView: View {
                                         .foregroundColor(.accentColor)
                                         .padding(.horizontal)
                                 } else {
-                                    let totalBalance = accounts.reduce(0) { $0 + ($1.balance ?? 0) }
+                                    let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
                                     Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
                                         .font(.title2)
                                         .fontWeight(.bold)
@@ -95,7 +97,7 @@ struct HomeView: View {
                                         .padding(.horizontal)
                                 }
                             } else {
-                                let totalBalance = accounts.reduce(0) { $0 + ($1.balance ?? 0) }
+                                let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
                                 Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
                                     .font(.title2)
                                     .fontWeight(.bold)
@@ -125,6 +127,7 @@ struct HomeView: View {
                     Spacer()
                     Button(action: {
                         giveHapticFeedback()
+                        showNewTransactionSheet = true
                     }) {
                         Image(systemName: "plus").foregroundColor(.accentColor)
                             .font(.title)
@@ -137,6 +140,9 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                 }
             }
+            .sheet(isPresented: $showNewTransactionSheet, content: {
+                NewTransactionView().accentColor(userSettings.accentColor.color)
+            })
             .onAppear{
                 accounts = accountManager.accountList
             }

@@ -149,6 +149,7 @@ struct AccountDetailView: View {
             
             Spacer()
         }
+        .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $accountNewName))])
         .onAppear{
             accountNewName = account.name ?? ""
             selectedIcon = Icons(rawValue: account.icon ?? "default")

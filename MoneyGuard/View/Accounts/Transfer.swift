@@ -72,6 +72,7 @@ struct TransferView: View {
             }
         }
         .navigationTitle("btn_transfer")
+        .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_amount", comment: ""))...", text: $transferAmount))])
         .onAppear {
             if let selectedAccount = defaultAccount {
                 senderAccountIndex = accountsManager.accountList.firstIndex(of: selectedAccount) ?? 0

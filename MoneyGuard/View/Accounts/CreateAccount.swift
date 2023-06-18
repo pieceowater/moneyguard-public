@@ -92,5 +92,6 @@ struct CreateAccountView: View {
         .sheet(isPresented: $showGallery) {
             GalleryView(selectedIcon: $selectedIcon).accentColor(userSettings.accentColor.color)
         }
+        .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $newAccountName))])
     }
 }
