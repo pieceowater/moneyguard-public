@@ -53,6 +53,7 @@
 		C2D74D6C2A2E56E50085BBFA /* MoneyGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D6B2A2E56E50085BBFA /* MoneyGuardTests.swift */; };
 		C2D74D762A2E56E50085BBFA /* MoneyGuardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */; };
 		C2D74D782A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */; };
+		C2E93ED52A3FACAD00FB49E5 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */; };
 		C2FE24BC2A3D65E000A9EC8B /* CreateCatedory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */; };
 		C2FE24BE2A3DADA000A9EC8B /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */; };
 /* End PBXBuildFile section */
@@ -126,6 +127,7 @@
 		C2D74D712A2E56E50085BBFA /* MoneyGuardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyGuardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITests.swift; sourceTree = "<group>"; };
 		C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
 		C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCatedory.swift; sourceTree = "<group>"; };
 		C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				C240DA442A38F6EB005B7CC0 /* ReccomendationsList.swift */,
 				C240DA462A38F716005B7CC0 /* ReccomendationsCard.swift */,
 				C240DA482A38F740005B7CC0 /* SavingsCard.swift */,
+				C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				C240DA452A38F6EB005B7CC0 /* ReccomendationsList.swift in Sources */,
 				C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */,
 				C292628B2A2FD53700E7901A /* AccountDetail.swift in Sources */,
+				C2E93ED52A3FACAD00FB49E5 /* TransactionDetail.swift in Sources */,
 				C2D74D5A2A2E56E30085BBFA /* MoneyGuard.xcdatamodeld in Sources */,
 				C27AC1E72A39DF7100C6A6C8 /* GoalsManager.swift in Sources */,
 				C240DA3D2A38F5B2005B7CC0 /* HomeOverviewSection.swift in Sources */,

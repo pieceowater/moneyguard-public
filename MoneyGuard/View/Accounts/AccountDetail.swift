@@ -174,7 +174,7 @@ struct AccountDetailView: View {
                     
                     LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
                         ForEach(transactions, id: \.self) { transaction in
-                            NavigationLink(destination: Text("Hello")) {
+                            NavigationLink(destination: TransactionDetailView(transaction: transaction)) {
                                 TransactionCardView(transaction: transaction)
                             }
                         }
