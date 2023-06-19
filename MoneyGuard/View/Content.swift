@@ -27,16 +27,16 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-//            StatsView()
-//                .tabItem {
-//                    Label("stats_tab", systemImage: "chart.bar.fill")
-//                }
-//                .tag(Tab.stats)
-//            GoalsView()
-//                .tabItem {
-//                    Label("goals_tab", systemImage: "star.fill")
-//                }
-//                .tag(Tab.goals)
+            StatsView()
+                .tabItem {
+                    Label("stats_tab", systemImage: "chart.bar.fill")
+                }
+                .tag(Tab.stats)
+            GoalsView()
+                .tabItem {
+                    Label("goals_tab", systemImage: "star.fill")
+                }
+                .tag(Tab.goals)
             HomeView()
                 .environmentObject(userSettings)
                 .environmentObject(accountsManager)

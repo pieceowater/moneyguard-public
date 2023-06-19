@@ -59,24 +59,24 @@ struct NewTransactionView: View {
                 
                 /*
                  .onChange(of: amount) { newValue in
-                     if newValue != "" {
-                         amountPreCalculation = calculateExpression(newValue) ?? 0
-                     }
+                 if newValue != "" {
+                 amountPreCalculation = calculateExpression(newValue) ?? 0
+                 }
                  }
                  
-                HStack(spacing: 5){ // custom key
-                    Button(action: {amount+="+"}, label: {Text("+").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
-                    Button(action: {amount+="-"}, label: {Text("-").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
-                    Button(action: {amount+="*"}, label: {Text("*").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
-                    Button(action: {amount+="/"}, label: {Text("/").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
-                }
-                
-                
-                HStack{
-                    Spacer()
-                    Text(tool.formatCurrency(amountPreCalculation) ?? "")
-                        .padding(.horizontal)
-                }
+                 HStack(spacing: 5){ // custom key
+                 Button(action: {amount+="+"}, label: {Text("+").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
+                 Button(action: {amount+="-"}, label: {Text("-").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
+                 Button(action: {amount+="*"}, label: {Text("*").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
+                 Button(action: {amount+="/"}, label: {Text("/").padding(.horizontal, 39).padding(.vertical, 5).background(.ultraThinMaterial).cornerRadius(10)})
+                 }
+                 
+                 
+                 HStack{
+                 Spacer()
+                 Text(tool.formatCurrency(amountPreCalculation) ?? "")
+                 .padding(.horizontal)
+                 }
                  */
                 
                 Divider().padding()
@@ -85,24 +85,24 @@ struct NewTransactionView: View {
                     Text("menu_settings_category_single")
                         .font(.subheadline)
                         .padding(.horizontal)
-                   
-                            
-                            if categories.expenses.count == 0 && categories.replenishments.count == 0 {
-                                VStack(alignment: .center, spacing: 25){
-                                    Image("grass")
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
-                                    Text("placeholder_message_no_categories_alt")
-                                        .multilineTextAlignment(.center)
-                                        .font(.caption)
-                                    HStack{
-                                        Spacer()
-                                    }
-                                }.padding(.vertical, 20)
-                                
-                            } else {
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 10) {
+                    
+                    
+                    if categories.expenses.count == 0 && categories.replenishments.count == 0 {
+                        VStack(alignment: .center, spacing: 25){
+                            Image("grass")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                            Text("placeholder_message_no_categories_alt")
+                                .multilineTextAlignment(.center)
+                                .font(.caption)
+                            HStack{
+                                Spacer()
+                            }
+                        }.padding(.vertical, 20)
+                        
+                    } else {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 0) {
                                 ForEach(categories.expenses, id: \.self) { category in
                                     Button(action: {
                                         selectedCategory = category.id ?? UUID()
@@ -127,9 +127,9 @@ struct NewTransactionView: View {
                                         )
                                         .cornerRadius(15)
                                     }
-                                }
+                                }.padding(.horizontal, 10)
                                 
-                                Divider().padding(.vertical)
+                                Divider().padding(.vertical).padding(.horizontal, 10)
                                 
                                 ForEach(categories.replenishments, id: \.self) { category in
                                     Button(action: {
@@ -155,14 +155,14 @@ struct NewTransactionView: View {
                                         )
                                         .cornerRadius(15)
                                     }
-                                }
+                                }.padding(.horizontal, 10)
                             }
                         }
-                        .padding(.horizontal)
+                        
                     }
                 }
-
-            
+                
+                
                 
                 VStack(alignment: .leading){ // date picker
                     Text("word_date")
@@ -183,11 +183,11 @@ struct NewTransactionView: View {
                     }
                     if showDatepicker {
                         DatePicker("word_date", selection: $selectedDate, in: ...Date())
-//                            .datePickerStyle(.graphical)
+                        //                            .datePickerStyle(.graphical)
                             .labelsHidden()
-//                            .padding()
-//                            .background(.ultraThinMaterial)
-//                            .cornerRadius(15)
+                        //                            .padding()
+                        //                            .background(.ultraThinMaterial)
+                        //                            .cornerRadius(15)
                             .padding(.horizontal)
                             .padding(.bottom, 5)
                     }
@@ -311,7 +311,7 @@ struct NewTransactionView: View {
                 .padding(.bottom, 5)
             }
             .disabled(categories.expenses.count == 0 && categories.replenishments.count == 0)
-
+            
             
         }
         .onAppear{
@@ -325,7 +325,7 @@ struct NewTransactionView: View {
     }
     
     
-
+    
 }
 
 

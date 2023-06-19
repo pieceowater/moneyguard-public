@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Recommendation: Identifiable, Hashable, Equatable {
     let id = UUID()
-    let category: SampleCategoryModel
+    let category: Category
     let message: String
     
     static func ==(lhs: Recommendation, rhs: Recommendation) -> Bool {
@@ -27,10 +27,10 @@ struct ReccomendationsCardView: View {
     var body: some View {
         VStack {
             HStack{
-                Image(recommendation.category.icon)
+                Image(recommendation.category.icon ?? "default")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 80)
+                    .frame(height: 60)
                     .padding(.leading)
                 VStack(alignment: .leading){
                     Text("«\(recommendation.message)»")
@@ -39,20 +39,12 @@ struct ReccomendationsCardView: View {
                         .minimumScaleFactor(0.5)
                         .padding(.bottom, 5)
                     HStack{
-                        Text(recommendation.category.name)
+                        Text(recommendation.category.name ?? "")
                             .font(.subheadline)
-                            .foregroundColor(Color(recommendation.category.color))
+                            .foregroundColor(Color(recommendation.category.color ?? "Blue"))
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                         Spacer()
-                        Button {
-                         
-                            giveHapticFeedback()
-                        } label: {
-                            Text("btn_hide")
-                                .foregroundColor(.secondary)
-                                .font(.caption)
-                        }
                     }
                 }
                 .padding()

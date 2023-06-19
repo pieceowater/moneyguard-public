@@ -35,6 +35,8 @@
 "placeholder_message_no_replenishments" = "Oh, no!\nYou have no Replenishments categories.";
 "placeholder_message_no_expenses" = "Well, there is no catogories to spend money!";
 "placeholder_message_no_categories_alt" = "You need to create categories first!\nGo to \"Menu\"->\"Category\"";
+"placeholder_message_no_recommendations_heading" = "No recommendations yet!";
+"placeholder_message_no_recommendations_body" = "Make more transactions so that we can count the number of useless expenses and give recommendations!";
 
 "period_filter_today" = "Today";
 "period_filter_yesterday" = "Yesterday";
@@ -99,4 +101,18 @@
             "about_appdescription" = "Empower your financial journey.\n\nTake charge of your money with ease. Effortlessly track expenses, set budgets, and stay on top of your financial goals. Unlock a clearer financial future with MoneyGuard, your trusted companion.";
             "about_developed" = "Developed by";
 
-
+"template_phrase_1" = "We recommend decreasing expenses in this category.";
+"template_phrase_2" = "Oops! Your expenses are too high for this category.";
+"template_phrase_3" = "Save your money for a vacation!";
+"template_phrase_4" = "Beware of impulse buying in this category.";
+"template_phrase_5" = "Cut back on unnecessary expenses in this category.";
+"template_phrase_6" = "Don't let this category eat up your budget.";
+"template_phrase_7" = "Time to tighten the purse strings for this category.";
+"template_phrase_8" = "Invest in experiences, not just stuff, in this category.";
+"template_phrase_9" = "This category is draining your bank account. Take control!";
+"template_phrase_10" = "You deserve a treat, but not at the expense of this category.";
+"template_phrase_11" = "Let's find cheaper alternatives for this category.";
+"template_phrase_12" = "Watch out! This category is a budget black hole.";
+"template_phrase_13" = "Keep your spending in check for this category.";
+"template_phrase_14" = "You can save money by reducing expenses in this category.";
+"template_phrase_15" = "Your wallet will thank you if you cut back on this category.";

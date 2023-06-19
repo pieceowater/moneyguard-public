@@ -94,8 +94,8 @@ struct TransactionDetailView: View {
                 title: Text("alert_confirm"),
                 message: Text("alert_sure_msg"),
                 primaryButton: .destructive(Text("alert_rm_btn"), action: {
-//                    accountsManager.deleteAccount(account: account)
-//                    accountsManager.getAccountsList()
+                    //                    accountsManager.deleteAccount(account: account)
+                    //                    accountsManager.getAccountsList()
                     transactionManager.deleteTransaction(transaction: transaction)
                     transactionManager.getTransactionList()
                     presentationMode.wrappedValue.dismiss()
