@@ -47,9 +47,11 @@ struct TransactionCardView: View {
         .padding(.horizontal)
     }
     
-    private func formatDate(_ date: Date?) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm, dd/MM"
-        return formatter.string(from: date ?? Date())
-    }
+    
+}
+
+func formatDate(_ date: Date?) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm, dd/MM"
+    return formatter.string(from: date ?? Date())
 }

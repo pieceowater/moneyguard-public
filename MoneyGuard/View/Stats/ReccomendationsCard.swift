@@ -30,12 +30,12 @@ struct ReccomendationsCardView: View {
                 Image(recommendation.category.icon ?? "default")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 60)
+                    .frame(height: 70)
                     .padding(.leading)
                 VStack(alignment: .leading){
                     Text("«\(recommendation.message)»")
                         .font(.headline)
-                        .lineLimit(2)
+                        .lineLimit(3)
                         .minimumScaleFactor(0.5)
                         .padding(.bottom, 5)
                     HStack{

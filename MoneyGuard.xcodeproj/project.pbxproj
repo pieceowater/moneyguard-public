@@ -54,6 +54,7 @@
 		C2D74D762A2E56E50085BBFA /* MoneyGuardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */; };
 		C2D74D782A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */; };
 		C2E93ED52A3FACAD00FB49E5 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */; };
+		C2E93ED72A3FF1C100FB49E5 /* SavingsCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E93ED62A3FF1C100FB49E5 /* SavingsCardDetail.swift */; };
 		C2FE24BC2A3D65E000A9EC8B /* CreateCatedory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */; };
 		C2FE24BE2A3DADA000A9EC8B /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		C2D74D752A2E56E50085BBFA /* MoneyGuardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITests.swift; sourceTree = "<group>"; };
 		C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
+		C2E93ED62A3FF1C100FB49E5 /* SavingsCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsCardDetail.swift; sourceTree = "<group>"; };
 		C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCatedory.swift; sourceTree = "<group>"; };
 		C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				C240DA462A38F716005B7CC0 /* ReccomendationsCard.swift */,
 				C240DA482A38F740005B7CC0 /* SavingsCard.swift */,
 				C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */,
+				C2E93ED62A3FF1C100FB49E5 /* SavingsCardDetail.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				C29262882A2FCA6100E7901A /* ToolsManager.swift in Sources */,
 				C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */,
 				C240DA512A38F8B2005B7CC0 /* SampleGoal.swift in Sources */,
+				C2E93ED72A3FF1C100FB49E5 /* SavingsCardDetail.swift in Sources */,
 				C240DA532A38F8D0005B7CC0 /* SampleAccountModel.swift in Sources */,
 				C240DA492A38F740005B7CC0 /* SavingsCard.swift in Sources */,
 				C27AC1E12A39C25C00C6A6C8 /* CoreDataManager.swift in Sources */,

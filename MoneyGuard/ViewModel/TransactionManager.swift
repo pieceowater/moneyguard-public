@@ -68,7 +68,7 @@ class TransactionManager: ObservableObject {
         return potentialSavingsCategories
     }
     
-    private func filterTransactionsLast30Days() -> [Transaction] {
+    func filterTransactionsLast30Days() -> [Transaction] {
         let currentDate = Date()
         let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)!
 
