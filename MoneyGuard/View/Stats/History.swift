@@ -95,6 +95,7 @@ struct HistoryView: View {
                                 
                                 Button(action: {
                                     updatePeriod()
+                                    getTransactions()
                                     selectedCategory = nil
                                     selectedAccount = nil
                                     getTransactions()
