@@ -30,7 +30,7 @@ struct StatsView: View {
                         Spacer()
                     }.padding()
                     
-                    NavigationLink(destination: SavingsCardDetailView()) {
+                    NavigationLink(destination: HistoryView(presetPeriod: 1)) {
                         SavingsCardView(spentAmount: transactionManager.getTotalExpensesLast30Days(), potentialSavings: transactionManager.getTotalSpendingForCategories())
                     }
                 } else {

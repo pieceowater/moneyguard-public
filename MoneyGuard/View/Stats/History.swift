@@ -138,13 +138,12 @@ struct HistoryView: View {
                                         x: .value("Date", tool.formatDateMin(trans.date ?? Date())),
                                         y: .value("Amount", trans.value)
                                     )
-                                    .foregroundStyle(Color(trans.category?.color ?? "Blue"))
+                                    .foregroundStyle(by: .value("Category", trans.category?.name ?? ""))
                                 }
                             }
                             .onAppear{
                                 print(categoryManager.categoryColors)
                             }
-                            .chartLegend(.hidden)
                             .padding()
                             .background(.ultraThinMaterial)
                             .cornerRadius(15)
