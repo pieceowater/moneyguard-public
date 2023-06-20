@@ -51,9 +51,11 @@ struct StatsView: View {
                     Spacer()
                 }.padding()
                 
-                ForEach(filters.indices, id: \.self) { index in
-                    NavigationLink(destination: HistoryView()) {
-                        HistoryItemView(caption: filters[index])
+                VStack{
+                    ForEach(filters.indices, id: \.self) { index in
+                        NavigationLink(destination: HistoryView(presetPeriod: index)) {
+                            HistoryItemView(caption: filters[index])
+                        }
                     }
                 }
                 Spacer()

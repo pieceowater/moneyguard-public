@@ -15,134 +15,245 @@ struct HistoryView: View {
     @State var selectedCategory: Category? = nil
     @State var selectedAccount: Account? = nil
     
+    @State var presetPeriod: Int? = 0
+    
+    @State var transactions: [Transaction] = []
+    
+    @State var incomeTotal: Double = 0
+    @State var expenseTotal: Double = 0
+    
+    @State var showFilter: Bool = false
+    
     var body: some View {
-        ScrollView {
-            VStack{
-                VStack {
-                    VStack(alignment: .leading) {
-                        Text("Period")
-                            .font(.headline)
-                            .padding(.horizontal)
-                            .padding(.top)
-                        
-                        DateRangePicker(startDate: $period.startDate, endDate: $period.endDate)
-                    }
-                    
-                    HStack{
+        VStack{
+            ScrollView {
+                    if showFilter {
                         VStack(alignment: .leading) {
-                            Text("Category")
-                                .font(.headline)
-                                .padding(.horizontal)
-                                .padding(.top)
-                            
-                            Picker("", selection: $selectedCategory) {
-                                Text("All Categories").tag(nil as Category?)
-                                ForEach(categoryManager.categoryList) { category in
-                                    Text(category.name ?? "").tag(category as Category?)
-                                }
+                            VStack(alignment: .leading) {
+                                Text("Period")
+                                    .font(.headline)
+                                    .padding(.horizontal)
+                                    .padding(.top)
+                                
+                                DateRangePicker(startDate: $period.startDate, endDate: $period.endDate)
+                                    .padding(.horizontal)
                             }
-                            .pickerStyle(.menu)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(10)
-                            .padding(.horizontal)
                             
                             HStack{
+                                VStack(alignment: .leading) {
+                                    Text("Category")
+                                        .font(.headline)
+                                        .padding(.horizontal)
+                                        .padding(.top)
+                                    
+                                    Picker("", selection: $selectedCategory) {
+                                        Text("All Categories").tag(nil as Category?)
+                                        ForEach(categoryManager.categoryList) { category in
+                                            Text(category.name ?? "").tag(category as Category?)
+                                        }
+                                    }
+                                    .pickerStyle(.menu)
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal)
+                                    
+                                    HStack{
+                                        Spacer()
+                                    }
+                                }
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Account")
+                                        .font(.headline)
+                                        .padding(.horizontal)
+                                        .padding(.top)
+                                    
+                                    Picker("", selection: $selectedAccount) {
+                                        Text("All Accounts").tag(nil as Account?)
+                                        ForEach(accountManager.accountList) { account in
+                                            Text(account.name ?? "").tag(account as Account?)
+                                        }
+                                    }
+                                    .pickerStyle(.menu)
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal)
+                                    
+                                    HStack{
+                                        Spacer()
+                                    }
+                                }
+                            }
+                            
+                            
+                            Divider()
+                                .padding(.top)
+                            
+                            HStack(){
+                                
+                                
+                                
+                                Button(action: {
+                                    updatePeriod()
+                                    selectedCategory = nil
+                                    selectedAccount = nil
+                                    getTransactions()
+                                }, label: {
+                                    Text("Reset")
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal, 10)
+                                })
+                                .padding(.horizontal)
+                                
                                 Spacer()
+                                
+                                Button(action: {
+                                    getTransactions()
+                                }, label: {
+                                    Text("Apply")
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal, 30)
+                                        .background(Color.accentColor)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(13)
+                                        .padding(.horizontal)
+                                })
+                            }
+                            .padding(.bottom, 10)
+                        }
+                        .background(.ultraThinMaterial)
+                    }
+                    
+                    VStack (alignment: .leading){
+                        HStack{
+                            SummaryCardView(label: NSLocalizedString("home_tab_income", comment: ""), balance: incomeTotal, color: .green)
+                            Spacer()
+                            SummaryCardView(label: NSLocalizedString("home_tab_expense", comment: ""), balance: expenseTotal, color: .red)
+                        }
+                        .padding()
+                        .onAppear{
+                            calculateTotals()
+                        }
+                        .onChange(of: transactions) { newValue in
+                            calculateTotals()
+                        }
+                        
+                        if transactions.count == 0 {
+                            HStack{
+                                Spacer()
+                                VStack{
+                                    VStack(spacing: 25){
+                                        Image("help")
+                                            .resizable()
+                                            .frame(width: 70, height: 70)
+                                        Text("placeholder_message_no_transactions")
+                                            .multilineTextAlignment(.center)
+                                        
+                                    }.padding()
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                        } else {
+                            LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
+                                ForEach(transactions, id: \.self) { transaction in
+                                    NavigationLink(destination: TransactionDetailView(transaction: transaction)) {
+                                        TransactionCardView(transaction: transaction)
+                                    }
+                                }
+                                if transactions.count > 40 {
+                                    NavigationLink(destination: Text("more")) {
+                                        HStack{
+                                            Text("btn_show_more")
+                                            Image(systemName: "arrow.right")
+                                        }.padding()
+                                    }
+                                }
                             }
                         }
                         
-                        VStack(alignment: .leading) {
-                            Text("Account")
-                                .font(.headline)
-                                .padding(.horizontal)
-                                .padding(.top)
-                            
-                            Picker("", selection: $selectedAccount) {
-                                Text("All Accounts").tag(nil as Account?)
-                                ForEach(accountManager.accountList) { account in
-                                    Text(account.name ?? "").tag(account as Account?)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(10)
-                            .padding(.horizontal)
-                            
-                            HStack{
-                                Spacer()
-                            }
-                        }
+                        
+                        
                     }
                     
-                    HStack{
-                        Button(action: {
-                            period = Period(startDate: Date(), endDate: Date())
-                            selectedCategory = nil
-                            selectedAccount = nil
-                        }, label: {
-                            Text("Reset")
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 20)
-                        })
-                        Spacer()
-                        Button(action: {
-                            
-                        }, label: {
-                            Text("Apply")
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 20)
-                                .background(Color.accentColor)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .padding(.horizontal)
-                        })
-                    }
-                    
-                }
-                .padding()
-                .background(.ultraThinMaterial)
-                .padding(.bottom)
-                
-                
-                Spacer()
             }
             .navigationTitle("History")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                updatePeriod()
+                getTransactions()
+            }
+            .toolbar {
+                Button {
+                    showFilter.toggle()
+                } label: {
+                    HStack{
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .rotationEffect(Angle(degrees: showFilter ? 0.0 : 180.0))
+                        Text("Filter")
+                    }
+                }
+                
+            }
+            
         }
+    }
+    
+    private func calculateTotals() {
+        incomeTotal = transactions
+            .filter { $0.category?.type == "replenishments" }
+            .reduce(0) { $0 + $1.value }
         
+        expenseTotal = transactions
+            .filter { $0.category?.type == "expenses" }
+            .reduce(0) { $0 + $1.value }
     }
-}
-
-
-struct HistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryView()
+    
+    private func updatePeriod() {
+        switch presetPeriod {
+        case 0: // Today
+            let currentDate = Date()
+            period = Period(startDate: currentDate, endDate: currentDate)
+        case 1: // This month
+            let currentDate = Date()
+            let calendar = Calendar.current
+            let startDate = calendar.dateInterval(of: .month, for: currentDate)?.start ?? currentDate
+            period = Period(startDate: startDate, endDate: currentDate)
+        case 2: // From first transaction date to last transaction date
+            let transactions = transactionManager.transactionsList
+            let sortedTransactions = transactions.sorted { $0.date ?? Date() < $1.date ?? Date() }
+            let startDate = sortedTransactions.first?.date ?? Date()
+            let endDate = sortedTransactions.last?.date ?? Date()
+            period = Period(startDate: startDate, endDate: endDate)
+        default:
+            break
+        }
     }
+    
+    private func getTransactions() {
+        transactions = transactionManager.transactionsList
+        transactions = transactionManager.getTransactionsByPeriod(period: period, transactions: transactionManager.getTransactionsByCategory(category: selectedCategory, transactions: transactionManager.getTransactionsByAccount(account: selectedAccount, transactions: transactions)))
+    }
+    
 }
-
 
 struct DateRangePicker: View {
     @Binding var startDate: Date
     @Binding var endDate: Date
     
     var body: some View {
-        HStack{
+        HStack(spacing: 10){
             DatePicker("", selection: $startDate, in: ...endDate, displayedComponents: .date)
-                .datePickerStyle(.compact)
-                .padding(.horizontal)
+                .labelsHidden()
                 .onChange(of: startDate) { newStartDate in
                     if newStartDate > endDate {
                         endDate = newStartDate
                     }
                 }
-            Spacer()
             Image(systemName: "chevron.right")
                 .font(.headline)
-            Spacer()
             DatePicker("", selection: $endDate, in: startDate..., displayedComponents: .date)
-                .datePickerStyle(.compact)
                 .labelsHidden()
-                .padding(.horizontal)
         }
     }
 }

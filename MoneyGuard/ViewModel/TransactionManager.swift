@@ -121,29 +121,42 @@ class TransactionManager: ObservableObject {
     }
     
     
-    func getTransactionsByPeriod(period: Period) -> [Transaction] {
-            let startDate = period.startDate
-            let endDate = period.endDate
+    func getTransactionsByPeriod(period: Period, transactions: [Transaction]) -> [Transaction] {
+        let startDate = period.startDate
+        let endDate = period.endDate
 
-            return transactionsList.filter { transaction in
-                if let transactionDate = transaction.date {
-                    return startDate <= transactionDate && transactionDate <= endDate
-                }
-                return false
+        return transactions.filter { transaction in
+            if let transactionDate = transaction.date {
+                return startDate <= transactionDate && transactionDate <= endDate
             }
+            return false
         }
-        
-        func getTransactionsByCategory(category: Category) -> [Transaction] {
-            return transactionsList.filter { $0.category == category }
+    }
+
+    func getTransactionsByCategory(category: Category?, transactions: [Transaction]) -> [Transaction] {
+        if let selectedCategory = category {
+            return transactions.filter { $0.category == selectedCategory }
+        } else {
+            return transactions
         }
-        
-        func getTransactionsByValue(valueThreshold: Double, isGreater: Bool) -> [Transaction] {
-            if isGreater {
-                return transactionsList.filter { $0.value > valueThreshold }
-            } else {
-                return transactionsList.filter { $0.value < valueThreshold }
-            }
+    }
+
+    func getTransactionsByAccount(account: Account?, transactions: [Transaction]) -> [Transaction] {
+        if let selectedAccount = account {
+            return transactions.filter { $0.account == selectedAccount }
+        } else {
+            return transactions
         }
+    }
+
+
+    func getTransactionsByValue(valueThreshold: Double, isGreater: Bool, transactions: [Transaction]) -> [Transaction] {
+        if isGreater {
+            return transactions.filter { $0.value > valueThreshold }
+        } else {
+            return transactions.filter { $0.value < valueThreshold }
+        }
+    }
 
 }
 

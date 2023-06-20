@@ -44,7 +44,7 @@
 "period_filter_all_time" = "За все время";
 "period_filter_custom_time" = "Выбрать";
 
-"period_filter_daily" = "День";
+"period_filter_daily" = "Сегодня";
 "period_filter_weekly" = "Неделя";
 "period_filter_monthly" = "Месяц";
 
