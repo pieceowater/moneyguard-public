@@ -21,7 +21,7 @@
 		C240DA4D2A38F843005B7CC0 /* SampleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA4C2A38F843005B7CC0 /* SampleCategory.swift */; };
 		C240DA4F2A38F883005B7CC0 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA4E2A38F883005B7CC0 /* SampleTransaction.swift */; };
 		C240DA512A38F8B2005B7CC0 /* SampleGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA502A38F8B2005B7CC0 /* SampleGoal.swift */; };
-		C240DA532A38F8D0005B7CC0 /* SampleAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA522A38F8D0005B7CC0 /* SampleAccountModel.swift */; };
+		C240DA532A38F8D0005B7CC0 /* SampleAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA522A38F8D0005B7CC0 /* SampleAccount.swift */; };
 		C27AC1E12A39C25C00C6A6C8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AC1E02A39C25C00C6A6C8 /* CoreDataManager.swift */; };
 		C27AC1E32A39C36100C6A6C8 /* AccountsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AC1E22A39C36100C6A6C8 /* AccountsManager.swift */; };
 		C27AC1E52A39CD6100C6A6C8 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AC1E42A39CD6100C6A6C8 /* CategoryManager.swift */; };
@@ -92,7 +92,7 @@
 		C240DA4C2A38F843005B7CC0 /* SampleCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCategory.swift; sourceTree = "<group>"; };
 		C240DA4E2A38F883005B7CC0 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
 		C240DA502A38F8B2005B7CC0 /* SampleGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGoal.swift; sourceTree = "<group>"; };
-		C240DA522A38F8D0005B7CC0 /* SampleAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAccountModel.swift; sourceTree = "<group>"; };
+		C240DA522A38F8D0005B7CC0 /* SampleAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAccount.swift; sourceTree = "<group>"; };
 		C27AC1E02A39C25C00C6A6C8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C27AC1E22A39C36100C6A6C8 /* AccountsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsManager.swift; sourceTree = "<group>"; };
 		C27AC1E42A39CD6100C6A6C8 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				C240DA4C2A38F843005B7CC0 /* SampleCategory.swift */,
 				C240DA4E2A38F883005B7CC0 /* SampleTransaction.swift */,
 				C240DA502A38F8B2005B7CC0 /* SampleGoal.swift */,
-				C240DA522A38F8D0005B7CC0 /* SampleAccountModel.swift */,
+				C240DA522A38F8D0005B7CC0 /* SampleAccount.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				C2D74D552A2E56E30085BBFA /* MoneyGuardApp.swift in Sources */,
 				C240DA512A38F8B2005B7CC0 /* SampleGoal.swift in Sources */,
 				C2E93ED72A3FF1C100FB49E5 /* SavingsCardDetail.swift in Sources */,
-				C240DA532A38F8D0005B7CC0 /* SampleAccountModel.swift in Sources */,
+				C240DA532A38F8D0005B7CC0 /* SampleAccount.swift in Sources */,
 				C240DA492A38F740005B7CC0 /* SavingsCard.swift in Sources */,
 				C27AC1E12A39C25C00C6A6C8 /* CoreDataManager.swift in Sources */,
 				C292627E2A2F9A8F00E7901A /* Accounts.swift in Sources */,
