@@ -52,7 +52,7 @@ struct StatsView: View {
                 }.padding()
                 
                 ForEach(filters.indices, id: \.self) { index in
-                    NavigationLink(destination: Text(String(index))) {
+                    NavigationLink(destination: HistoryView()) {
                         HistoryItemView(caption: filters[index])
                     }
                 }

@@ -119,5 +119,35 @@ class TransactionManager: ObservableObject {
         let totalExpenses = expensesTransactions.reduce(0) { $0 + $1.value }
         return totalExpenses
     }
+    
+    
+    func getTransactionsByPeriod(period: Period) -> [Transaction] {
+            let startDate = period.startDate
+            let endDate = period.endDate
 
+            return transactionsList.filter { transaction in
+                if let transactionDate = transaction.date {
+                    return startDate <= transactionDate && transactionDate <= endDate
+                }
+                return false
+            }
+        }
+        
+        func getTransactionsByCategory(category: Category) -> [Transaction] {
+            return transactionsList.filter { $0.category == category }
+        }
+        
+        func getTransactionsByValue(valueThreshold: Double, isGreater: Bool) -> [Transaction] {
+            if isGreater {
+                return transactionsList.filter { $0.value > valueThreshold }
+            } else {
+                return transactionsList.filter { $0.value < valueThreshold }
+            }
+        }
+
+}
+
+struct Period {
+    var startDate: Date
+    var endDate: Date
 }
