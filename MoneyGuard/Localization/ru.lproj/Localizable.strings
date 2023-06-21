@@ -17,6 +17,8 @@
 "btn_cancel" = "Отменить";
 "btn_delete" = "Удалить";
 "btn_transfer" = "Перевод средств";
+"btn_apply" = "Применить";
+"btn_reset" = "Сбросить";
 
 "alert_confirm" = "Подтвердите";
 "alert_sure_msg" = "Вы уверены?";
@@ -52,6 +54,7 @@
 "word_balance" = "Баланс";
 "word_amount" = "Сумма";
 "word_date" = "Дата";
+"word_period" = "Период";
 
 "home_tab" = "Главная";
     "home_tab_overview" = "Обзор";
@@ -74,6 +77,11 @@
     "stats_tab_out_of_caption" = "Из";
     "stats_tab_spent_this_month" = "потрачено за месяц";
     "stats_tab_transactions" = "Транзакции";
+    "stats_tab_daily_avg" = "Ср. за День";
+    "stats_tab_monthly_avg" = "Ср. За Месяц";
+    "stats_tab_history" = "История";
+    "stats_tab_history_all_categories" = "Все Категории";
+    "stats_tab_history_all_accounts" = "Все Счета";
 
 "menu_tab" = "Меню";
     "title_menu_screen" = "Меню";

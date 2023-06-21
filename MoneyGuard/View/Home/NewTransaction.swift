@@ -295,7 +295,6 @@ struct NewTransactionView: View {
                     giveHapticFeedback()
                 }
                 presentationMode.wrappedValue.dismiss()
-                print(transactionManager.transactionsList)
             }) {
                 HStack {
                     Spacer()

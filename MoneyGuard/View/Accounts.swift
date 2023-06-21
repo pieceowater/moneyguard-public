@@ -87,10 +87,8 @@ struct AccountsView: View {
             })
             .navigationTitle("accounts_tab")
             .onAppear{
-                print("Appear")
                 accountsManager.getAccountsList()
                 accounts = accountsManager.accountList
-                print(accountsManager.accountList)
             }
         }
     }

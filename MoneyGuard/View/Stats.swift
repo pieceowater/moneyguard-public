@@ -19,7 +19,7 @@ struct StatsView: View {
                 
                 HStack(spacing: 10){
                     VStack(alignment: .leading){
-                        Text("Daily AVG")
+                        Text("stats_tab_daily_avg")
                             .font(.subheadline)
                         Text(tool.formatCurrencyMin(transactionManager.calculateAverageSumPerDayForThisMonth()) ?? "--")
                             .font(.headline)
@@ -34,7 +34,7 @@ struct StatsView: View {
                     
                     
                     VStack(alignment: .leading){
-                        Text("Monthly AVG")
+                        Text("stats_tab_monthly_avg")
                             .font(.subheadline)
                         Text(tool.formatCurrencyMin(transactionManager.calculateAverageSumPerMonthForThisYear()) ?? "--")
                             .font(.headline)

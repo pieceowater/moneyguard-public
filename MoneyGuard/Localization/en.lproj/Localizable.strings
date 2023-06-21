@@ -17,6 +17,8 @@
 "btn_cancel" = "Cancel";
 "btn_delete" = "Delete";
 "btn_transfer" = "Transfer funds";
+"btn_apply" = "Apply";
+"btn_reset" = "Reset";
 
 "alert_confirm" = "Confirm";
 "alert_sure_msg" = "Are you sure?";
@@ -52,6 +54,7 @@
 "word_balance" = "Balance";
 "word_amount" = "Amount";
 "word_date" = "Date";
+"word_period" = "Period";
 
 "home_tab" = "Home";
     "home_tab_overview" = "Overview";
@@ -74,6 +77,11 @@
     "stats_tab_out_of_caption" = "Out of";
     "stats_tab_spent_this_month" = "spent this month";
     "stats_tab_transactions" = "Transactions";
+    "stats_tab_daily_avg" = "Daily AVG";
+    "stats_tab_monthly_avg" = "Monthly AVG";
+    "stats_tab_history" = "History";
+    "stats_tab_history_all_categories" = "All Categories";
+    "stats_tab_history_all_accounts" = "All Accounts";
 
 "menu_tab" = "Menu";
     "title_menu_screen" = "Menu";

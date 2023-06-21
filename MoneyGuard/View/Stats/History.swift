@@ -34,7 +34,7 @@ struct HistoryView: View {
                 if showFilter {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
-                            Text("Period")
+                            Text("word_period")
                                 .font(.headline)
                                 .padding(.horizontal)
                                 .padding(.top)
@@ -45,13 +45,13 @@ struct HistoryView: View {
                         
                         HStack{
                             VStack(alignment: .leading) {
-                                Text("Category")
+                                Text("menu_settings_category_single")
                                     .font(.headline)
                                     .padding(.horizontal)
                                     .padding(.top)
                                 
                                 Picker("", selection: $selectedCategory) {
-                                    Text("All Categories").tag(nil as Category?)
+                                    Text("stats_tab_history_all_categories").tag(nil as Category?)
                                     ForEach(categoryManager.categoryList) { category in
                                         Text(category.name ?? "").tag(category as Category?)
                                     }
@@ -67,13 +67,13 @@ struct HistoryView: View {
                             }
                             
                             VStack(alignment: .leading) {
-                                Text("Account")
+                                Text("accounts_tab_account")
                                     .font(.headline)
                                     .padding(.horizontal)
                                     .padding(.top)
                                 
                                 Picker("", selection: $selectedAccount) {
-                                    Text("All Accounts").tag(nil as Account?)
+                                    Text("stats_tab_history_all_accounts").tag(nil as Account?)
                                     ForEach(accountManager.accountList) { account in
                                         Text(account.name ?? "").tag(account as Account?)
                                     }
@@ -104,7 +104,7 @@ struct HistoryView: View {
                                 selectedAccount = nil
                                 getTransactions()
                             }, label: {
-                                Text("Reset")
+                                Text("btn_reset")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 10)
                             })
@@ -115,7 +115,7 @@ struct HistoryView: View {
                             Button(action: {
                                 getTransactions()
                             }, label: {
-                                Text("Apply")
+                                Text("btn_apply")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 30)
                                     .background(Color.accentColor)
@@ -136,14 +136,11 @@ struct HistoryView: View {
                             Chart {
                                 ForEach(transactions.sorted { $0.date ?? Date() < $1.date ?? Date() }.filter { $0.category?.type == "expenses" }) { trans in
                                     BarMark(
-                                        x: .value("Date", tool.formatDateMin(trans.date ?? Date())),
-                                        y: .value("Amount", trans.value)
+                                        x: .value("word_date", tool.formatDateMin(trans.date ?? Date())),
+                                        y: .value("word_amount", trans.value)
                                     )
-                                    .foregroundStyle(by: .value("Category", trans.category?.name ?? ""))
+                                    .foregroundStyle(by: .value("menu_settings_category_single", trans.category?.name ?? ""))
                                 }
-                            }
-                            .onAppear{
-                                print(categoryManager.categoryColors)
                             }
                             .padding()
                             .background(.ultraThinMaterial)
@@ -189,14 +186,6 @@ struct HistoryView: View {
                                     TransactionCardView(transaction: transaction)
                                 }
                             }
-                            if transactions.count > 40 {
-                                NavigationLink(destination: Text("more")) {
-                                    HStack{
-                                        Text("btn_show_more")
-                                        Image(systemName: "arrow.right")
-                                    }.padding()
-                                }
-                            }
                         }
                     }
                     
@@ -205,7 +194,7 @@ struct HistoryView: View {
                 }
                 
             }
-            .navigationTitle("History")
+            .navigationTitle("stats_tab_history")
             .onAppear {
                 updatePeriod()
                 getTransactions()

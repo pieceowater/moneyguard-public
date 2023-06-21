@@ -29,9 +29,6 @@ struct AccountCardView: View {
                         .font(.title3)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
-                        .onAppear{
-                            print("IN \(account.name)")
-                        }
                     Text(tool.formatCurrency(account.balance) ?? "")
                         .font(.title)
                         .fontWeight(.bold)

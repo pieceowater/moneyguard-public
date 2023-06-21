@@ -59,7 +59,6 @@ class TransactionManager: ObservableObject {
             let categorySpending = getCategorySpending(category: category, transactions: last30DaysTransactions)
             let percentage = categorySpending / totalSpendingLast30Days
             
-            print(percentage)
             if percentage > threshold {
                 potentialSavingsCategories.append(category)
             }
