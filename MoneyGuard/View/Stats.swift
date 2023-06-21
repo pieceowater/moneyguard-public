@@ -18,35 +18,8 @@ struct StatsView: View {
             ScrollView{
                 
                 HStack(spacing: 10){
-                    VStack(alignment: .leading){
-                        Text("stats_tab_daily_avg")
-                            .font(.subheadline)
-                        Text(tool.formatCurrencyMin(transactionManager.calculateAverageSumPerDayForThisMonth()) ?? "--")
-                            .font(.headline)
-                            .foregroundColor(.red)
-                        HStack{
-                            Spacer()
-                        }
-                    }
-                    .padding()
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(15)
-                    
-                    
-                    VStack(alignment: .leading){
-                        Text("stats_tab_monthly_avg")
-                            .font(.subheadline)
-                        Text(tool.formatCurrencyMin(transactionManager.calculateAverageSumPerMonthForThisYear()) ?? "--")
-                            .font(.headline)
-                            .foregroundColor(.red)
-                        HStack{
-                            Spacer()
-                        }
-                    }
-                    .padding()
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(15)
-                    
+                    StatsAvgCardView(caption: "stats_tab_daily_avg", value: tool.formatCurrencyMin(transactionManager.calculateAverageSumPerDayForThisMonth()) ?? "--")
+                    StatsAvgCardView(caption: "stats_tab_monthly_avg", value: tool.formatCurrencyMin(transactionManager.calculateAverageSumPerMonthForThisYear()) ?? "--")
                 }.padding()
                 
                 if transactionManager.getRecommendations().count > 0 {
@@ -71,17 +44,7 @@ struct StatsView: View {
                         SavingsCardView(spentAmount: transactionManager.getTotalExpensesLast30Days(), potentialSavings: transactionManager.getTotalSpendingForCategories())
                     }
                 } else {
-                    VStack(alignment: .leading, spacing: 5){
-                        Text("placeholder_message_no_recommendations_heading")
-                            .font(.body)
-                        Text("placeholder_message_no_recommendations_body")
-                            .font(.caption)
-                        HStack{
-                            Spacer()
-                        }
-                    }.padding(15)
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(15)
+                    StatsNoRecommendationsPlaceholderView()
                         .padding(.horizontal)
                 }
                 
@@ -108,9 +71,38 @@ struct StatsView: View {
     }
 }
 
+struct StatsAvgCardView: View {
+    var caption: String
+    @State var value: String
+    var body: some View {
+        VStack(alignment: .leading){
+            Text(NSLocalizedString(caption, comment: ""))
+                .font(.subheadline)
+            Text(value)
+                .font(.headline)
+                .foregroundColor(.red)
+            HStack{
+                Spacer()
+            }
+        }
+        .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(15)
+    }
+}
 
-struct StatsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatsView()
+struct StatsNoRecommendationsPlaceholderView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5){
+            Text("placeholder_message_no_recommendations_heading")
+                .font(.body)
+            Text("placeholder_message_no_recommendations_body")
+                .font(.caption)
+            HStack{
+                Spacer()
+            }
+        }.padding(15)
+            .background(.ultraThinMaterial)
+            .cornerRadius(15)
     }
 }

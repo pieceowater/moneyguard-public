@@ -16,7 +16,7 @@ struct ContentView: View {
     @EnvironmentObject var transactionManager: TransactionManager
     
     @State private var selectedTab: Tab = .home
-
+    
     enum Tab {
         case home
         case goals
@@ -24,7 +24,7 @@ struct ContentView: View {
         case stats
         case menu
     }
-
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             StatsView()
@@ -63,7 +63,7 @@ struct ContentView: View {
             
         }
     }
-
+    
 }
 
 func giveHapticFeedback() {

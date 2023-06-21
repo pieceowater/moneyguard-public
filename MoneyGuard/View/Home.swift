@@ -19,101 +19,16 @@ struct HomeView: View {
     
     @State private var showNewTransactionSheet = false
     
-    @State private var transactions: [Transaction] = []
+    @State var transactions: [Transaction] = []
     
     
     var body: some View {
         NavigationView {
             ScrollView {
                 if accountManager.accountList.count == 0 {
-                    VStack(spacing: 25){
-                        Image("MoneyGuard")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .cornerRadius(35)
-                        Text("placeholder_message_no_accounts")
-                            .multilineTextAlignment(.center)
-                            .font(.headline)
-                            
-                    }.padding(.vertical, 100)
+                    PlaceholderNoAccountView().padding(.vertical, 100)
                 }else {
-                    VStack(alignment: .trailing) {
-                        HStack{
-                            if let selectedUUID = userSettings.selectedAccountID {
-                                if let account = accounts.first(where: { $0.id == selectedUUID }) {
-                                    Image(account.icon ?? "default")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 40, height: 40)
-                                        .padding(10)
-                                    
-                                } else {
-                                    Image("default")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 40, height: 40)
-                                        .padding(10)
-                                }
-                            } else {
-                                Image("default")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 40, height: 40)
-                                    .padding(10)
-                            }
-                            
-                            Spacer()
-                            
-                            VStack (alignment: .trailing){
-                                
-                                Picker(selection: $userSettings.selectedAccountID, label: Text("accounts_tab_account")) {
-                                    ForEach(accounts.sorted(by: { $0.lastActivity ?? Date() > $1.lastActivity ?? Date() }), id: \.id) { account in
-                                        Text(account.name ?? "")
-                                            .tag(account.id)
-                                    }
-                                }
-                                .onChange(of: userSettings.selectedAccountID) { newSelectedAccountID in
-                                    userSettings.saveSelectedAccount()
-                                    transactions = transactionManager.transactionsList.filter { $0.account?.id == UserSettingsManager.shared.selectedAccountID }.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
-                                }
-                                
-                                
-                                if let selectedUUID = userSettings.selectedAccountID {
-                                    if let account = accounts.first(where: { $0.id == selectedUUID }) {
-                                        Text("\(tool.formatCurrency(Double(account.balance)) ?? "")")
-                                            .font(.title2)
-                                            .fontWeight(.bold)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.5)
-                                            .foregroundColor(.accentColor)
-                                            .padding(.horizontal)
-                                    } else {
-//                                    let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
-//                                    Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
-//                                        .font(.title2)
-//                                        .fontWeight(.bold)
-//                                        .lineLimit(1)
-//                                        .minimumScaleFactor(0.5)
-//                                        .foregroundColor(.accentColor)
-//                                        .padding(.horizontal)
-                                    }
-                                } else {
-//                                let totalBalance = accounts.reduce(0) { $0 + ($1.balance ) }
-//                                Text("\(tool.formatCurrency(Double(totalBalance)) ?? "")")
-//                                    .font(.title2)
-//                                    .fontWeight(.bold)
-//                                    .lineLimit(1)
-//                                    .minimumScaleFactor(0.5)
-//                                    .foregroundColor(.accentColor)
-//                                    .padding(.horizontal)
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(20)
-                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                    SelectedAccountCardView(accounts: $accounts, transactions: $transactions)
                     .padding(.horizontal)
                     .padding(.top)
                     
@@ -162,3 +77,87 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+struct PlaceholderNoAccountView: View {
+    var body: some View {
+        VStack(spacing: 25){
+            Image("MoneyGuard")
+                .resizable()
+                .frame(width: 200, height: 200)
+                .cornerRadius(35)
+            Text("placeholder_message_no_accounts")
+                .multilineTextAlignment(.center)
+                .font(.headline)
+            
+        }
+    }
+}
+
+struct SelectedAccountCardView: View {
+    @EnvironmentObject var userSettings: UserSettingsManager
+    @EnvironmentObject var transactionManager: TransactionManager
+    private let tool: ToolsManager = ToolsManager()
+    @Binding var accounts: [Account]
+    @Binding var transactions: [Transaction]
+    
+    var body: some View {
+        VStack(alignment: .trailing) {
+            HStack{
+                if let selectedUUID = userSettings.selectedAccountID {
+                    if let account = accounts.first(where: { $0.id == selectedUUID }) {
+                        Image(account.icon ?? "default")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 40, height: 40)
+                            .padding(10)
+                        
+                    } else {
+                        Image("default")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 40, height: 40)
+                            .padding(10)
+                    }
+                } else {
+                    Image("default")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 40, height: 40)
+                        .padding(10)
+                }
+                
+                Spacer()
+                
+                VStack (alignment: .trailing){
+                    
+                    Picker(selection: $userSettings.selectedAccountID, label: Text("accounts_tab_account")) {
+                        ForEach(accounts.sorted(by: { $0.lastActivity ?? Date() > $1.lastActivity ?? Date() }), id: \.id) { account in
+                            Text(account.name ?? "")
+                                .tag(account.id)
+                        }
+                    }
+                    .onChange(of: userSettings.selectedAccountID) { newSelectedAccountID in
+                        userSettings.saveSelectedAccount()
+                        transactions = transactionManager.transactionsList.filter { $0.account?.id == UserSettingsManager.shared.selectedAccountID }.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+                    }
+                    
+                    
+                    if let selectedUUID = userSettings.selectedAccountID {
+                        if let account = accounts.first(where: { $0.id == selectedUUID }) {
+                            Text("\(tool.formatCurrency(Double(account.balance)) ?? "")")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                                .foregroundColor(.accentColor)
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(20)
+        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+    }
+}

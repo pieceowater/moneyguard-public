@@ -15,7 +15,7 @@ struct AccountsView: View {
     
     @State var accounts: [Account] = []
     
-    @State private var createAccountSheetShowing = false
+    @State var createAccountSheetShowing = false
     
     var body: some View {
         NavigationView {
@@ -34,33 +34,10 @@ struct AccountsView: View {
                 }
 
                 if accounts.count == 0 {
-                    VStack(spacing: 25){
-                        Image("plant")
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .cornerRadius(35)
-                        Text("placeholder_message_create_account")
-                            .multilineTextAlignment(.center)
-                            .font(.headline)
-                        
-                        Button {
-                            giveHapticFeedback()
-                            createAccountSheetShowing = true
-                        } label: {
-                            HStack{
-                                Image(systemName: "plus.rectangle.on.rectangle")
-                                Text("btn_add_new")
-                            }.padding()
-                        }
-                            
-                    }.padding(.vertical, 100)
+                    PlaceholderCreateAccountView(createAccountSheetShowing: $createAccountSheetShowing)
+                        .padding(.vertical, 100)
                 }else{
                     LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
-                        //                    ForEach(Array(accountsManager.accountList.enumerated()), id: \.1) { index, account in
-                        //                        NavigationLink(destination: AccountDetailView(account: account)) {
-                        //                            AccountCardView(account: account)
-                        //                        }
-                        //                    }
                         ForEach(accounts) { account in
                             NavigationLink(destination: AccountDetailView(account: account).environmentObject(transactionManager)) {
                                 AccountCardView(account: account)
@@ -94,9 +71,28 @@ struct AccountsView: View {
     }
 }
 
-
-//struct AccountsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AccountsView()
-//    }
-//}
+struct PlaceholderCreateAccountView: View {
+    @Binding var createAccountSheetShowing: Bool
+    var body: some View {
+        VStack(spacing: 25){
+            Image("plant")
+                .resizable()
+                .frame(width: 200, height: 200)
+                .cornerRadius(35)
+            Text("placeholder_message_create_account")
+                .multilineTextAlignment(.center)
+                .font(.headline)
+            
+            Button {
+                giveHapticFeedback()
+                createAccountSheetShowing = true
+            } label: {
+                HStack{
+                    Image(systemName: "plus.rectangle.on.rectangle")
+                    Text("btn_add_new")
+                }.padding()
+            }
+                
+        }
+    }
+}
