@@ -182,28 +182,6 @@ struct CategoryDetailView: View {
                         }
                     }
                     .padding(.bottom)
-                    /*
-                    Button {
-                        showNewTransactionSheet = true
-                        giveHapticFeedback()
-                    } label: {
-                        HStack{
-                            Text("menu_settings_category_new_transction")
-                                .font(.headline)
-                            
-                            Spacer()
-                            Image(systemName: "creditcard")
-                                .font(.headline)
-                        }
-                        .padding()
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(15)
-                        .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 3)
-                        .padding(.horizontal)
-                        .padding(.bottom, 10)
-                    }
-                    */
-                    
                 }
                 HStack{
                     Spacer()
@@ -283,7 +261,7 @@ struct CategoryDetailView: View {
                 message: Text("alert_sure_msg"),
                 primaryButton: .destructive(Text("alert_rm_btn"), action: {
                     categoriesManager.deleteCategory(category: category)
-                    categoriesManager.updateCategory()
+                    categoriesManager.getCategoriessList()
                     presentationMode.wrappedValue.dismiss()
                 }),
                 secondaryButton: .cancel()

@@ -9,7 +9,12 @@ import Foundation
 
 class AccountsManager: ObservableObject {
     private let coreData: CoreDataManager = CoreDataManager.shared
-    var accountList: [Account] = []
+//    var accountList: [Account] = []
+    @Published var accountList: [Account] = [] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
     
     init() {
         getAccountsList()

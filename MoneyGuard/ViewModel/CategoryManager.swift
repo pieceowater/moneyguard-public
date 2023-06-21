@@ -10,7 +10,12 @@ import SwiftUI
 
 class CategoryManager: ObservableObject {
     private let coreData: CoreDataManager = CoreDataManager.shared
-    var categoryList: [Category] = []
+//    var categoryList: [Category] = []
+    @Published var categoryList: [Category] = [] {
+            willSet {
+                self.objectWillChange.send()
+            }
+        }
     
     var categoryColors: [String: Color] = [:]
     

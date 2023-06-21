@@ -66,6 +66,10 @@ struct HomeView: View {
                 accounts = accountManager.accountList
             }
             .navigationTitle("app_name")
+            .onChange(of: transactionManager.transactionsList) { newValue in
+                transactions = transactionManager.transactionsList.filter { $0.account?.id == UserSettingsManager.shared.selectedAccountID }.sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+                accounts = accountManager.accountList
+            }
         }
     }
 }

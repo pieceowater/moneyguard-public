@@ -79,16 +79,22 @@ struct CategoryView: View {
                     .environmentObject(categoriesManager)
             })
             .onAppear {
-                categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }
-                categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }
+                categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
+                categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
             }
+            .onChange(of: categoriesManager.categoryList, perform: { newValue in
+                categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
+                categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
+            })
+        
             .navigationTitle("menu_settings_category")
     }
 }
 
 struct CategoryList: View {
+    @EnvironmentObject var categoriesManager: CategoryManager
     let title: String
-    let categories: [Category]
+    @State var categories: [Category]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -99,9 +105,9 @@ struct CategoryList: View {
             
             ScrollView {
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
-                    ForEach(categories.sorted(by: { $0.essentialDegree > $1.essentialDegree }), id: \.name) { category in
-                        NavigationLink(destination: CategoryDetailView(category: category)) {
-                            CategoryCardView(category: category)
+                    ForEach(categories, id: \.self) { category in
+                        NavigationLink(destination: CategoryDetailView(category: category).environmentObject(categoriesManager)) {
+                            CategoryCardView(category: $categories[categories.firstIndex(of: category)!])
                         }
                     }
                 }
@@ -115,7 +121,7 @@ struct CategoryList: View {
 
 struct CategoryCardView: View {
     private let tool: ToolsManager = ToolsManager()
-    let category: Category
+    @Binding var category: Category
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {

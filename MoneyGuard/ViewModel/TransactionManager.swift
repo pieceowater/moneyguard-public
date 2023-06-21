@@ -9,7 +9,11 @@ import Foundation
 
 class TransactionManager: ObservableObject {
     private let coreData: CoreDataManager = CoreDataManager.shared
-    var transactionsList: [Transaction] = []
+    @Published var transactionsList: [Transaction] = [] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
     
     init() {
         getTransactionList()

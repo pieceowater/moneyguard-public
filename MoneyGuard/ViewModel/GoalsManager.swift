@@ -9,7 +9,12 @@ import Foundation
 
 class GoalsManager: ObservableObject {
     private let coreData: CoreDataManager = CoreDataManager.shared
-    var goalsList: [Goal] = []
+//    var goalsList: [Goal] = []
+    @Published var goalsList: [Goal] = [] {
+            willSet {
+                self.objectWillChange.send()
+            }
+        }
     
     init() {
         getGoalList()

@@ -67,6 +67,9 @@ struct AccountsView: View {
                 accountsManager.getAccountsList()
                 accounts = accountsManager.accountList
             }
+            .onChange(of: accountsManager.accountList) { newValue in
+                accounts = accountsManager.accountList
+            }
         }
     }
 }
