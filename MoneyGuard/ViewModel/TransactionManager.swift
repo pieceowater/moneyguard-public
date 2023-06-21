@@ -42,6 +42,10 @@ class TransactionManager: ObservableObject {
     }
     
     func deleteTransaction(transaction: Transaction) {
+        let category = transaction.category
+        let account = transaction.account
+        account?.balance = category?.type == "expenses" ? (account?.balance ?? 0.0) + transaction.value : (account?.balance ?? 0.0) - transaction.value
+        AccountsManager().updateAccount()
         CoreDataManager.shared.deleteEntity(entity: transaction)
     }
     
