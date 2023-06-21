@@ -10,6 +10,7 @@ import Foundation
 enum Icons: String, CaseIterable {
     // Category: Positive
     case award
+    case winner
     case good
     case beauty
     case carebeauty
@@ -28,6 +29,9 @@ enum Icons: String, CaseIterable {
     case time
     case water
     case width
+    case event
+    case flag
+    case glass
     
     // Category: Negative
     case bad
@@ -61,6 +65,15 @@ enum Icons: String, CaseIterable {
     case grass
     case plant
     case rainbow
+    case banknotes
+    case bowling
+    case box
+    case cards
+    case coin
+    case house
+    case moneybag
+    case wallet
+    
     
     
     // Default Icon
@@ -68,6 +81,15 @@ enum Icons: String, CaseIterable {
     case default2
     case default3
     case default4
+    case default5
+    case default6
+    case default7
+    case default8
+    case default9
+    case default10
+    case default11
+    case default12
+    case default13
     
     var icon: String {
         switch self {
@@ -107,14 +129,7 @@ enum Icons: String, CaseIterable {
             return "water"
         case .width:
             return "width"
-        case .default:
-            return "default"
-        case .default2:
-            return "default2"
-        case .default3:
-            return "default3"
-        case .default4:
-            return "default4"
+            
         case .bad:
             return "bad"
         case .bigdebt:
@@ -175,6 +190,59 @@ enum Icons: String, CaseIterable {
             return "rainbow"
         case .vending:
             return "vending"
+            
+        case .winner:
+            return "winner"
+        case .event:
+            return "event"
+        case .flag:
+            return "flag"
+        case .glass:
+            return "glass"
+        case .banknotes:
+            return "banknotes"
+        case .bowling:
+            return "bowling"
+        case .box:
+            return "box"
+        case .cards:
+            return "cards"
+        case .coin:
+            return "coin"
+        case .house:
+            return "house"
+        case .moneybag:
+            return "moneybag"
+        case .wallet:
+            return "wallet"
+            
+        case .default:
+            return "default"
+        case .default2:
+            return "default2"
+        case .default3:
+            return "default3"
+        case .default4:
+            return "default4"
+        case .default5:
+            return "default5"
+        case .default6:
+            return "default6"
+        case .default7:
+            return "default7"
+        case .default8:
+            return "default8"
+        case .default9:
+            return "default9"
+        case .default10:
+            return "default10"
+        case .default11:
+            return "default11"
+        case .default12:
+            return "default12"
+        case .default13:
+            return "default13"
+            
         }
     }
 }

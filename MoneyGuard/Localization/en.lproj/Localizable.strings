@@ -128,3 +128,12 @@
 "first_account_name" = "Cash";
 "first_category_replanishments_name" = "Salary";
 "first_category_expenses_name" = "Food";
+
+"slideshow_title_1" = "Welcome to MoneyGuard";
+"slideshow_description_1" = "Discover the amazing features of Money Managment!";
+"slideshow_title_2" = "Track Your Expenses";
+"slideshow_description_2" = "Effortlessly manage your finances and track your expenses.";
+"slideshow_title_3" = "Set Financial Goals";
+"slideshow_description_3" = "Stay on top of your savings and set financial goals.";
+"slideshow_title_4" = "Start now!";
+"slideshow_description_4" = "Your life will never be the same.";

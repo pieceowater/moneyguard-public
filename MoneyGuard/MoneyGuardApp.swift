@@ -15,19 +15,32 @@ struct MoneyGuardApp: App {
     @ObservedObject var categoriesManager: CategoryManager = CategoryManager()
 
     @ObservedObject var userSettings = UserSettingsManager.shared
+    
+    let slides = [
+        Slide(imageName: "MoneyGuard", title: NSLocalizedString("slideshow_title_1", comment: ""), description: NSLocalizedString("slideshow_description_1", comment: "")),
+        Slide(imageName: "help", title: NSLocalizedString("slideshow_title_2", comment: ""), description: NSLocalizedString("slideshow_description_2", comment: "")),
+        Slide(imageName: "award", title: NSLocalizedString("slideshow_title_3", comment: ""), description: NSLocalizedString("slideshow_description_3", comment: "")),
+        Slide(imageName: "rainbow", title: NSLocalizedString("slideshow_title_4", comment: ""), description: NSLocalizedString("slideshow_description_4", comment: ""))
+    ]
+    
+    @State var isShowingSlideShow: Bool = false
 
     var body: some Scene {
         WindowGroup {
             ContentView(userSettings: userSettings)
+                .onAppear{
+                    checkFirstLaunch()
+                }
+                .fullScreenCover(isPresented: $isShowingSlideShow) {
+                    SlideshowView(slides: slides)
+                        .accentColor(userSettings.accentColor.color)
+                }
                 .accentColor(userSettings.accentColor.color)
                 .preferredColorScheme(userSettings.theme == .dark ? .dark : .light)
                 .environmentObject(transactionsManager)
                 .environmentObject(goalsManager)
                 .environmentObject(accountsManager)
                 .environmentObject(categoriesManager)
-                .onAppear{
-                    checkFirstLaunch()
-                }
         }
     }
     
@@ -35,6 +48,7 @@ struct MoneyGuardApp: App {
         let isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
         
         if !isFirstLaunch {
+            isShowingSlideShow = true
             accountsManager.createAccount(accountName: NSLocalizedString("first_account_name", comment: ""), accountIcon: "default", accountBalance: 0.0)
             accountsManager.getAccountsList()
             categoriesManager.createCategory(categoryName: NSLocalizedString("first_category_replanishments_name", comment: ""), categoryIcon: "default2", categoryColor: "Green", categoryEssentialDegree: 2, categoryType: "replenishments")
@@ -107,3 +121,72 @@ extension View {
         self.modifier(HideKeyboardOnTap(excluding: views))
     }
 }
+
+
+struct SlideshowView: View {
+    @Environment(\.presentationMode) var presentationMode
+    let slides: [Slide]
+    @State private var currentIndex = 0
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            Image(slides[currentIndex].imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(slides[currentIndex].imageName == "MoneyGuard" ? 40 : 0)
+                .padding(80)
+            
+            Text(slides[currentIndex].title)
+                .foregroundColor(.accentColor)
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .padding()
+                
+            
+            Text(slides[currentIndex].description)
+                .font(.body)
+                .multilineTextAlignment(.center)
+                .padding()
+            
+            Spacer()
+            
+            HStack {
+                Button(action: {
+                    withAnimation {
+                        currentIndex = max(currentIndex - 1, 0)
+                    }
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.title)
+                }
+                .disabled(currentIndex == 0)
+                
+                Spacer()
+                
+                Button(action: {
+                    withAnimation {
+                        if currentIndex == slides.count - 1 {
+                            presentationMode.wrappedValue.dismiss()
+                        } else {
+                            currentIndex = min(currentIndex + 1, slides.count - 1)
+                        }
+                    }
+                }) {
+                    Image(systemName: "\(currentIndex == slides.count - 1 ? "arrow" : "chevron" ).right")
+                        .font(.title)
+                }
+            }
+            .padding(.horizontal)
+        }
+        .padding()
+    }
+}
+
+struct Slide {
+    let imageName: String
+    let title: String
+    let description: String
+}
+

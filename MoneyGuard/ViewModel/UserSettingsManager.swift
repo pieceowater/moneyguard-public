@@ -13,7 +13,7 @@ class UserSettingsManager: ObservableObject {
     
     @Published var accentColor: Colors = .default
     @Published var selectedAccountID: UUID?
-    @Published var theme: Theme = .dark
+    @Published var theme: Theme = .light
     @Published var selectedLanguage: Language?
     
     private let accentColorKey = "accentColor"
