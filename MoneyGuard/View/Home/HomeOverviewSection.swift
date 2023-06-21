@@ -66,7 +66,7 @@ struct HomeOverviewSectionView: View {
                         }
                     }
                     if transactions.count > 40 {
-                        NavigationLink(destination: Text("more")) {
+                        NavigationLink(destination: HistoryView(presetPeriod: 1)) {
                             HStack{
                                 Text("btn_show_more")
                                 Image(systemName: "arrow.right")

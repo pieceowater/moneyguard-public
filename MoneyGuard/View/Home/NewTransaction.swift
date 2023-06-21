@@ -30,6 +30,8 @@ struct NewTransactionView: View {
     @State var categories: CategoriesWrapper = CategoriesWrapper(replenishments: [], expenses: [])
     @State var selectedCategory: UUID = UUID()
     
+    @State var highlightBalance: Bool = false
+    
     var body: some View {
         VStack{
             
@@ -183,11 +185,7 @@ struct NewTransactionView: View {
                     }
                     if showDatepicker {
                         DatePicker("word_date", selection: $selectedDate, in: ...Date())
-                        //                            .datePickerStyle(.graphical)
                             .labelsHidden()
-                        //                            .padding()
-                        //                            .background(.ultraThinMaterial)
-                        //                            .cornerRadius(15)
                             .padding(.horizontal)
                             .padding(.bottom, 5)
                     }
@@ -244,7 +242,7 @@ struct NewTransactionView: View {
                                             .fontWeight(.bold)
                                             .lineLimit(1)
                                             .minimumScaleFactor(0.5)
-                                            .foregroundColor(.accentColor)
+                                            .foregroundColor(highlightBalance ? .red : .accentColor)
                                             .padding(.horizontal)
                                     }
                                 }
@@ -283,13 +281,17 @@ struct NewTransactionView: View {
             }
             
             Button(action: {
+                let amount = Double(amount.replacingOccurrences(of: ",", with: "."))
                 if let selectedAccountID = userSettings.selectedAccountID,
                    let selectedAccount = accounts.first(where: { $0.id == selectedAccountID }),
                    let selectedCategory = categoriesManager.categoryList.first(where: { $0.id == selectedCategory }) {
-                    if selectedCategory.type == "expenses" && Double(amount) ?? 0 > selectedAccount.balance {
+                    if selectedCategory.type == "expenses" && amount ?? 0 > selectedAccount.balance {
+                        highlightBalance = true
+                        giveHapticFeedback()
                         return
                     }
-                    transactionManager.createTransaction(transactionDate: selectedDate, transactionComment: comment, transactionValue: Double(amount) ?? 0, transactionCategory: selectedCategory, transactionAccount: selectedAccount)
+                    
+                    transactionManager.createTransaction(transactionDate: selectedDate, transactionComment: comment, transactionValue: amount ?? 0, transactionCategory: selectedCategory, transactionAccount: selectedAccount)
                     transactionManager.getTransactionList()
                     accountManager.getAccountsList()
                     giveHapticFeedback()

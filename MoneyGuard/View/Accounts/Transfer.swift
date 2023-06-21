@@ -90,7 +90,7 @@ struct TransferView: View {
     }
     
     private func makeTransfer() {
-        let amount = Double(transferAmount)
+        let amount = Double(transferAmount.replacingOccurrences(of: ",", with: "."))
         guard senderAccountIndex >= 0 && senderAccountIndex < accountsManager.accountList.count else {
             return
         }

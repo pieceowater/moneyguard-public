@@ -62,8 +62,9 @@ struct CreateAccountView: View {
             
             Spacer()
             Button {
+                let newAccountBalance = Double(newAccountBalance.replacingOccurrences(of: ",", with: "."))
                 giveHapticFeedback()
-                accountsManager.createAccount(accountName: newAccountName, accountIcon: selectedIcon?.icon ?? "default", accountBalance: Double(newAccountBalance) ?? 0.0)
+                accountsManager.createAccount(accountName: newAccountName, accountIcon: selectedIcon?.icon ?? "default", accountBalance: newAccountBalance ?? 0 )
                 accountsManager.getAccountsList()
                 accounts = accountsManager.accountList
                 presentationMode.wrappedValue.dismiss()
