@@ -124,3 +124,7 @@
 "template_phrase_13" = "Keep your spending in check for this category.";
 "template_phrase_14" = "You can save money by reducing expenses in this category.";
 "template_phrase_15" = "Your wallet will thank you if you cut back on this category.";
+
+"first_account_name" = "Cash";
+"first_category_replanishments_name" = "Salary";
+"first_category_expenses_name" = "Food";

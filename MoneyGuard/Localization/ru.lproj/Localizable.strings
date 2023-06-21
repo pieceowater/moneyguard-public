@@ -32,7 +32,7 @@
 
 "placeholder_message_no_accounts" = "У нас нет ни одного счета!\nСоздайте новый на вкладке \"Счета\".";
 "placeholder_message_create_account" = "Создайте ваш первый счет!";
-"placeholder_message_no_transactions" = "Никаких транзакций еще нет!\nНажмите на кнопку с \"+\", чтобы создать!";
+"placeholder_message_no_transactions" = "Транзакций еще нет!\nНажмите на кнопку с \"+\", чтобы создать!";
 "placeholder_message_no_category" = "Категорий нет!\nНажмит на кнопку \"Добавить\", чтобы создать новую категорию!";
 "placeholder_message_no_replenishments" = "О, нет!\nУ вас нет категорий для Доходов.";
 "placeholder_message_no_expenses" = "Нет категорий для расходов!";
@@ -78,7 +78,7 @@
     "stats_tab_spent_this_month" = "потрачено за месяц";
     "stats_tab_transactions" = "Транзакции";
     "stats_tab_daily_avg" = "Ср. за День";
-    "stats_tab_monthly_avg" = "Ср. За Месяц";
+    "stats_tab_monthly_avg" = "Ср. за Месяц";
     "stats_tab_history" = "История";
     "stats_tab_history_all_categories" = "Все Категории";
     "stats_tab_history_all_accounts" = "Все Счета";
@@ -124,3 +124,7 @@
 "template_phrase_13" = "Контролируйте свои расходы для этой категории.";
 "template_phrase_14" = "Вы можете сэкономить деньги, сократив расходы в этой категории.";
 "template_phrase_15" = "Ваш кошелек будет благодарен, если вы сократите расходы тут.";
+
+"first_account_name" = "Наличные";
+"first_category_replanishments_name" = "Зарплата";
+"first_category_expenses_name" = "Продукты";

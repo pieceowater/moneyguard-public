@@ -25,7 +25,26 @@ struct MoneyGuardApp: App {
                 .environmentObject(goalsManager)
                 .environmentObject(accountsManager)
                 .environmentObject(categoriesManager)
+                .onAppear{
+                    checkFirstLaunch()
+                }
         }
+    }
+    
+    func checkFirstLaunch() {
+        let isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+        
+        if !isFirstLaunch {
+            accountsManager.createAccount(accountName: NSLocalizedString("first_account_name", comment: ""), accountIcon: "default", accountBalance: 0.0)
+            accountsManager.getAccountsList()
+            categoriesManager.createCategory(categoryName: NSLocalizedString("first_category_replanishments_name", comment: ""), categoryIcon: "default2", categoryColor: "Green", categoryEssentialDegree: 2, categoryType: "replenishments")
+            categoriesManager.createCategory(categoryName: NSLocalizedString("first_category_expenses_name", comment: ""), categoryIcon: "default3", categoryColor: "Teal", categoryEssentialDegree: 2, categoryType: "expenses")
+            categoriesManager.getCategoriessList()
+            
+            UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+        }
+        
+        print(!isFirstLaunch)
     }
 }
 
