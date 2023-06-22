@@ -10,12 +10,21 @@ import SwiftUI
 
 struct StatsView: View {
     @EnvironmentObject var transactionManager: TransactionManager
+    @EnvironmentObject var categoriesManager: CategoryManager
     private let filters: [String] = [NSLocalizedString("period_filter_today", comment: ""), NSLocalizedString("period_filter_this_month", comment: ""), NSLocalizedString("period_filter_all_time", comment: "")]
     private let tool: ToolsManager = ToolsManager()
     
     var body: some View {
         NavigationView{
             ScrollView{
+                
+                VStack(spacing: 15){
+                    ForEach(categoriesManager.categoryList.filter { $0.expectations > 0 }, id: \.self ) { category in
+                        ProgressBarView(icon: category.icon ?? "default", title: category.name ?? "", progress: transactionManager.transactionsList.filter { $0.category == category }.reduce(0) { $0 + $1.value } , maxValue: category.expectations )
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.top)
                 
                 HStack(spacing: 10){
                     StatsAvgCardView(caption: "stats_tab_daily_avg", value: tool.formatCurrencyMin(transactionManager.calculateAverageSumPerDayForThisMonth()) ?? "--")
@@ -104,5 +113,78 @@ struct StatsNoRecommendationsPlaceholderView: View {
         }.padding(15)
             .background(.ultraThinMaterial)
             .cornerRadius(15)
+    }
+}
+
+struct ProgressBarView: View {
+    private let tool: ToolsManager = ToolsManager()
+    let icon: String
+    let title: String
+    let progress: Double
+    let maxValue: Double
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(icon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+                
+                Text(title)
+                    .fontWeight(.bold)
+                    .font(.title3)
+                    .minimumScaleFactor(0.7)
+                    .lineLimit(1)
+                    .padding(.top, 8)
+                
+                Spacer()
+                
+                if progress >= maxValue {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.title)
+                        .foregroundColor(.accentColor)
+                }
+            }
+            Spacer(minLength: 20)
+            ProgressBar(progress: progress, maxValue: maxValue)
+                .frame(height: 10)
+            
+            HStack {
+                Text(tool.formatCurrencyMin(progress) ?? "")
+                Spacer()
+                Text(tool.formatCurrencyMin(maxValue) ?? "")
+            }
+            .font(.caption)
+            
+        }
+        .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(20)
+    }
+}
+
+struct ProgressBar: View {
+    let progress: Double
+    let maxValue: Double
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color.gray)
+                
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color.green)
+                    .frame(width: calculateProgressBarWidth(geometry: geometry))
+                    .shadow(color: .black.opacity(0.2), radius: 3, x: 2, y: 0)
+            }
+        }
+    }
+    
+    private func calculateProgressBarWidth(geometry: GeometryProxy) -> CGFloat {
+        let width = geometry.size.width
+        let progressPercentage = CGFloat(progress / maxValue)
+        return progress >= maxValue ? width : width * progressPercentage
     }
 }

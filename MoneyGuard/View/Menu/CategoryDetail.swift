@@ -18,6 +18,7 @@ struct CategoryDetailView: View {
     @State var editMode = false
     @State private var showAlert = false
     @State var categoryNewName: String = ""
+    @State var categoryNewExpectations = ""
     @State var category: Category
     @State private var selectedDegree: Int = 2
     @State private var selectedColor: CategoryColor = .Blue
@@ -108,9 +109,24 @@ struct CategoryDetailView: View {
                         .padding(.horizontal)
                         .padding(.bottom)
                     }
+                    HStack{
+                        Text("word_expectations")
+                            .font(.headline)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    TextField("\(NSLocalizedString("word_expectations", comment: ""))...", text: $categoryNewExpectations)
+                        .keyboardType(.decimalPad)
+                        .padding()
+                        .padding(.horizontal, 10)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(15)
+                        .padding()
                     
                     
                     Button {
+                        let categoryNewExpectations = Double(categoryNewExpectations.replacingOccurrences(of: ",", with: ".")) ?? 0
+                        category.expectations = categoryNewExpectations
                         category.name = categoryNewName
                         category.icon = selectedIcon?.icon
                         category.color = selectedColor.rawValue
@@ -234,6 +250,8 @@ struct CategoryDetailView: View {
         .hideKeyboardOnTap(excluding: [AnyView(TextField("\(NSLocalizedString("word_name", comment: ""))...", text: $categoryNewName))])
         .onAppear{
             categoryNewName = category.name ?? ""
+            print(category.expectations)
+            categoryNewExpectations = category.expectations > 0 ? String(category.expectations) : ""
             selectedDegree = Int(category.essentialDegree)
             selectedColor = CategoryColor(rawValue: category.color ?? "Blue") ?? .Blue
             selectedIcon = Icons(rawValue: category.icon ?? "default")

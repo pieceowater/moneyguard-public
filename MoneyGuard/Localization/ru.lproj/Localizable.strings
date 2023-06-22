@@ -55,6 +55,7 @@
 "word_amount" = "Сумма";
 "word_date" = "Дата";
 "word_period" = "Период";
+"word_expectations" = "Ожидаемая сумма/месяц";
 
 "home_tab" = "Главная";
     "home_tab_overview" = "Обзор";

@@ -10,7 +10,6 @@ import SwiftUI
 
 class CategoryManager: ObservableObject {
     private let coreData: CoreDataManager = CoreDataManager.shared
-//    var categoryList: [Category] = []
     @Published var categoryList: [Category] = [] {
             willSet {
                 self.objectWillChange.send()
@@ -35,7 +34,7 @@ class CategoryManager: ObservableObject {
         }
     }
     
-    func createCategory(categoryName: String, categoryIcon: String, categoryColor: String, categoryEssentialDegree: Int16, categoryType: String){
+    func createCategory(categoryName: String, categoryIcon: String, categoryColor: String, categoryEssentialDegree: Int16, categoryType: String, categoryExpectations: Double = 0){
         if let newCategory: Category = CoreDataManager.shared.createEntity() {
             newCategory.icon = categoryIcon
             newCategory.name = categoryName
@@ -44,6 +43,7 @@ class CategoryManager: ObservableObject {
             newCategory.lastActivity = Date()
             newCategory.essentialDegree = categoryEssentialDegree // 1 - 3
             newCategory.type = categoryType // ("expenses" or "replenishments")
+            newCategory.expectations = categoryExpectations
             newCategory.id = UUID()
             
             CoreDataManager.shared.saveContext()

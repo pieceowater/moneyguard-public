@@ -55,6 +55,7 @@
 "word_amount" = "Amount";
 "word_date" = "Date";
 "word_period" = "Period";
+"word_expectations" = "Expected amount/month";
 
 "home_tab" = "Home";
     "home_tab_overview" = "Overview";

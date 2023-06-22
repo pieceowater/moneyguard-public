@@ -14,6 +14,7 @@ struct CreateCatedoryView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var newCategoryName = ""
+    @State var newCategoryExpectations = ""
     
     @State private var showGallery = false
     @State private var selectedIcon: Icons? = .default
@@ -116,10 +117,19 @@ struct CreateCatedoryView: View {
                     .padding(.bottom)
                 }
                 
+                TextField("\(NSLocalizedString("word_expectations", comment: ""))...", text: $newCategoryExpectations)
+                    .keyboardType(.decimalPad)
+                    .padding()
+                    .padding(.horizontal, 10)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(15)
+                    .padding()
+                
                 Button {
                     giveHapticFeedback()
                     let newCategoryType = selectedType == 0 ? "replenishments" : "expenses"
-                    categoriesManager.createCategory(categoryName: newCategoryName, categoryIcon: selectedIcon?.icon ?? "default", categoryColor: selectedColor.rawValue, categoryEssentialDegree: Int16(selectedDegree), categoryType: newCategoryType)
+                    let newCategoryExpectations = Double(newCategoryExpectations.replacingOccurrences(of: ",", with: ".")) ?? 0
+                    categoriesManager.createCategory(categoryName: newCategoryName, categoryIcon: selectedIcon?.icon ?? "default", categoryColor: selectedColor.rawValue, categoryEssentialDegree: Int16(selectedDegree), categoryType: newCategoryType, categoryExpectations: newCategoryExpectations)
                     categoriesManager.getCategoriessList()
                     categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
                     categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })

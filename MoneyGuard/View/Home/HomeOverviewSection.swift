@@ -42,7 +42,7 @@ struct HomeOverviewSectionView: View {
                 calculateTotals()
             }
             
-            if transactions.count == 0 {
+            if filteredTransactions.count == 0 {
                 HStack{
                     Spacer()
                     VStack{

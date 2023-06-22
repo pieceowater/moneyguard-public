@@ -30,7 +30,7 @@ struct HistoryView: View {
     
     var body: some View {
         VStack{
-            ScrollView {
+            ScrollView { 
                 if showFilter {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading) {
@@ -131,21 +131,47 @@ struct HistoryView: View {
                 }
                 
                 if #available(iOS 16.0, *) {
-                    if showCharts && transactions.count != 0 {
-                        VStack{
-                            Chart {
-                                ForEach(transactions.sorted { $0.date ?? Date() < $1.date ?? Date() }.filter { $0.category?.type == "expenses" }) { trans in
-                                    BarMark(
-                                        x: .value("word_date", tool.formatDateMin(trans.date ?? Date())),
-                                        y: .value("word_amount", trans.value)
-                                    )
-                                    .foregroundStyle(by: .value("menu_settings_category_single", trans.category?.name ?? ""))
+                    if showCharts {
+                        if transactions.filter({ $0.category?.type == "replenishments" }).count != 0 {
+                            VStack(alignment: .leading) {
+                                Text("home_tab_income")
+                                    .font(.subheadline)
+                                Chart {
+                                    ForEach(transactions.sorted { $0.date ?? Date() < $1.date ?? Date() }.filter { $0.category?.type == "replenishments" }) { trans in
+                                        BarMark(
+                                            x: .value("word_date", tool.formatDateMin(trans.date ?? Date())),
+                                            y: .value("word_amount", trans.value)
+                                        )
+                                        .foregroundStyle(by: .value("menu_settings_category_single", trans.category?.name ?? ""))
+                                    }
                                 }
                             }
                             .padding()
                             .background(.ultraThinMaterial)
                             .cornerRadius(15)
-                        }.padding(.horizontal)
+                            .padding(.horizontal)
+                        }
+                        if transactions.filter({ $0.category?.type == "expenses" }).count != 0 {
+                            VStack(alignment: .leading) {
+                                Text("home_tab_expense")
+                                    .font(.subheadline)
+                                Chart {
+                                    ForEach(transactions.sorted { $0.date ?? Date() < $1.date ?? Date() }.filter { $0.category?.type == "expenses" }) { trans in
+                                        BarMark(
+                                            x: .value("word_date", tool.formatDateMin(trans.date ?? Date())),
+                                            y: .value("word_amount", trans.value)
+                                        )
+                                        .foregroundStyle(by: .value("menu_settings_category_single", trans.category?.name ?? ""))
+                                    }
+                                }
+                                
+                            }
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(15)
+                            .padding(.horizontal)
+                        }
+                        
                     }
                 }
                 
@@ -186,6 +212,7 @@ struct HistoryView: View {
                                     TransactionCardView(transaction: transaction)
                                 }
                             }
+                            Spacer(minLength: 50)
                         }
                     }
                     
