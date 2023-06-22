@@ -33,10 +33,29 @@ class TransactionManager: ObservableObject {
             newTransaction.category = transactionCategory
             newTransaction.account = transactionAccount
             
-            transactionAccount.balance = transactionCategory.type == "expenses" ? transactionAccount.balance - transactionValue : transactionAccount.balance + transactionValue
+            newTransaction.balanceBefore = transactionAccount.balance
+            
+            // to -
+            // from +
+            
+            if transactionCategory.type == "expenses" {
+                transactionAccount.balance = transactionAccount.balance - transactionValue
+            } else if transactionCategory.type == "replenishments" {
+                transactionAccount.balance = transactionAccount.balance + transactionValue
+            } else if transactionCategory.type == "transferTo" {
+                transactionAccount.balance = transactionAccount.balance - transactionValue
+            } else if transactionCategory.type == "transferFrom" {
+                transactionAccount.balance = transactionAccount.balance + transactionValue
+            } else {
+                return
+            }
+            
+//            transactionAccount.balance = transactionCategory.type == "expenses" ? transactionAccount.balance - transactionValue : transactionAccount.balance + transactionValue
+            newTransaction.balanceAfter = transactionAccount.balance
             transactionAccount.lastActivity = Date()
             transactionCategory.lastActivity = Date()
             
+            print(newTransaction)
             CoreDataManager.shared.saveContext()
         }
     }

@@ -12,6 +12,8 @@ struct TransferView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @EnvironmentObject var accountsManager: AccountsManager
+    @EnvironmentObject var transactionManager: TransactionManager
+    @EnvironmentObject var categoriesManager: CategoryManager
 
     @State var defaultAccount: Account?
     @State var senderAccountIndex = 0
@@ -25,13 +27,13 @@ struct TransferView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 15){
-                TransferAccountCard(selectedAccountIndex: $senderAccountIndex)
+                TransferAccountCard(selectedAccountIndex: $senderAccountIndex, excludedAccountIndex: $receiverAccountIndex)
                     .environmentObject(accountsManager)
                     .padding(.top)
                 Image(systemName: "arrowtriangle.down.fill")
                     .font(.title)
                     .foregroundColor(.accentColor)
-                TransferAccountCard(selectedAccountIndex: $receiverAccountIndex)
+                TransferAccountCard(selectedAccountIndex: $receiverAccountIndex, excludedAccountIndex: $senderAccountIndex)
                     .environmentObject(accountsManager)
                     .padding(.bottom)
             }
@@ -107,6 +109,15 @@ struct TransferView: View {
             receiverAccount.balance += amount ?? 0
             accountsManager.updateAccount()
             
+            guard let senderCategory = categoriesManager.categoryList.filter({ $0.type == "transferTo" }).first ?? nil else { return }
+            transactionManager.createTransaction(transactionDate: Date(), transactionComment: "\(NSLocalizedString("system_account_transfer_to", comment: "")) → \(receiverAccount.name ?? "")", transactionValue: amount ?? 0, transactionCategory: senderCategory, transactionAccount: senderAccount)
+            
+            
+            
+            guard let receiverCategory = categoriesManager.categoryList.filter({ $0.type == "transferFrom" }).first else { return }
+            transactionManager.createTransaction(transactionDate: Date(), transactionComment: "\(NSLocalizedString("system_account_transfer_from", comment: "")) → \(senderAccount.name ?? "")", transactionValue: amount ?? 0, transactionCategory: receiverCategory, transactionAccount: receiverAccount)
+            
+            transactionManager.getTransactionList()
             accountsManager.getAccountsList()
             showErrorMessage = false
             presentationMode.wrappedValue.dismiss()
@@ -122,6 +133,7 @@ struct TransferAccountCard: View {
     @EnvironmentObject var accountsManager: AccountsManager
     
     @Binding var selectedAccountIndex: Int
+    @Binding var excludedAccountIndex: Int
 
     var selectedAccount: Account? {
         accountsManager.accountList[selectedAccountIndex]
@@ -142,7 +154,9 @@ struct TransferAccountCard: View {
                     VStack(alignment: .trailing) {
                         Picker(selection: $selectedAccountIndex, label: Text("accounts_tab_account")) {
                             ForEach(Array(accountsManager.accountList.enumerated()), id: \.0) { index, account in
-                                Text(account.name ?? "").tag(index)
+                                if index != excludedAccountIndex {
+                                    Text(account.name ?? "").tag(index)
+                                }
                             }
                         }
 

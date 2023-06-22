@@ -53,12 +53,13 @@ struct MoneyGuardApp: App {
             accountsManager.getAccountsList()
             categoriesManager.createCategory(categoryName: NSLocalizedString("first_category_replanishments_name", comment: ""), categoryIcon: "default2", categoryColor: "Green", categoryEssentialDegree: 2, categoryType: "replenishments")
             categoriesManager.createCategory(categoryName: NSLocalizedString("first_category_expenses_name", comment: ""), categoryIcon: "default3", categoryColor: "Teal", categoryEssentialDegree: 2, categoryType: "expenses")
+
+            categoriesManager.createCategory(categoryName: NSLocalizedString("system_account_transfer_from", comment: ""), categoryIcon: "debt", categoryColor: "Green", categoryEssentialDegree: 2, categoryType: "transferFrom")
+            categoriesManager.createCategory(categoryName: NSLocalizedString("system_account_transfer_to", comment: ""), categoryIcon: "debt", categoryColor: "Red", categoryEssentialDegree: 2, categoryType: "transferTo")
             categoriesManager.getCategoriessList()
             
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
         }
-        
-        print(!isFirstLaunch)
     }
 }
 

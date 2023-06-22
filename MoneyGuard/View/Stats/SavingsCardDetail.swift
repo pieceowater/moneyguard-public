@@ -59,8 +59,8 @@ struct SavingsCategoryView: View {
                             }
                             Spacer()
                             VStack(alignment: .trailing){
-                                Text("\(transaction.category?.type == "expenses" ? "-" : "+") \(tool.formatCurrency(transaction.value) ?? "")")
-                                    .foregroundColor(Color(transaction.category?.type == "expenses" ? "Red" : "Green"))
+                                Text("\(transaction.category?.type == "expenses" || transaction.category?.type == "transferTo" ? "-" : "+") \(tool.formatCurrency(transaction.value) ?? "")")
+                                    .foregroundColor(Color(transaction.category?.type == "expenses" || transaction.category?.type == "transferTo" ? "Red" : "Green"))
                                     .bold()
                                     .font(.title3)
                                     .lineLimit(1)

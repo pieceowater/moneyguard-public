@@ -37,28 +37,38 @@ struct TransactionDetailView: View {
                 VStack(alignment: .leading) {
                     Text("accounts_tab_account")
                         .font(.headline)
-                    HStack{
-                        Image(transaction.account?.icon ?? "default")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        Text(transaction.account?.name ?? "")
-                            .font(.headline)
-                        Spacer()
-                        
-                        Text(tool.formatCurrency(transaction.account?.balance ?? 0) ?? "")
-                            .foregroundColor(.accentColor)
-                            .font(.headline)
+                    VStack(alignment: .leading, spacing: 10){
+                        HStack{
+                            Image(transaction.account?.icon ?? "default")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                            Text(transaction.account?.name ?? "")
+                                .font(.headline)
+                            Spacer()
+                            
+                            Text(tool.formatCurrency(transaction.account?.balance ?? 0) ?? "")
+                                .foregroundColor(.accentColor)
+                                .font(.headline)
+                        }
+                        HStack(spacing: 10){
+                            Text(tool.formatCurrency(transaction.balanceBefore) ?? "")
+                            Image(systemName: "arrow.right")
+                                .font(.caption)
+                                .foregroundColor(.primary)
+                            Text(tool.formatCurrency(transaction.balanceAfter) ?? "")
+                        }.font(.caption)
+                            .foregroundColor(.secondary)
                     }.padding()
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(15)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(15)
                 }.padding(.horizontal).padding(.bottom)
                 
                 VStack(alignment: .leading) {
                     Text("word_amount")
                         .font(.headline)
-                    Text("\(transaction.category?.type == "expenses" ? "-" : "+")\(tool.formatCurrency(transaction.value) ?? "")")
+                    Text("\(transaction.category?.type == "expenses" || transaction.category?.type == "transferTo" ? "-" : "+")\(tool.formatCurrency(transaction.value) ?? "")")
                         .font(.title)
-                        .foregroundColor(transaction.category?.type == "expenses" ? .red : .green)
+                        .foregroundColor(transaction.category?.type == "expenses" || transaction.category?.type == "transferTo" ? .red : .green)
                 }.padding(.horizontal).padding(.bottom)
                 
                 VStack(alignment: .leading) {
