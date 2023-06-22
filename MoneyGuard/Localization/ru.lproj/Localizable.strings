@@ -24,8 +24,8 @@
 "alert_sure_msg" = "Вы уверены?";
 "alert_end_btn" = "Завершить";
 "alert_rm_btn" = "Удалить";
-"alert_apprestart" = "Перезагрузка приложения";
-"alert_apprestart_msg" = "Чтобы изменения вступили в силу, необходимо перезагрузить приложение!";
+"alert_apprestart" = "App Restart";
+"alert_apprestart_msg" = "Please manually relaunch the app to see changes.";
 "alert_not_enough_money" = "Недостаточно средств на счету!";
 
 "gallery_heading" = "Выберите Иконку";

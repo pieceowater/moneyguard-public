@@ -9,7 +9,6 @@ import Foundation
 
 class GoalsManager: ObservableObject {
     private let coreData: CoreDataManager = CoreDataManager.shared
-//    var goalsList: [Goal] = []
     @Published var goalsList: [Goal] = [] {
             willSet {
                 self.objectWillChange.send()
@@ -33,6 +32,7 @@ class GoalsManager: ObservableObject {
             newGoal.sum = goalSum
             newGoal.type = goalType //("more" or "less" than sum)
             newGoal.category = goalCategory
+            newGoal.createDate = Date()
             
             CoreDataManager.shared.saveContext()
         }

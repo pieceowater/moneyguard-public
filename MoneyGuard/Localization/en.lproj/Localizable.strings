@@ -24,8 +24,8 @@
 "alert_sure_msg" = "Are you sure?";
 "alert_end_btn" = "End";
 "alert_rm_btn" = "Remove";
-"alert_apprestart" = "App Restart";
-"alert_apprestart_msg" = "Please manually relaunch the app to see changes.";
+"alert_apprestart" = "Перезагрузка приложения";
+"alert_apprestart_msg" = "Чтобы изменения вступили в силу, необходимо перезагрузить приложение!";
 "alert_not_enough_money" = "Oops! Not enogth money!";
 
 "gallery_heading" = "Select an Icon";
