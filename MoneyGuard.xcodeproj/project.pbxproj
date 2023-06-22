@@ -57,6 +57,7 @@
 		C2D74D782A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */; };
 		C2E93ED52A3FACAD00FB49E5 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */; };
 		C2E93ED72A3FF1C100FB49E5 /* SavingsCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E93ED62A3FF1C100FB49E5 /* SavingsCardDetail.swift */; };
+		C2E979CE2A44C4F6001AAB50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2E979CD2A44C4F6001AAB50 /* LaunchScreen.storyboard */; };
 		C2EF8DD02A41857A001783E2 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF8DCF2A41857A001783E2 /* History.swift */; };
 		C2FE24BC2A3D65E000A9EC8B /* CreateCatedory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */; };
 		C2FE24BE2A3DADA000A9EC8B /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */; };
@@ -135,6 +136,7 @@
 		C2D74D772A2E56E50085BBFA /* MoneyGuardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyGuardUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C2E93ED42A3FACAD00FB49E5 /* TransactionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
 		C2E93ED62A3FF1C100FB49E5 /* SavingsCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsCardDetail.swift; sourceTree = "<group>"; };
+		C2E979CD2A44C4F6001AAB50 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2EF8DCF2A41857A001783E2 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		C2FE24BB2A3D65DF00A9EC8B /* CreateCatedory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCatedory.swift; sourceTree = "<group>"; };
 		C2FE24BD2A3DADA000A9EC8B /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				C2D74D5D2A2E56E40085BBFA /* Assets.xcassets */,
 				C2D74D5F2A2E56E40085BBFA /* MoneyGuard.entitlements */,
 				C2D74D602A2E56E40085BBFA /* Preview Content */,
+				C2E979CD2A44C4F6001AAB50 /* LaunchScreen.storyboard */,
 			);
 			path = MoneyGuard;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2D74D5E2A2E56E40085BBFA /* Assets.xcassets in Resources */,
+				C2E979CE2A44C4F6001AAB50 /* LaunchScreen.storyboard in Resources */,
 				C229699E2A397EEF00C88DCD /* Localizable.strings in Resources */,
 				C29262762A2F978000E7901A /* Localizable.strings in Resources */,
 			);
@@ -718,6 +722,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -761,6 +766,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
