@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct GoalsView: View {
-    let goals: [SampleGoal] = [
-        SampleGoal(name: "Smoke less", comment: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum", deadline: Date(), sum: 10000.0, category: SampleCategoryModel(name: "Smoking", color: "Red", createDate: Date(), lastActivity: Date(), icon: "nosmoking", type: "expenses", essentialDegree: 1), type: "less"),
-        SampleGoal(name: "Smoke less", comment: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum", deadline: Date(), sum: 10000.0, category: SampleCategoryModel(name: "Smoking", color: "Red", createDate: Date(), lastActivity: Date(), icon: "nosmoking", type: "expenses", essentialDegree: 1), type: "less"),
-        SampleGoal(name: "Smoke less", comment: "", deadline: Date(), sum: 10000.0, category: SampleCategoryModel(name: "Smoking", color: "Red", createDate: Date(), lastActivity: Date(), icon: "nosmoking", type: "expenses", essentialDegree: 1), type: "less")
-    ]
+    @EnvironmentObject var goalsManager: GoalsManager
+    @EnvironmentObject var categoriesManager: CategoryManager
+    @EnvironmentObject var userSettings: UserSettingsManager
+    
+    @State var addGoalIsShowing: Bool = false
     
     var body: some View {
         NavigationView{
-            VStack() {
+            VStack {
                 ScrollView {
                     HStack{
                         Text("goals_tab_caprion")
@@ -24,17 +24,33 @@ struct GoalsView: View {
                         Spacer()
                     }.padding(.horizontal)
 
-                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
-                        ForEach(goals.sorted(by: { $0.deadline < $1.deadline }), id: \.self) { goal in
-                            NavigationLink(destination: Text("Hello")) {
-                                GoalListItemView(goal: goal)
+                    if (goalsManager.goalsList.sorted(by: { $0.deadline ?? Date() < $1.deadline ?? Date() }).count > 0) {
+                        LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
+                            ForEach(goalsManager.goalsList.sorted(by: { $0.deadline ?? Date() < $1.deadline ?? Date() }), id: \.self) { goal in
+                                NavigationLink(destination: GoalDetailView(goal: goal)) {
+                                    GoalListItemView(goal: goal)
+                                }
                             }
                         }
+                    } else {
+                        VStack(spacing: 25){
+                            Image("award")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                            Text("placeholder_message_create_goal")
+                                .multilineTextAlignment(.center)
+                                .font(.headline)
+                        }.padding(120)
                     }
                 }
             }
+            .sheet(isPresented: $addGoalIsShowing) {
+                CreateGoalView().accentColor(userSettings.accentColor.color)
+            }
             .toolbar {
-                NavigationLink(destination: Text("Hello")) {
+                Button {
+                    addGoalIsShowing = true
+                } label: {
                     HStack{
                         Text("btn_add_new")
                             .font(.headline)
@@ -47,10 +63,3 @@ struct GoalsView: View {
     }
 }
 
-
-
-struct GoalsView_Previews: PreviewProvider {
-    static var previews: some View {
-        GoalsView()
-    }
-}

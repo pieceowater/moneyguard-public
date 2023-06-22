@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C229699E2A397EEF00C88DCD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C22969A02A397EEF00C88DCD /* Localizable.strings */; };
+		C2390E692A4425C900CF3C2E /* CreateGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2390E682A4425C900CF3C2E /* CreateGoal.swift */; };
+		C2390E6B2A443A2D00CF3C2E /* GoalDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2390E6A2A443A2D00CF3C2E /* GoalDetail.swift */; };
 		C240DA362A38F43C005B7CC0 /* PeriodBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */; };
 		C240DA382A38F45F005B7CC0 /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA372A38F45F005B7CC0 /* SummaryCard.swift */; };
 		C240DA3A2A38F485005B7CC0 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240DA392A38F485005B7CC0 /* TransactionCard.swift */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		C229699F2A397EEF00C88DCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C2390E682A4425C900CF3C2E /* CreateGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoal.swift; sourceTree = "<group>"; };
+		C2390E6A2A443A2D00CF3C2E /* GoalDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetail.swift; sourceTree = "<group>"; };
 		C240DA352A38F43C005B7CC0 /* PeriodBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodBtn.swift; sourceTree = "<group>"; };
 		C240DA372A38F45F005B7CC0 /* SummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
 		C240DA392A38F485005B7CC0 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				C240DA3F2A38F63D005B7CC0 /* GoalListItem.swift */,
+				C2390E682A4425C900CF3C2E /* CreateGoal.swift */,
+				C2390E6A2A443A2D00CF3C2E /* GoalDetail.swift */,
 			);
 			path = Goals;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 				C2D74D5C2A2E56E30085BBFA /* Content.swift in Sources */,
 				C240DA3A2A38F485005B7CC0 /* TransactionCard.swift in Sources */,
 				C240DA422A38F66A005B7CC0 /* AccountCard.swift in Sources */,
+				C2390E6B2A443A2D00CF3C2E /* GoalDetail.swift in Sources */,
 				C240DA452A38F6EB005B7CC0 /* ReccomendationsList.swift in Sources */,
 				C280829C2A2ED2AB00185A17 /* UserSettingsManager.swift in Sources */,
 				C292628B2A2FD53700E7901A /* AccountDetail.swift in Sources */,
@@ -520,6 +527,7 @@
 				C27AC1E72A39DF7100C6A6C8 /* GoalsManager.swift in Sources */,
 				C240DA3D2A38F5B2005B7CC0 /* HomeOverviewSection.swift in Sources */,
 				C27AC1EB2A3A02F200C6A6C8 /* CreateAccount.swift in Sources */,
+				C2390E692A4425C900CF3C2E /* CreateGoal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

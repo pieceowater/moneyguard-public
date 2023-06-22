@@ -329,13 +329,6 @@ struct NewTransactionView: View {
     
 }
 
-
-struct NewTransactionView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewTransactionView()
-    }
-}
-
 struct DatePresetBtnView: View {
     @Binding var dateCode: Int
     let value: Int

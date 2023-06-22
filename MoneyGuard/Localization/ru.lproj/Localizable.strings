@@ -39,6 +39,7 @@
 "placeholder_message_no_categories_alt" = "Для начала вам необходимо создать категории!\nДля этого пеерейдите в \"Меню\"->\"Категории\"";
 "placeholder_message_no_recommendations_heading" = "Пока нет рекомендаций!";
 "placeholder_message_no_recommendations_body" = "Совершайте больше платежей, чтобы мы могли произвести расчеты вредных трат и дать вам рекомендации!";
+"placeholder_message_create_goal" = "Целей пока нет!";
 
 "period_filter_today" = "Сегодня";
 "period_filter_yesterday" = "Вчера";
@@ -56,6 +57,9 @@
 "word_date" = "Дата";
 "word_period" = "Период";
 "word_expectations" = "Ожидаемая сумма/месяц";
+"word_deadline" = "Крайний срок";
+"word_comment" = "Комментарий";
+"word_progress" = "Прогресс";
 
 "home_tab" = "Главная";
     "home_tab_overview" = "Обзор";
@@ -65,7 +69,14 @@
         "home_new_transaction_comment" = "Комментарий";
 
 "goals_tab" = "Цели";
+    "goals_tab_goal" = "Цель";
     "goals_tab_caprion" = "Достигайте ваших целей, чтобы сделать жизнь лучше!";
+    "goals_tab_add_new" = "Добавить Цель";
+    "goals_tab_more_type" = "Больше суммы";
+    "goals_tab_less_type" = "Меньше суммы";
+    "goals_tab_less_than_word" = "Менее";
+    "goals_tab_more_than_word" = "Более";
+    "goals_tab_until_word" = "до";
 
 "accounts_tab" = "Счета";
     "accounts_tab_account" = "Счёт";

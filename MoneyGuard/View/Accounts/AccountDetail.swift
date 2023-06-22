@@ -16,7 +16,6 @@ struct AccountDetailView: View {
     @State private var showGallery = false
     @State private var selectedIcon: Icons? = .default
     @State var account: Account
-//    @State var account: Int
     @State var editMode = false
     @State private var showAlert = false
     @State var accountNewName: String = ""

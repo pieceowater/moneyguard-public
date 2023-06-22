@@ -43,10 +43,14 @@ class ToolsManager {
         if amount >= 1_000_000 {
             let millionsValue = amount / 1_000_000
             return (formatter.string(from: NSNumber(value: millionsValue))?.replacingOccurrences(of: ".0", with: "") ?? "") + "M"
+        } else if amount >= 1_000 {
+            let thousandsValue = amount / 1_000
+            return (formatter.string(from: NSNumber(value: thousandsValue))?.replacingOccurrences(of: ".0", with: "") ?? "") + "K"
         } else {
             return formatter.string(from: number)
         }
     }
+
 
     
 }

@@ -39,6 +39,7 @@
 "placeholder_message_no_categories_alt" = "You need to create categories first!\nGo to \"Menu\"->\"Category\"";
 "placeholder_message_no_recommendations_heading" = "No recommendations yet!";
 "placeholder_message_no_recommendations_body" = "Make more transactions so that we can count the number of useless expenses and give recommendations!";
+"placeholder_message_create_goal" = "Well, there is no Goals.";
 
 "period_filter_today" = "Today";
 "period_filter_yesterday" = "Yesterday";
@@ -56,6 +57,9 @@
 "word_date" = "Date";
 "word_period" = "Period";
 "word_expectations" = "Expected amount/month";
+"word_deadline" = "Deadline";
+"word_comment" = "Comment";
+"word_progress" = "Progress";
 
 "home_tab" = "Home";
     "home_tab_overview" = "Overview";
@@ -65,7 +69,14 @@
         "home_new_transaction_comment" = "Transaction comment";
 
 "goals_tab" = "Goals";
+    "goals_tab_goal" = "Goal";
     "goals_tab_caprion" = "Get your goals to make your life better!";
+    "goals_tab_add_new" = "Add Goal";
+    "goals_tab_more_type" = "More than sum";
+    "goals_tab_less_type" = "Less than sum";
+    "goals_tab_less_than_word" = "Less than";
+    "goals_tab_more_than_word" = "More than";
+    "goals_tab_until_word" = "until";
 
 "accounts_tab" = "Accounts";
     "accounts_tab_account" = "Account";

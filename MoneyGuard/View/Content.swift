@@ -33,6 +33,9 @@ struct ContentView: View {
                 }
                 .tag(Tab.stats)
             GoalsView()
+                .environmentObject(userSettings)
+                .environmentObject(categoriesManager)
+                .environmentObject(transactionManager)
                 .tabItem {
                     Label("goals_tab", systemImage: "star.fill")
                 }

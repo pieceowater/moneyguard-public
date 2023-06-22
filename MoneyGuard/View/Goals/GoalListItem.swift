@@ -9,25 +9,25 @@ import SwiftUI
 
 struct GoalListItemView: View {
     private let tool: ToolsManager = ToolsManager()
-    @State var goal: SampleGoal
+    @State var goal: Goal
     var body: some View {
         VStack{
-            Image(goal.category.icon)
+            Image(goal.category?.icon ?? "default")
                 .resizable()
                 .frame(width: 180, height: 180)
                 .aspectRatio(contentMode: .fill)
                 .padding()
             
             VStack(alignment: .leading){
-                Text(goal.name)
+                Text(goal.name ?? "")
                     .font(.title)
                     .lineLimit(2)
                     .minimumScaleFactor(0.5)
-                    .foregroundColor(Color(goal.category.color))
+                    .foregroundColor(Color(goal.category?.color ?? "Blue"))
                     .padding(.horizontal)
                     .padding(.bottom, 5)
-                if !goal.comment.isEmpty {
-                    Text(goal.comment)
+                if !(goal.comment?.isEmpty ?? true) {
+                    Text(goal.comment ?? "")
                         .lineLimit(2)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
@@ -38,8 +38,8 @@ struct GoalListItemView: View {
                     Image(systemName: "flag.checkered")
                         .foregroundColor(.secondary)
                         .font(.footnote)
-                    Text(tool.formatDate(goal.deadline))
-                        .foregroundColor(.secondary)
+                    Text(tool.formatDate(goal.deadline ?? Date()))
+                        .foregroundColor(goal.deadline ?? Date() < Date() ? .red : .secondary )
                         .font(.footnote)
                     Spacer()
                     Text("btn_open")
