@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CreateCatedoryView: View {
-    @Binding var categories: CategoriesWrapper
     @EnvironmentObject var categoriesManager: CategoryManager
     @EnvironmentObject var userSettings: UserSettingsManager
     @Environment(\.presentationMode) var presentationMode
@@ -131,9 +130,6 @@ struct CreateCatedoryView: View {
                     let newCategoryExpectations = Double(newCategoryExpectations.replacingOccurrences(of: ",", with: ".")) ?? 0
                     categoriesManager.createCategory(categoryName: newCategoryName, categoryIcon: selectedIcon?.icon ?? "default", categoryColor: selectedColor.rawValue, categoryEssentialDegree: Int16(selectedDegree), categoryType: newCategoryType, categoryExpectations: newCategoryExpectations)
                     categoriesManager.getCategoriessList()
-                    categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
-                    categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
-                    
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     HStack{
@@ -182,10 +178,3 @@ struct EssentialDegreePicker: View {
         }
     }
 }
-
-
-//struct CreateCatedoryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreateCatedoryView()
-//    }
-//}

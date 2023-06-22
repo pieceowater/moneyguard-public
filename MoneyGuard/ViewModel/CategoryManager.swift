@@ -16,7 +16,7 @@ class CategoryManager: ObservableObject {
             }
         }
     
-    var categoryColors: [String: Color] = [:]
+//    var categoryColors: [String: Color] = [:]
     
     init() {
         getCategoriessList()
@@ -25,13 +25,13 @@ class CategoryManager: ObservableObject {
     func getCategoriessList(){
         categoryList = coreData.fetchEntities()
         
-        for category in categoryList {
-            if let categoryName = category.name {
-                if categoryColors[categoryName] == nil {
-                    categoryColors[categoryName] = Color(category.color ?? "Blue")
-                }
-            }
-        }
+//        for category in categoryList {
+//            if let categoryName = category.name {
+//                if categoryColors[categoryName] == nil {
+//                    categoryColors[categoryName] = Color(category.color ?? "Blue")
+//                }
+//            }
+//        }
     }
     
     func createCategory(categoryName: String, categoryIcon: String, categoryColor: String, categoryEssentialDegree: Int16, categoryType: String, categoryExpectations: Double = 0){

@@ -25,8 +25,8 @@ struct MenuView: View {
                }
                
                Section(header: Text("menu_heading_actions")) {
-                   LinkButtonView(title: String(format: NSLocalizedString("menu_actions_pro_mode", comment: "")))
-                   LinkButtonView(title: String(format: NSLocalizedString("menu_actions_rate", comment: "")))
+//                   LinkButtonView(title: String(format: NSLocalizedString("menu_actions_pro_mode", comment: "")))
+//                   LinkButtonView(title: String(format: NSLocalizedString("menu_actions_rate", comment: "")))
                    NavigationLink(destination: AboutView()) {
                        LinkButtonView(title: String(format: NSLocalizedString("menu_actions_about", comment: "")))
                    }

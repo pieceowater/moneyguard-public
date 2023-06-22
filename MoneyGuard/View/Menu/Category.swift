@@ -7,14 +7,7 @@
 
 import SwiftUI
 
-struct CategoriesWrapper {
-    var replenishments: [Category]
-    var expenses: [Category]
-}
-
 struct CategoryView: View {
-    @State var categories: CategoriesWrapper = CategoriesWrapper(replenishments: [], expenses: [])
-    
     @EnvironmentObject var categoriesManager: CategoryManager
     @EnvironmentObject var userSettings: UserSettingsManager
     @State var showCreateCategroySheet: Bool = false
@@ -22,7 +15,7 @@ struct CategoryView: View {
     var body: some View {
             ScrollView {
                 VStack(spacing: 16) {
-                    if categories.expenses.count == 0 && categories.replenishments.count == 0 {
+                    if categoriesManager.categoryList.filter({ $0.type == "expenses" }).sorted(by: { $0.essentialDegree > $1.essentialDegree }).count == 0 && categoriesManager.categoryList.filter({ $0.type == "replenishments" }).sorted(by: { $0.essentialDegree > $1.essentialDegree }).count == 0 {
                         VStack(spacing: 25){
                             Image("grass")
                                 .resizable()
@@ -33,7 +26,7 @@ struct CategoryView: View {
                             
                         }.padding(.vertical, 100)
                     } else {
-                        if categories.replenishments.count == 0 {
+                        if categoriesManager.categoryList.filter({ $0.type == "replenishments" }).sorted(by: { $0.essentialDegree > $1.essentialDegree }).count == 0 {
                             VStack(spacing: 25){
                                 Image("debt")
                                     .resizable()
@@ -44,10 +37,10 @@ struct CategoryView: View {
                                 
                             }.padding(.vertical, 50)
                         } else {
-                            CategoryList(title: NSLocalizedString("menu_settings_category_replenishments", comment: ""), categories: categories.replenishments)
+                            CategoryList(title: NSLocalizedString("menu_settings_category_replenishments", comment: ""), type: "replenishments")
                         }
                         
-                        if categories.expenses.count == 0 {
+                        if categoriesManager.categoryList.filter({ $0.type == "expenses" }).sorted(by: { $0.essentialDegree > $1.essentialDegree }).count == 0 {
                             VStack(spacing: 25){
                                 Image("donate")
                                     .resizable()
@@ -58,7 +51,7 @@ struct CategoryView: View {
                                 
                             }.padding(.vertical, 50)
                         } else {
-                            CategoryList(title: NSLocalizedString("menu_settings_category_expenses", comment: ""), categories: categories.expenses)
+                            CategoryList(title: NSLocalizedString("menu_settings_category_expenses", comment: ""), type: "expenses")
                         }
                     }
                     
@@ -74,19 +67,10 @@ struct CategoryView: View {
                 }
             })
             .sheet(isPresented: $showCreateCategroySheet, content: {
-                CreateCatedoryView(categories: $categories).accentColor(userSettings.accentColor.color)
+                CreateCatedoryView().accentColor(userSettings.accentColor.color)
                     .environmentObject(userSettings)
                     .environmentObject(categoriesManager)
             })
-            .onAppear {
-                categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
-                categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
-            }
-            .onChange(of: categoriesManager.categoryList, perform: { newValue in
-                categories.replenishments = categoriesManager.categoryList.filter { $0.type == "replenishments" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
-                categories.expenses = categoriesManager.categoryList.filter { $0.type == "expenses" }.sorted(by: { $0.essentialDegree > $1.essentialDegree })
-            })
-        
             .navigationTitle("menu_settings_category")
     }
 }
@@ -94,7 +78,7 @@ struct CategoryView: View {
 struct CategoryList: View {
     @EnvironmentObject var categoriesManager: CategoryManager
     let title: String
-    @State var categories: [Category]
+    @State var type: String
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -105,9 +89,9 @@ struct CategoryList: View {
             
             ScrollView {
                 LazyVGrid(columns: [GridItem(.flexible())], spacing: 10) {
-                    ForEach(categories, id: \.self) { category in
+                    ForEach(categoriesManager.categoryList.filter { $0.type == type }.sorted(by: { $0.essentialDegree > $1.essentialDegree }), id: \.self) { category in
                         NavigationLink(destination: CategoryDetailView(category: category).environmentObject(categoriesManager)) {
-                            CategoryCardView(category: $categories[categories.firstIndex(of: category)!])
+                            CategoryCardView(category: category)
                         }
                     }
                 }
@@ -121,7 +105,7 @@ struct CategoryList: View {
 
 struct CategoryCardView: View {
     private let tool: ToolsManager = ToolsManager()
-    @Binding var category: Category
+    @State var category: Category
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
