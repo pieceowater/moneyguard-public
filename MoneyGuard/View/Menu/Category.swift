@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct CategoriesWrapper {
+    var replenishments: [Category]
+    var expenses: [Category]
+}
+
 struct CategoryView: View {
     @EnvironmentObject var categoriesManager: CategoryManager
     @EnvironmentObject var userSettings: UserSettingsManager
