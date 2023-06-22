@@ -58,7 +58,7 @@ class TransactionManager: ObservableObject {
         let totalSpendingForImportanceOneAndTwoCategories = getTotalSpendingForImportanceOneAndTwoCategories()
         let threshold = 0.3 // Adjust the threshold as needed
         
-        let last30DaysTransactions = filterTransactionsLast30Days()
+        let last30DaysTransactions = filterTransactionsLast30Days().filter { $0.category?.type == "expenses" }
         let totalSpendingLast30Days = last30DaysTransactions.reduce(0) { $0 + $1.value }
         
         var potentialSavingsCategories: [Category] = []
@@ -103,7 +103,7 @@ class TransactionManager: ObservableObject {
     }
     
     private func getTotalSpendingForImportanceOneAndTwoCategories() -> Double {
-        let importanceOneAndTwoCategories = CategoryManager().categoryList.filter { $0.essentialDegree <= 2 }
+        let importanceOneAndTwoCategories = CategoryManager().categoryList.filter { $0.essentialDegree <= 2 && $0.type == "expenses" }
         let last30DaysTransactions = filterTransactionsLast30Days()
         let totalSpending = importanceOneAndTwoCategories.reduce(0) { $0 + getCategorySpending(category: $1, transactions: last30DaysTransactions) }
         return totalSpending
