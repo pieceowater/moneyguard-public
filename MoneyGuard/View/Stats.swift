@@ -72,9 +72,6 @@ struct StatsView: View {
                 }
                 Spacer()
             }
-            .refreshable {
-                
-            }
             .navigationTitle("stats_tab")
         }
     }
