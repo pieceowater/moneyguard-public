@@ -30,6 +30,7 @@ struct MoneyGuardApp: App {
             ContentView(userSettings: userSettings)
                 .onAppear{
                     checkFirstLaunch()
+                    careSystemCategories()
                 }
                 .fullScreenCover(isPresented: $isShowingSlideShow) {
                     SlideshowView(slides: slides)
@@ -53,15 +54,36 @@ struct MoneyGuardApp: App {
             accountsManager.getAccountsList()
             categoriesManager.createCategory(categoryName: NSLocalizedString("first_category_replanishments_name", comment: ""), categoryIcon: "default2", categoryColor: "Green", categoryEssentialDegree: 2, categoryType: "replenishments")
             categoriesManager.createCategory(categoryName: NSLocalizedString("first_category_expenses_name", comment: ""), categoryIcon: "default3", categoryColor: "Teal", categoryEssentialDegree: 2, categoryType: "expenses")
-
-            categoriesManager.createCategory(categoryName: NSLocalizedString("system_account_transfer_from", comment: ""), categoryIcon: "debt", categoryColor: "Green", categoryEssentialDegree: 2, categoryType: "transferFrom")
-            categoriesManager.createCategory(categoryName: NSLocalizedString("system_account_transfer_to", comment: ""), categoryIcon: "debt", categoryColor: "Red", categoryEssentialDegree: 2, categoryType: "transferTo")
-            categoriesManager.getCategoriessList()
             
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
         }
     }
+    
+    func careSystemCategories(){
+        let list = categoriesManager.categoryList.filter({ $0.type == "transferFrom" || $0.type == "transferTo" })
+        if list.filter({ $0.type == "transferFrom" }).count == 0 {
+            categoriesManager.createCategory(categoryName: NSLocalizedString("system_account_transfer_from", comment: ""), categoryIcon: "debt", categoryColor: "Green", categoryEssentialDegree: 2, categoryType: "transferFrom")
+        } else {
+            var transferFrom = list.filter({ $0.type == "transferFrom" }).first
+            if transferFrom?.name != NSLocalizedString("system_account_transfer_from", comment: "") {
+                transferFrom?.name = NSLocalizedString("system_account_transfer_from", comment: "")
+                categoriesManager.updateCategory()
+            }
+        }
+        if list.filter({ $0.type == "transferTo" }).count == 0 {
+            categoriesManager.createCategory(categoryName: NSLocalizedString("system_account_transfer_to", comment: ""), categoryIcon: "debt", categoryColor: "Red", categoryEssentialDegree: 2, categoryType: "transferTo")
+        } else {
+            var transferTo = list.filter({ $0.type == "transferTo" }).first
+            if transferTo?.name != NSLocalizedString("system_account_transfer_to", comment: "") {
+                transferTo?.name = NSLocalizedString("system_account_transfer_to", comment: "")
+                categoriesManager.updateCategory()
+            }
+            
+        }
+        categoriesManager.getCategoriessList()
+    }
 }
+
 
 
 struct HideKeyboardOnTap: ViewModifier {
