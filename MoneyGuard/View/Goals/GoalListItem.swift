@@ -27,6 +27,7 @@ struct GoalListItemView: View {
                             .font(.title)
                             .lineLimit(2)
                             .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.leading)
                             .foregroundColor(Color(goal.category?.color ?? "Blue"))
                             .padding(.horizontal)
                             .padding(.bottom, 5)
