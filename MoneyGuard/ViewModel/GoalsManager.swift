@@ -46,4 +46,23 @@ class GoalsManager: ObservableObject {
         CoreDataManager.shared.deleteEntity(entity: goal)
     }
     
+    func checkGoalStatus(goal: Goal, transactionsByCategory: [Transaction]) -> Bool {
+        print(goal)
+        print(transactionsByCategory)
+        let currentDate = Date()
+        print(transactionsByCategory.reduce(0) { $0 + $1.value })
+        if goal.type == "less" {
+            return goal.sum >= transactionsByCategory.reduce(0) { $0 + $1.value } && goal.deadline ?? Date() < currentDate // OK less
+        } else if goal.type == "more" {
+            return goal.sum <= transactionsByCategory.reduce(0) { $0 + $1.value } && goal.deadline ?? Date() < currentDate // OK more
+        } else {
+            return false
+        }
+        
+        /*
+         выполнил в срок меньше суммы = сумма больше чем транзакции И дэдлайн больше текущего времени
+         выполнил в срок больше суммы = сумма меньше чем транзакции И дэдлайн больше текущего времени
+         */
+    }
+    
 }

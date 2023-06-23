@@ -164,7 +164,7 @@ struct GoalDetailView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("word_progress")
                             .font(.subheadline)
-                        CircleProgressBarView(currentProgress: transactionManager.transactionsList.filter { $0.category == goal.category && $0.date ?? Date() <= goal.createDate ?? Date() }.reduce(0) { $0 + $1.value }, maxProgress: goal.sum)
+                        CircleProgressBarView(currentProgress: transactionManager.transactionsList.filter { $0.category == goal.category && $0.date ?? Date() >= goal.createDate ?? Date() && $0.date ?? Date() <= goal.deadline ?? Date() }.reduce(0) { $0 + $1.value }, maxProgress: goal.sum)
                             .padding()
                             .padding(.horizontal, 80)
                             .padding()
