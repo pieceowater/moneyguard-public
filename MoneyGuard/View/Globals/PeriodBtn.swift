@@ -23,6 +23,8 @@ struct PeriodBtnView: View {
                     Text(label)
                     Spacer()
                 }
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 10)
                 .foregroundColor(.white)
@@ -36,6 +38,8 @@ struct PeriodBtnView: View {
                     Text(label)
                     Spacer()
                 }
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 10)
                 .foregroundColor(.accentColor)

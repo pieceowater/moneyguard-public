@@ -345,6 +345,8 @@ struct DatePresetBtnView: View {
                     Text(label)
                     Spacer()
                 }
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 10)
                 .foregroundColor(.white)
@@ -357,6 +359,8 @@ struct DatePresetBtnView: View {
                     Text(label)
                     Spacer()
                 }
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 10)
                 .foregroundColor(.accentColor)
